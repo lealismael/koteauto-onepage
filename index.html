@@ -31,7 +31,13 @@
 </head>
 <body>
   <main class="page" aria-label="KoteAuto">
-    <img class="hero" src="/koteauto.jpg" alt="KoteAuto — Em breve" />
+    <picture>
+      <!-- Mobile: até 768px -->
+      <source srcset="/koteauto_mobile.png" media="(max-width: 768px)" />
+      
+      <!-- Desktop: acima de 768px -->
+      <img class="hero" src="/koteauto_desktop.png" alt="KoteAuto — Em breve" />
+    </picture>
   </main>
 </body>
 </html>
