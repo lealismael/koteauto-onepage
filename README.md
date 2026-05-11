@@ -1,16 +1,26 @@
-# KoteAuto — One Image Website (Vercel)
+# KoteAuto — Landing Page Estática (Vercel)
 
-Este projeto exibe **apenas uma imagem** ocupando toda a tela.
+Este projeto exibe uma **landing page estática em HTML puro** com fundo visual em tela cheia e
+links sociais clicáveis.
 
 ## Arquivos
-- `index.html` — página que mostra a imagem `koteauto.jpg`
-- `koteauto.jpg` — imagem principal (pode substituir pelo seu arquivo final)
-- `vercel.json` — cabeçalho de cache para a imagem
+- `index.html` — página principal, com CSS e JavaScript inline
+- `new_desktop.png` — arte principal usada no desktop
+- `new_mobile.png` — arte principal usada no mobile
+- `fundo_limpo.png` — alternativa de fundo limpo
+- `koteauto_desktop.png` — arte anterior de desktop
+- `koteauto_mobile.png` — arte anterior de mobile
+- `vercel.json` — configuração do deploy estático
 
-## Como trocar a imagem
-1. Substitua `koteauto.jpg` por sua arte final (mesmo nome).
-2. Resolução sugerida: **1920 x 1080** ou **2560 x 1440** (JPG).
-3. Para mobile, mantenha foco central na composição.
+## Como cadastrar os links sociais
+1. Abra `index.html`.
+2. Vá até o objeto `socialLinks`, no fim do arquivo.
+3. Substitua as URLs atuais pelos perfis oficiais da KoteAuto.
+
+## Como ajustar a arte
+1. Para trocar a composição principal, altere os caminhos em `cleanBackgrounds` no `index.html`.
+2. Se quiser voltar para o modo com hotspots sobre a arte antiga, mude `backgroundMode` para `art`.
+3. Se surgir uma versão mobile diferente, atualize o campo `mobile` em `cleanBackgrounds`.
 
 ## Deploy na Vercel (sem repositório)
 1. Acesse https://vercel.com/dashboard
