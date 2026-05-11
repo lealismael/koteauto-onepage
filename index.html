@@ -3,45 +3,478 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KoteAuto</title>
-  <meta name="description" content="KoteAuto — Em breve." />
+  <meta name="theme-color" content="#bcc6d0" />
+  <title>KoteAuto | Em construção</title>
+  <meta
+    name="description"
+    content="Página temporária da KoteAuto com fundo em tela cheia e links sociais clicáveis."
+  />
   <style>
-    html, body {
+    :root {
+      --focus: #6bb3ff;
+      --shadow: rgba(28, 41, 58, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
       height: 100%;
       margin: 0;
-      padding: 0;
-      background: #0f0f0f;
     }
-    .page {
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+      background: #bcc6d0;
+      font-family: Arial, sans-serif;
+    }
+
+    body::before,
+    body::after {
+      content: "";
       position: fixed;
       inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #0f0f0f;
+      pointer-events: none;
     }
-    img.hero {
+
+    body::before {
+      background: url("./koteauto_desktop.png") center center / cover no-repeat;
+      filter: blur(34px) saturate(0.92) brightness(0.96);
+      opacity: 0.95;
+      transform: scale(1.08);
+    }
+
+    body::after {
+      background: linear-gradient(180deg, rgba(245, 248, 252, 0.1), rgba(113, 128, 145, 0.08));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      isolation: isolate;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 12px;
+    }
+
+    .stage {
+      position: relative;
+      width: min(calc(100vw - 24px), calc((100dvh - 24px) * 1366 / 768));
+      max-width: 1366px;
+      aspect-ratio: 1366 / 768;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .art,
+    .art picture,
+    .art img {
+      display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      max-width: 2560px;
-      max-height: 1440px;
-      margin: 0 auto;
-      display: block;
-      user-select: none;
+    }
+
+    .art img {
+      object-fit: contain;
       -webkit-user-drag: none;
+      filter: drop-shadow(0 20px 40px var(--shadow));
+    }
+
+    .social-dock {
+      display: none;
+      position: absolute;
+      left: 50%;
+      bottom: clamp(34px, 7vh, 62px);
+      transform: translateX(-50%);
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 18px 40px rgba(39, 52, 68, 0.18);
+      backdrop-filter: blur(18px);
+    }
+
+    .social-link {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      color: #f5f9ff;
+      transition:
+        transform 180ms ease,
+        background-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.26);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+        0 12px 24px rgba(39, 52, 68, 0.16);
+    }
+
+    .social-link:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 4px;
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    .social-link svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
+
+    .social-link span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hotspots {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hotspot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0);
+      border: 1px solid rgba(255, 255, 255, 0);
+      transition:
+        transform 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .hotspot:hover {
+      transform: translate(-50%, -50%) scale(1.04);
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+    }
+
+    .hotspot:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 4px;
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.95);
+    }
+
+    .hotspot span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hotspots--desktop .hotspot {
+      width: 8.4%;
+      max-width: 110px;
+      min-width: 54px;
+      aspect-ratio: 1;
+    }
+
+    .hotspot--facebook-desktop {
+      left: 37.6%;
+      top: 85.5%;
+    }
+
+    .hotspot--linkedin-desktop {
+      left: 50.1%;
+      top: 85.5%;
+    }
+
+    .hotspot--instagram-desktop {
+      left: 62.6%;
+      top: 85.5%;
+    }
+
+    .hotspots--mobile {
+      display: none;
+    }
+
+    .page--clean {
+      padding: 0;
+    }
+
+    .page--clean .stage {
+      width: 100vw;
+      max-width: none;
+      height: 100vh;
+      height: 100dvh;
+      aspect-ratio: auto;
+    }
+
+    .page--clean .art,
+    .page--clean .art picture,
+    .page--clean .art img {
+      height: 100%;
+    }
+
+    .page--clean .art img {
+      object-fit: cover;
+      filter: none;
+    }
+
+    .page--clean .hotspots {
+      display: none;
+    }
+
+    .page--clean .social-dock {
+      display: inline-flex;
+    }
+
+    @media (max-width: 768px) {
+      body::before {
+        background: url("./koteauto_mobile.png") center center / cover no-repeat;
+        filter: blur(24px) saturate(0.94) brightness(0.98);
+      }
+
+      .stage {
+        width: min(calc(100vw - 24px), calc((100dvh - 24px) * 1024 / 1536));
+        max-width: 1024px;
+        aspect-ratio: 1024 / 1536;
+      }
+
+      .hotspots--desktop {
+        display: none;
+      }
+
+      .hotspots--mobile {
+        display: block;
+      }
+
+      .hotspots--mobile .hotspot {
+        width: 13.6%;
+        max-width: 112px;
+        min-width: 58px;
+        aspect-ratio: 1;
+      }
+
+      .hotspot--facebook-mobile {
+        left: 27.6%;
+        top: 87.7%;
+      }
+
+      .hotspot--linkedin-mobile {
+        left: 50.2%;
+        top: 87.7%;
+      }
+
+      .hotspot--instagram-mobile {
+        left: 72.7%;
+        top: 87.7%;
+      }
+
+      .page--clean .social-dock {
+        gap: 10px;
+        padding: 10px 12px;
+        bottom: 28px;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+      }
+
+      .social-link svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hotspot {
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="page" aria-label="KoteAuto">
-    <picture>
-      <!-- Mobile: até 768px -->
-      <source srcset="/koteauto_mobile.png" media="(max-width: 768px)" />
-      
-      <!-- Desktop: acima de 768px -->
-      <img class="hero" src="/koteauto_desktop.png" alt="KoteAuto — Em breve" />
-    </picture>
+  <main class="page" aria-label="KoteAuto em construção">
+    <div class="stage">
+      <div class="art">
+        <picture>
+          <source data-background-source="mobile" srcset="./koteauto_mobile.png" media="(max-width: 768px)" />
+          <source data-background-source="desktop" srcset="./koteauto_desktop.png" media="(min-width: 769px)" />
+          <img data-background-image src="./koteauto_desktop.png" alt="KoteAuto em construção" />
+        </picture>
+      </div>
+
+      <div class="hotspots hotspots--desktop" aria-label="Redes sociais da KoteAuto no desktop">
+        <a
+          class="hotspot hotspot--facebook-desktop"
+          data-social="facebook"
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Facebook da KoteAuto"
+        >
+          <span>Facebook</span>
+        </a>
+        <a
+          class="hotspot hotspot--linkedin-desktop"
+          data-social="linkedin"
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn da KoteAuto"
+        >
+          <span>LinkedIn</span>
+        </a>
+        <a
+          class="hotspot hotspot--instagram-desktop"
+          data-social="instagram"
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram da KoteAuto"
+        >
+          <span>Instagram</span>
+        </a>
+      </div>
+
+      <div class="hotspots hotspots--mobile" aria-label="Redes sociais da KoteAuto no mobile">
+        <a
+          class="hotspot hotspot--facebook-mobile"
+          data-social="facebook"
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Facebook da KoteAuto"
+        >
+          <span>Facebook</span>
+        </a>
+        <a
+          class="hotspot hotspot--linkedin-mobile"
+          data-social="linkedin"
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn da KoteAuto"
+        >
+          <span>LinkedIn</span>
+        </a>
+        <a
+          class="hotspot hotspot--instagram-mobile"
+          data-social="instagram"
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram da KoteAuto"
+        >
+          <span>Instagram</span>
+        </a>
+      </div>
+
+      <div class="social-dock" aria-label="Redes sociais da KoteAuto">
+        <a
+          class="social-link"
+          data-social="facebook"
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Facebook da KoteAuto"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.5 22v-8h2.7l.5-3.4h-3.2V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.6H7v3.4h3V22h3.5Z" />
+          </svg>
+          <span>Facebook</span>
+        </a>
+        <a
+          class="social-link"
+          data-social="linkedin"
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn da KoteAuto"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 8.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM4.8 22V10.1h3.4V22H4.8Zm5.4 0V10.1h3.2v1.6h.1c.4-.8 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.2V22h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V22h-3.4Z" />
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <a
+          class="social-link"
+          data-social="instagram"
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram da KoteAuto"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.2 3h9.6A4.2 4.2 0 0 1 21 7.2v9.6a4.2 4.2 0 0 1-4.2 4.2H7.2A4.2 4.2 0 0 1 3 16.8V7.2A4.2 4.2 0 0 1 7.2 3Zm-.1 1.8A2.4 2.4 0 0 0 4.8 7.1v9.8a2.4 2.4 0 0 0 2.3 2.3h9.8a2.4 2.4 0 0 0 2.3-2.3V7.1a2.4 2.4 0 0 0-2.3-2.3H7.1Zm10.2 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.9a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 1.8a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Z" />
+          </svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
   </main>
+
+  <script>
+    const socialLinks = {
+      facebook: "https://www.facebook.com/",
+      linkedin: "https://www.linkedin.com/",
+      instagram: "https://www.instagram.com/"
+    };
+    const backgroundMode = "clean";
+    const cleanBackgrounds = {
+      desktop: "./new_desktop.png",
+      mobile: "./new_mobile.png"
+    };
+    const page = document.querySelector(".page");
+    const desktopBackgroundSource = document.querySelector('[data-background-source="desktop"]');
+    const mobileBackgroundSource = document.querySelector('[data-background-source="mobile"]');
+    const backgroundImage = document.querySelector("[data-background-image]");
+
+    document.querySelectorAll("[data-social]").forEach((link) => {
+      const network = link.dataset.social;
+      const url = socialLinks[network];
+
+      if (url) {
+        link.href = url;
+        return;
+      }
+
+      link.removeAttribute("href");
+      link.removeAttribute("target");
+      link.setAttribute("aria-disabled", "true");
+      link.style.pointerEvents = "none";
+    });
+
+    if (backgroundMode === "clean") {
+      desktopBackgroundSource.srcset = cleanBackgrounds.desktop;
+      mobileBackgroundSource.srcset = cleanBackgrounds.mobile || cleanBackgrounds.desktop;
+      backgroundImage.src = cleanBackgrounds.desktop;
+      page.classList.add("page--clean");
+    }
+  </script>
 </body>
 </html>
