@@ -318,8 +318,8 @@
 
     .mobile-form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     .mobile-form-card {
@@ -338,10 +338,10 @@
     }
 
     .mobile-form-card:last-child {
-      grid-column: 1 / -1;
-      max-width: 280px;
-      width: 100%;
-      justify-self: center;
+      grid-column: auto;
+      max-width: none;
+      width: auto;
+      justify-self: stretch;
     }
 
     .mobile-form-card-header {
