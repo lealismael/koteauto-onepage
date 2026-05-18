@@ -7,12 +7,27 @@
   <title>KoteAuto | Em construção</title>
   <meta
     name="description"
-    content="Página temporária da KoteAuto com fundo em tela cheia e links sociais clicáveis."
+    content="Página temporária da KoteAuto com status em construção, links sociais e questionários do piloto."
   />
   <style>
     :root {
       --focus: #6bb3ff;
       --shadow: rgba(28, 41, 58, 0.22);
+      --surface: rgba(231, 239, 247, 0.5);
+      --surface-strong: rgba(255, 255, 255, 0.78);
+      --surface-card: rgba(255, 255, 255, 0.9);
+      --border: rgba(255, 255, 255, 0.4);
+      --text-strong: #17324d;
+      --text-muted: #4e6279;
+      --text-on-art: #f5f9ff;
+      --accent: #60aef4;
+      --accent-strong: #3c92e8;
+      --hero-panel: linear-gradient(180deg, rgba(244, 248, 252, 0.22), rgba(225, 234, 242, 0.1));
+      --hero-track: rgba(255, 255, 255, 0.68);
+      --hero-fill-start: #66b4fb;
+      --hero-fill-end: #4d97eb;
+      --survey-shell: linear-gradient(180deg, rgba(240, 246, 251, 0.34), rgba(223, 234, 243, 0.18));
+      --survey-card-panel: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(242, 247, 251, 0.74));
     }
 
     * {
@@ -28,8 +43,9 @@
     body {
       min-height: 100vh;
       min-height: 100dvh;
-      overflow: hidden;
+      overflow-x: hidden;
       background: #bcc6d0;
+      color: var(--text-on-art);
       font-family: Arial, sans-serif;
     }
 
@@ -42,7 +58,7 @@
     }
 
     body::before {
-      background: url("./koteauto_desktop.png") center center / cover no-repeat;
+      background: url("./fundo_limpo.png") center center / cover no-repeat;
       filter: blur(34px) saturate(0.92) brightness(0.96);
       opacity: 0.95;
       transform: scale(1.08);
@@ -56,21 +72,39 @@
       position: relative;
       z-index: 1;
       isolation: isolate;
-      min-height: 100vh;
-      min-height: 100dvh;
+      width: min(1280px, calc(100vw - 24px));
+      margin: 0 auto;
+      padding: clamp(12px, 2vw, 20px) 0 56px;
       display: grid;
-      place-items: center;
-      padding: 12px;
+      gap: clamp(22px, 4vw, 42px);
+      align-content: start;
     }
 
     .stage {
       position: relative;
-      width: min(calc(100vw - 24px), calc((100dvh - 24px) * 1366 / 768));
-      max-width: 1366px;
-      aspect-ratio: 1366 / 768;
+      z-index: 2;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      aspect-ratio: 1366 / 580;
       user-select: none;
       -webkit-user-select: none;
       -webkit-touch-callout: none;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: clamp(24px, 4vw, 36px);
+      box-shadow: 0 28px 80px -40px rgba(16, 25, 38, 0.48);
+    }
+
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(12, 28, 43, 0.34) 0%, rgba(12, 28, 43, 0.14) 32%, rgba(12, 28, 43, 0) 62%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
     }
 
     .art,
@@ -82,9 +116,100 @@
     }
 
     .art img {
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center center;
       -webkit-user-drag: none;
-      filter: drop-shadow(0 20px 40px var(--shadow));
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 50%;
+      left: clamp(24px, 5vw, 56px);
+      z-index: 2;
+      width: min(390px, calc(100% - 48px));
+      padding: clamp(20px, 2.6vw, 26px);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 28px;
+      background: var(--hero-panel);
+      color: var(--text-strong);
+      box-shadow: 0 22px 44px -34px rgba(15, 23, 42, 0.28);
+      backdrop-filter: blur(10px) saturate(1.08);
+      transform: translateY(-50%);
+    }
+
+    .hero-kicker {
+      margin: 0 0 10px;
+      color: #1f74cf;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-shadow: 0 1px 10px rgba(31, 116, 207, 0.18);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0;
+      color: var(--text-strong);
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      margin: 14px 0 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .hero-loading {
+      margin-top: 20px;
+    }
+
+    .hero-progress {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--hero-track);
+      box-shadow: inset 0 0 0 1px rgba(118, 145, 171, 0.18);
+    }
+
+    .hero-progress-bar {
+      width: 74%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--hero-fill-start), var(--hero-fill-end));
+      box-shadow: 0 0 22px rgba(96, 174, 244, 0.55);
+      animation: hero-progress-pulse 2.6s ease-in-out infinite;
+    }
+
+    .hero-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      margin-top: 18px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.24);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+      color: var(--text-strong);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .social-dock {
@@ -92,6 +217,7 @@
       position: absolute;
       left: 50%;
       bottom: clamp(34px, 7vh, 62px);
+      z-index: 3;
       transform: translateX(-50%);
       align-items: center;
       gap: 12px;
@@ -101,6 +227,180 @@
       border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 18px 40px rgba(39, 52, 68, 0.18);
       backdrop-filter: blur(18px);
+    }
+
+    .survey-section {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+      margin-top: clamp(-54px, -5vw, -32px);
+      padding: 0 clamp(12px, 1.8vw, 18px) 8px;
+    }
+
+    .survey-intro {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 22px;
+      background: var(--survey-shell);
+      box-shadow: 0 20px 44px -36px rgba(15, 23, 42, 0.34);
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .survey-frame {
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      border-radius: 26px;
+      background: var(--survey-shell);
+      box-shadow: 0 22px 44px -36px rgba(15, 23, 42, 0.32);
+      backdrop-filter: blur(12px);
+    }
+
+    .survey-frame-copy {
+      max-width: 860px;
+      margin: 0 auto;
+      color: var(--text-strong);
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      font-size: clamp(15px, 1.75vw, 19px);
+      font-weight: 600;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .survey-eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent-strong);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .survey-intro h2 {
+      margin: 0 0 8px;
+      color: var(--text-strong);
+      font-size: clamp(20px, 2.8vw, 28px);
+      letter-spacing: -0.04em;
+    }
+
+    .survey-intro p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .survey-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .survey-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 238px;
+      padding: 20px;
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 24px;
+      background: var(--survey-card-panel);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.52),
+        0 26px 46px -34px rgba(29, 53, 77, 0.42);
+      backdrop-filter: blur(12px);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .survey-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 30px 52px -34px rgba(29, 53, 77, 0.5);
+    }
+
+    .survey-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .survey-card-index {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(96, 174, 244, 0.18);
+      color: var(--accent-strong);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .survey-card-badge {
+      color: var(--accent-strong);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .survey-card h3 {
+      margin: 18px 0 10px;
+      color: var(--text-strong);
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .survey-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.68;
+    }
+
+    .survey-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      margin-top: auto;
+      padding: 0 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 16px 28px -20px rgba(38, 114, 190, 0.7);
+      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+    }
+
+    .survey-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 32px -20px rgba(38, 114, 190, 0.82);
+    }
+
+    .survey-link:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    .survey-note {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
     }
 
     .social-link {
@@ -220,29 +520,6 @@
       display: none;
     }
 
-    .page--clean {
-      padding: 0;
-    }
-
-    .page--clean .stage {
-      width: 100vw;
-      max-width: none;
-      height: 100vh;
-      height: 100dvh;
-      aspect-ratio: auto;
-    }
-
-    .page--clean .art,
-    .page--clean .art picture,
-    .page--clean .art img {
-      height: 100%;
-    }
-
-    .page--clean .art img {
-      object-fit: cover;
-      filter: none;
-    }
-
     .page--clean .hotspots {
       display: none;
     }
@@ -251,16 +528,245 @@
       display: inline-flex;
     }
 
-    @media (max-width: 768px) {
-      body::before {
-        background: url("./koteauto_mobile.png") center center / cover no-repeat;
-        filter: blur(24px) saturate(0.94) brightness(0.98);
+    @media (min-width: 769px) {
+      .page {
+        width: min(1380px, calc(100vw - 40px));
+        padding-top: 16px;
+        gap: 18px;
       }
 
       .stage {
-        width: min(calc(100vw - 24px), calc((100dvh - 24px) * 1024 / 1536));
-        max-width: 1024px;
-        aspect-ratio: 1024 / 1536;
+        max-width: 1320px;
+        aspect-ratio: 1366 / 600;
+      }
+
+      .art img {
+        object-position: center 54%;
+      }
+
+      .hero-overlay {
+        left: 42px;
+        width: min(450px, 37vw);
+        padding: 26px 28px;
+      }
+
+      .hero-title {
+        font-size: clamp(48px, 4.3vw, 66px);
+      }
+
+      .page--clean .social-dock {
+        top: 32px;
+        right: 36px;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 18px 40px -26px rgba(39, 52, 68, 0.22);
+      }
+
+      .survey-section {
+        width: 100%;
+        max-width: 1320px;
+        gap: 14px;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 0 10px;
+      }
+
+      .survey-intro {
+        display: none;
+      }
+
+      .survey-frame {
+        grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
+        align-items: start;
+        gap: 22px 26px;
+        padding: 26px 28px 28px;
+        border-radius: 30px;
+      }
+
+      .survey-frame-copy {
+        margin: 0;
+        font-size: clamp(17px, 1.45vw, 21px);
+        line-height: 1.55;
+        text-align: left;
+      }
+
+      .survey-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .survey-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 380px;
+        width: 100%;
+        justify-self: center;
+      }
+
+      .survey-card {
+        min-height: 260px;
+        padding: 24px;
+        border-radius: 26px;
+      }
+
+      .survey-card h3 {
+        font-size: 23px;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .page {
+        width: min(1460px, calc(100vw - 56px));
+        gap: 20px;
+      }
+
+      .stage {
+        max-width: 1400px;
+      }
+
+      .hero-overlay {
+        left: 50px;
+        width: min(490px, 35vw);
+      }
+
+      .survey-section {
+        max-width: 1400px;
+      }
+
+      .survey-frame {
+        grid-template-columns: minmax(290px, 340px) minmax(0, 1fr);
+        gap: 24px 28px;
+        padding: 28px 30px 30px;
+      }
+
+      .survey-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .survey-card:last-child {
+        grid-column: auto;
+        max-width: none;
+      }
+
+      .survey-card {
+        min-height: 272px;
+      }
+    }
+
+    @media (min-width: 1500px) {
+      .page {
+        width: min(1540px, calc(100vw - 88px));
+        gap: 22px;
+      }
+
+      .stage {
+        max-width: 1480px;
+        aspect-ratio: 1366 / 575;
+      }
+
+      .hero-overlay {
+        left: 56px;
+        width: min(540px, 34vw);
+        padding: 30px 32px;
+      }
+
+      .hero-title {
+        font-size: clamp(54px, 3.9vw, 72px);
+      }
+
+      .page--clean .social-dock {
+        top: 34px;
+        right: 40px;
+      }
+
+      .survey-section {
+        max-width: 1480px;
+      }
+
+      .survey-frame {
+        grid-template-columns: minmax(320px, 380px) minmax(0, 1fr);
+        gap: 26px 30px;
+        padding: 30px 32px 32px;
+      }
+
+      .survey-frame-copy {
+        font-size: clamp(19px, 1.2vw, 22px);
+      }
+
+      .survey-grid {
+        gap: 22px;
+      }
+
+      .survey-card {
+        min-height: 286px;
+        padding: 26px;
+      }
+
+      .survey-card h3 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body::before {
+        background: url("./fundo_limpo.png") center center / cover no-repeat;
+        filter: blur(24px) saturate(0.94) brightness(0.98);
+      }
+
+      .page {
+        width: min(calc(100vw - 16px), 100%);
+        padding: 8px 0 40px;
+        gap: 18px;
+      }
+
+      .stage {
+        width: 100%;
+        aspect-ratio: 4 / 4.35;
+        border-radius: 28px;
+      }
+
+      .art img {
+        object-position: 74% center;
+      }
+
+      .hero-overlay {
+        top: auto;
+        right: 14px;
+        bottom: 72px;
+        left: 14px;
+        width: auto;
+        padding: 16px;
+        border-color: rgba(255, 255, 255, 0.34);
+        border-radius: 22px;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        transform: none;
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 9vw, 42px);
+      }
+
+      .hero-subtitle {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+      }
+
+      .hero-loading {
+        margin-top: 16px;
+      }
+
+      .hero-brand {
+        min-height: 38px;
+        margin-top: 14px;
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+        font-size: 12px;
       }
 
       .hotspots--desktop {
@@ -296,7 +802,11 @@
       .page--clean .social-dock {
         gap: 10px;
         padding: 10px 12px;
-        bottom: 28px;
+        top: 42px;
+        bottom: auto;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 16px 26px -24px rgba(39, 52, 68, 0.24);
+        backdrop-filter: blur(12px);
       }
 
       .social-link {
@@ -308,11 +818,104 @@
         width: 24px;
         height: 24px;
       }
+
+      .survey-section {
+        gap: 10px;
+        margin-top: -18px;
+        padding: 0 10px 0;
+      }
+
+      .survey-intro {
+        max-width: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+
+      .survey-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        margin: 0;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        background: rgba(240, 246, 251, 0.24);
+        box-shadow: 0 16px 30px -24px rgba(15, 23, 42, 0.28);
+      }
+
+      .survey-intro h2 {
+        display: none;
+      }
+
+      .survey-intro p {
+        display: none;
+      }
+
+      .survey-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .survey-frame {
+        gap: 14px;
+        padding: 14px 12px 12px;
+        border-radius: 22px;
+      }
+
+      .survey-frame-copy {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.55;
+        text-align: left;
+      }
+
+      .survey-card {
+        min-height: 0;
+        padding: 16px;
+        border-radius: 20px;
+      }
+
+      .survey-card h3 {
+        font-size: 18px;
+      }
+
+      .survey-card p {
+        font-size: 13px;
+      }
+
+      .survey-link {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 13px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hotspot {
+      .hotspot,
+      .survey-card,
+      .survey-link,
+      .hero-progress-bar {
         transition: none;
+        animation: none;
+      }
+    }
+
+    @keyframes hero-progress-pulse {
+      0%,
+      100% {
+        transform: translateX(0);
+        opacity: 0.88;
+      }
+
+      50% {
+        transform: translateX(1.5%);
+        opacity: 1;
       }
     }
   </style>
@@ -322,11 +925,29 @@
     <div class="stage">
       <div class="art">
         <picture>
-          <source data-background-source="mobile" srcset="./koteauto_mobile.png" media="(max-width: 768px)" />
-          <source data-background-source="desktop" srcset="./koteauto_desktop.png" media="(min-width: 769px)" />
-          <img data-background-image src="./koteauto_desktop.png" alt="KoteAuto em construção" />
+          <source data-background-source="mobile" srcset="./fundo_limpo.png" media="(max-width: 768px)" />
+          <source data-background-source="desktop" srcset="./fundo_limpo.png" media="(min-width: 769px)" />
+          <img data-background-image src="./fundo_limpo.png" alt="Farol de veículo na neblina" />
         </picture>
       </div>
+
+      <section class="hero-overlay" aria-labelledby="hero-title">
+        <p class="hero-kicker">KoteAuto</p>
+        <h1 class="hero-title" id="hero-title">Em construção</h1>
+        <p class="hero-subtitle">O site está quase pronto</p>
+
+        <div class="hero-loading" aria-label="Progresso do lançamento">
+          <div class="hero-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74">
+            <div class="hero-progress-bar"></div>
+          </div>
+          <div class="hero-progress-labels" aria-hidden="true">
+            <span>0%</span>
+            <span>100%</span>
+          </div>
+        </div>
+
+        <div class="hero-brand">Piloto em validação</div>
+      </section>
 
       <div class="hotspots hotspots--desktop" aria-label="Redes sociais da KoteAuto no desktop">
         <a
@@ -436,6 +1057,56 @@
         </a>
       </div>
     </div>
+
+    <section class="survey-section" aria-labelledby="survey-title">
+      <div class="survey-intro">
+        <h2 class="survey-eyebrow" id="survey-title">Piloto KoteAuto</h2>
+      </div>
+
+      <div class="survey-frame">
+        <p class="survey-frame-copy">
+          Estamos validando o piloto da KoteAuto e sua opinião ajuda a construir uma experiência melhor para quem quer comprar, trocar ou vender um carro. Leva menos de 2 minutos para responder.
+        </p>
+
+        <div class="survey-grid">
+          <article class="survey-card">
+            <div class="survey-card-header">
+              <div class="survey-card-index">01</div>
+              <div class="survey-card-badge">Compradores</div>
+            </div>
+            <h3>Para quem pensa em comprar ou trocar de carro</h3>
+            <p>
+              Conte o que você procura e participe da validação do piloto da KoteAuto.
+            </p>
+            <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSews8exWR3-LQ0ZjaUM0jf3i8lHbO0VXyll9eKcgi33-UKO-A/viewform?usp=header" target="_blank" rel="noopener noreferrer">Responder como comprador</a>
+          </article>
+
+          <article class="survey-card">
+            <div class="survey-card-header">
+              <div class="survey-card-index">02</div>
+              <div class="survey-card-badge">Experiências</div>
+            </div>
+            <h3>Quero compartilhar minha experiência</h3>
+            <p>
+              Já comprou, vendeu ou tentou trocar de carro? Sua experiência ajuda a melhorar o processo.
+            </p>
+            <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc0S42uXHHGSunK6jE_paTgxouFxbw6sxME7ghkixXHMgGMyQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Compartilhar experiência</a>
+          </article>
+
+          <article class="survey-card">
+            <div class="survey-card-header">
+              <div class="survey-card-index">03</div>
+              <div class="survey-card-badge">Concessionárias</div>
+            </div>
+            <h3>Sou concessionária</h3>
+            <p>
+              Cadastre sua loja para análise e participação no piloto com concessionárias parceiras.
+            </p>
+            <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_3XfWmqsIzJUNcTX_xe7OU38iu9YJsFEb2Pk2Le4lT3WFBw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Cadastrar concessionária</a>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -446,8 +1117,8 @@
     };
     const backgroundMode = "clean";
     const cleanBackgrounds = {
-      desktop: "./new_desktop.png",
-      mobile: "./new_mobile.png"
+      desktop: "./fundo_limpo.png",
+      mobile: "./fundo_limpo.png"
     };
     const page = document.querySelector(".page");
     const desktopBackgroundSource = document.querySelector('[data-background-source="desktop"]');
