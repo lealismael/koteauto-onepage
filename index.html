@@ -80,6 +80,330 @@
       align-content: start;
     }
 
+    .desktop-layout {
+      display: grid;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .mobile-layout {
+      display: none;
+      width: 100%;
+    }
+
+    .mobile-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 4.55;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 30px;
+      box-shadow: 0 26px 56px -38px rgba(16, 25, 38, 0.42);
+    }
+
+    .mobile-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0)),
+        linear-gradient(90deg, rgba(12, 28, 43, 0.16), rgba(12, 28, 43, 0));
+    }
+
+    .mobile-art,
+    .mobile-art img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mobile-art img {
+      object-fit: cover;
+      object-position: 74% center;
+      -webkit-user-drag: none;
+    }
+
+    .mobile-social-dock {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 28px -24px rgba(39, 52, 68, 0.24);
+      backdrop-filter: blur(12px);
+      transform: translateX(-50%);
+    }
+
+    .mobile-social-link {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+      color: #f5f9ff;
+      transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .mobile-social-link:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.36);
+    }
+
+    .mobile-social-link:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    .mobile-social-link svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .mobile-social-link span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .mobile-hero-panel {
+      position: absolute;
+      top: clamp(108px, 26vw, 124px);
+      right: 18px;
+      bottom: 20px;
+      left: 18px;
+      z-index: 1;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 24px;
+      background: transparent;
+      color: var(--text-strong);
+    }
+
+    .mobile-hero-kicker {
+      margin: 0 0 8px;
+      color: #1f74cf;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .mobile-hero-title {
+      margin: 0;
+      color: var(--text-strong);
+      font-size: clamp(32px, 11vw, 48px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .mobile-hero-subtitle {
+      margin: 12px 0 0;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .mobile-hero-loading {
+      margin-top: 16px;
+    }
+
+    .mobile-hero-progress {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(118, 145, 171, 0.16);
+    }
+
+    .mobile-hero-progress-bar {
+      width: 74%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--hero-fill-start), var(--hero-fill-end));
+      box-shadow: 0 0 18px rgba(96, 174, 244, 0.46);
+      animation: hero-progress-pulse 2.6s ease-in-out infinite;
+    }
+
+    .mobile-hero-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .mobile-hero-brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      margin-top: 14px;
+      padding: 0 16px;
+      border-radius: 999px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+      color: var(--text-strong);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mobile-survey-section {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mobile-survey-intro {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mobile-survey-intro span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      background: rgba(240, 246, 251, 0.24);
+      box-shadow: 0 16px 30px -24px rgba(15, 23, 42, 0.28);
+      color: var(--accent-strong);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .mobile-survey-frame {
+      display: grid;
+      gap: 14px;
+      padding: 16px 14px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      border-radius: 24px;
+      background: var(--survey-shell);
+      box-shadow: 0 22px 40px -34px rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(12px);
+    }
+
+    .mobile-survey-copy {
+      margin: 0;
+      color: var(--text-strong);
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .mobile-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mobile-form-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding: 16px;
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      background: var(--survey-card-panel);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.52),
+        0 22px 40px -34px rgba(29, 53, 77, 0.36);
+      backdrop-filter: blur(12px);
+    }
+
+    .mobile-form-card:last-child {
+      grid-column: 1 / -1;
+      max-width: 280px;
+      width: 100%;
+      justify-self: center;
+    }
+
+    .mobile-form-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-form-card-index {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(96, 174, 244, 0.18);
+      color: var(--accent-strong);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .mobile-form-card-badge {
+      color: var(--accent-strong);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .mobile-form-card h3 {
+      margin: 18px 0 10px;
+      color: var(--text-strong);
+      font-size: 18px;
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-form-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.62;
+    }
+
+    .mobile-form-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      margin-top: auto;
+      padding: 0 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 16px 28px -20px rgba(38, 114, 190, 0.7);
+    }
+
     .stage {
       position: relative;
       z-index: 2;
@@ -712,6 +1036,15 @@
     }
 
     @media (max-width: 768px) {
+      .desktop-layout {
+        display: none;
+      }
+
+      .mobile-layout {
+        display: grid;
+        gap: 12px;
+      }
+
       body::before {
         background: url("./fundo_limpo.png") center center / cover no-repeat;
         filter: blur(24px) saturate(0.94) brightness(0.98);
@@ -900,7 +1233,9 @@
       .hotspot,
       .survey-card,
       .survey-link,
-      .hero-progress-bar {
+      .hero-progress-bar,
+      .mobile-social-link,
+      .mobile-hero-progress-bar {
         transition: none;
         animation: none;
       }
@@ -922,191 +1257,311 @@
 </head>
 <body>
   <main class="page" aria-label="KoteAuto em construção">
-    <div class="stage">
-      <div class="art">
-        <picture>
-          <source data-background-source="mobile" srcset="./fundo_limpo.png" media="(max-width: 768px)" />
-          <source data-background-source="desktop" srcset="./fundo_limpo.png" media="(min-width: 769px)" />
-          <img data-background-image src="./fundo_limpo.png" alt="Farol de veículo na neblina" />
-        </picture>
-      </div>
-
-      <section class="hero-overlay" aria-labelledby="hero-title">
-        <p class="hero-kicker">KoteAuto</p>
-        <h1 class="hero-title" id="hero-title">Em construção</h1>
-        <p class="hero-subtitle">O site está quase pronto</p>
-
-        <div class="hero-loading" aria-label="Progresso do lançamento">
-          <div class="hero-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74">
-            <div class="hero-progress-bar"></div>
-          </div>
-          <div class="hero-progress-labels" aria-hidden="true">
-            <span>0%</span>
-            <span>100%</span>
-          </div>
+    <div class="desktop-layout">
+      <div class="stage">
+        <div class="art">
+          <picture>
+            <source data-background-source="mobile" srcset="./fundo_limpo.png" media="(max-width: 768px)" />
+            <source data-background-source="desktop" srcset="./fundo_limpo.png" media="(min-width: 769px)" />
+            <img data-background-image src="./fundo_limpo.png" alt="Farol de veículo na neblina" />
+          </picture>
         </div>
 
-        <div class="hero-brand">Piloto em validação</div>
+        <section class="hero-overlay" aria-labelledby="hero-title">
+          <p class="hero-kicker">KoteAuto</p>
+          <h1 class="hero-title" id="hero-title">Em construção</h1>
+          <p class="hero-subtitle">O site está quase pronto</p>
+
+          <div class="hero-loading" aria-label="Progresso do lançamento">
+            <div class="hero-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74">
+              <div class="hero-progress-bar"></div>
+            </div>
+            <div class="hero-progress-labels" aria-hidden="true">
+              <span>0%</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <div class="hero-brand">Piloto em validação</div>
+        </section>
+
+        <div class="hotspots hotspots--desktop" aria-label="Redes sociais da KoteAuto no desktop">
+          <a
+            class="hotspot hotspot--facebook-desktop"
+            data-social="facebook"
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook da KoteAuto"
+          >
+            <span>Facebook</span>
+          </a>
+          <a
+            class="hotspot hotspot--linkedin-desktop"
+            data-social="linkedin"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn da KoteAuto"
+          >
+            <span>LinkedIn</span>
+          </a>
+          <a
+            class="hotspot hotspot--instagram-desktop"
+            data-social="instagram"
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram da KoteAuto"
+          >
+            <span>Instagram</span>
+          </a>
+        </div>
+
+        <div class="hotspots hotspots--mobile" aria-label="Redes sociais da KoteAuto no mobile">
+          <a
+            class="hotspot hotspot--facebook-mobile"
+            data-social="facebook"
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook da KoteAuto"
+          >
+            <span>Facebook</span>
+          </a>
+          <a
+            class="hotspot hotspot--linkedin-mobile"
+            data-social="linkedin"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn da KoteAuto"
+          >
+            <span>LinkedIn</span>
+          </a>
+          <a
+            class="hotspot hotspot--instagram-mobile"
+            data-social="instagram"
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram da KoteAuto"
+          >
+            <span>Instagram</span>
+          </a>
+        </div>
+
+        <div class="social-dock" aria-label="Redes sociais da KoteAuto">
+          <a
+            class="social-link"
+            data-social="facebook"
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook da KoteAuto"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.5 22v-8h2.7l.5-3.4h-3.2V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.6H7v3.4h3V22h3.5Z" />
+            </svg>
+            <span>Facebook</span>
+          </a>
+          <a
+            class="social-link"
+            data-social="linkedin"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn da KoteAuto"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.5 8.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM4.8 22V10.1h3.4V22H4.8Zm5.4 0V10.1h3.2v1.6h.1c.4-.8 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.2V22h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V22h-3.4Z" />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            class="social-link"
+            data-social="instagram"
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram da KoteAuto"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.2 3h9.6A4.2 4.2 0 0 1 21 7.2v9.6a4.2 4.2 0 0 1-4.2 4.2H7.2A4.2 4.2 0 0 1 3 16.8V7.2A4.2 4.2 0 0 1 7.2 3Zm-.1 1.8A2.4 2.4 0 0 0 4.8 7.1v9.8a2.4 2.4 0 0 0 2.3 2.3h9.8a2.4 2.4 0 0 0 2.3-2.3V7.1a2.4 2.4 0 0 0-2.3-2.3H7.1Zm10.2 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.9a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 1.8a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Z" />
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+
+      <section class="survey-section" aria-labelledby="survey-title">
+        <div class="survey-intro">
+          <h2 class="survey-eyebrow" id="survey-title">Piloto KoteAuto</h2>
+        </div>
+
+        <div class="survey-frame">
+          <p class="survey-frame-copy">
+            Estamos validando o piloto da KoteAuto e sua opinião ajuda a construir uma experiência melhor para quem quer comprar, trocar ou vender um carro. Leva menos de 2 minutos para responder.
+          </p>
+
+          <div class="survey-grid">
+            <article class="survey-card">
+              <div class="survey-card-header">
+                <div class="survey-card-index">01</div>
+                <div class="survey-card-badge">Compradores</div>
+              </div>
+              <h3>Para quem pensa em comprar ou trocar de carro</h3>
+              <p>
+                Conte o que você procura e participe da validação do piloto da KoteAuto.
+              </p>
+              <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSews8exWR3-LQ0ZjaUM0jf3i8lHbO0VXyll9eKcgi33-UKO-A/viewform?usp=header" target="_blank" rel="noopener noreferrer">Responder como comprador</a>
+            </article>
+
+            <article class="survey-card">
+              <div class="survey-card-header">
+                <div class="survey-card-index">02</div>
+                <div class="survey-card-badge">Experiências</div>
+              </div>
+              <h3>Quero compartilhar minha experiência</h3>
+              <p>
+                Já comprou, vendeu ou tentou trocar de carro? Sua experiência ajuda a melhorar o processo.
+              </p>
+              <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc0S42uXHHGSunK6jE_paTgxouFxbw6sxME7ghkixXHMgGMyQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Compartilhar experiência</a>
+            </article>
+
+            <article class="survey-card">
+              <div class="survey-card-header">
+                <div class="survey-card-index">03</div>
+                <div class="survey-card-badge">Concessionárias</div>
+              </div>
+              <h3>Sou concessionária</h3>
+              <p>
+                Cadastre sua loja para análise e participação no piloto com concessionárias parceiras.
+              </p>
+              <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_3XfWmqsIzJUNcTX_xe7OU38iu9YJsFEb2Pk2Le4lT3WFBw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Cadastrar concessionária</a>
+            </article>
+          </div>
+        </div>
       </section>
-
-      <div class="hotspots hotspots--desktop" aria-label="Redes sociais da KoteAuto no desktop">
-        <a
-          class="hotspot hotspot--facebook-desktop"
-          data-social="facebook"
-          href="https://www.facebook.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Facebook da KoteAuto"
-        >
-          <span>Facebook</span>
-        </a>
-        <a
-          class="hotspot hotspot--linkedin-desktop"
-          data-social="linkedin"
-          href="https://www.linkedin.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="LinkedIn da KoteAuto"
-        >
-          <span>LinkedIn</span>
-        </a>
-        <a
-          class="hotspot hotspot--instagram-desktop"
-          data-social="instagram"
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram da KoteAuto"
-        >
-          <span>Instagram</span>
-        </a>
-      </div>
-
-      <div class="hotspots hotspots--mobile" aria-label="Redes sociais da KoteAuto no mobile">
-        <a
-          class="hotspot hotspot--facebook-mobile"
-          data-social="facebook"
-          href="https://www.facebook.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Facebook da KoteAuto"
-        >
-          <span>Facebook</span>
-        </a>
-        <a
-          class="hotspot hotspot--linkedin-mobile"
-          data-social="linkedin"
-          href="https://www.linkedin.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="LinkedIn da KoteAuto"
-        >
-          <span>LinkedIn</span>
-        </a>
-        <a
-          class="hotspot hotspot--instagram-mobile"
-          data-social="instagram"
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram da KoteAuto"
-        >
-          <span>Instagram</span>
-        </a>
-      </div>
-
-      <div class="social-dock" aria-label="Redes sociais da KoteAuto">
-        <a
-          class="social-link"
-          data-social="facebook"
-          href="https://www.facebook.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Facebook da KoteAuto"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M13.5 22v-8h2.7l.5-3.4h-3.2V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.6H7v3.4h3V22h3.5Z" />
-          </svg>
-          <span>Facebook</span>
-        </a>
-        <a
-          class="social-link"
-          data-social="linkedin"
-          href="https://www.linkedin.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="LinkedIn da KoteAuto"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6.5 8.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM4.8 22V10.1h3.4V22H4.8Zm5.4 0V10.1h3.2v1.6h.1c.4-.8 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.2V22h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V22h-3.4Z" />
-          </svg>
-          <span>LinkedIn</span>
-        </a>
-        <a
-          class="social-link"
-          data-social="instagram"
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram da KoteAuto"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7.2 3h9.6A4.2 4.2 0 0 1 21 7.2v9.6a4.2 4.2 0 0 1-4.2 4.2H7.2A4.2 4.2 0 0 1 3 16.8V7.2A4.2 4.2 0 0 1 7.2 3Zm-.1 1.8A2.4 2.4 0 0 0 4.8 7.1v9.8a2.4 2.4 0 0 0 2.3 2.3h9.8a2.4 2.4 0 0 0 2.3-2.3V7.1a2.4 2.4 0 0 0-2.3-2.3H7.1Zm10.2 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.9a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 1.8a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Z" />
-          </svg>
-          <span>Instagram</span>
-        </a>
-      </div>
     </div>
 
-    <section class="survey-section" aria-labelledby="survey-title">
-      <div class="survey-intro">
-        <h2 class="survey-eyebrow" id="survey-title">Piloto KoteAuto</h2>
-      </div>
-
-      <div class="survey-frame">
-        <p class="survey-frame-copy">
-          Estamos validando o piloto da KoteAuto e sua opinião ajuda a construir uma experiência melhor para quem quer comprar, trocar ou vender um carro. Leva menos de 2 minutos para responder.
-        </p>
-
-        <div class="survey-grid">
-          <article class="survey-card">
-            <div class="survey-card-header">
-              <div class="survey-card-index">01</div>
-              <div class="survey-card-badge">Compradores</div>
-            </div>
-            <h3>Para quem pensa em comprar ou trocar de carro</h3>
-            <p>
-              Conte o que você procura e participe da validação do piloto da KoteAuto.
-            </p>
-            <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSews8exWR3-LQ0ZjaUM0jf3i8lHbO0VXyll9eKcgi33-UKO-A/viewform?usp=header" target="_blank" rel="noopener noreferrer">Responder como comprador</a>
-          </article>
-
-          <article class="survey-card">
-            <div class="survey-card-header">
-              <div class="survey-card-index">02</div>
-              <div class="survey-card-badge">Experiências</div>
-            </div>
-            <h3>Quero compartilhar minha experiência</h3>
-            <p>
-              Já comprou, vendeu ou tentou trocar de carro? Sua experiência ajuda a melhorar o processo.
-            </p>
-            <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc0S42uXHHGSunK6jE_paTgxouFxbw6sxME7ghkixXHMgGMyQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Compartilhar experiência</a>
-          </article>
-
-          <article class="survey-card">
-            <div class="survey-card-header">
-              <div class="survey-card-index">03</div>
-              <div class="survey-card-badge">Concessionárias</div>
-            </div>
-            <h3>Sou concessionária</h3>
-            <p>
-              Cadastre sua loja para análise e participação no piloto com concessionárias parceiras.
-            </p>
-            <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_3XfWmqsIzJUNcTX_xe7OU38iu9YJsFEb2Pk2Le4lT3WFBw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Cadastrar concessionária</a>
-          </article>
+    <div class="mobile-layout">
+      <section class="mobile-stage" aria-labelledby="mobile-hero-title">
+        <div class="mobile-art">
+          <img src="./fundo_limpo.png" alt="Farol de veículo na neblina" />
         </div>
-      </div>
-    </section>
+
+        <div class="mobile-social-dock" aria-label="Redes sociais da KoteAuto no mobile">
+          <a
+            class="mobile-social-link"
+            data-social="facebook"
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook da KoteAuto"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.5 22v-8h2.7l.5-3.4h-3.2V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.6H7v3.4h3V22h3.5Z" />
+            </svg>
+            <span>Facebook</span>
+          </a>
+          <a
+            class="mobile-social-link"
+            data-social="linkedin"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn da KoteAuto"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.5 8.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM4.8 22V10.1h3.4V22H4.8Zm5.4 0V10.1h3.2v1.6h.1c.4-.8 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.2V22h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V22h-3.4Z" />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            class="mobile-social-link"
+            data-social="instagram"
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram da KoteAuto"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.2 3h9.6A4.2 4.2 0 0 1 21 7.2v9.6a4.2 4.2 0 0 1-4.2 4.2H7.2A4.2 4.2 0 0 1 3 16.8V7.2A4.2 4.2 0 0 1 7.2 3Zm-.1 1.8A2.4 2.4 0 0 0 4.8 7.1v9.8a2.4 2.4 0 0 0 2.3 2.3h9.8a2.4 2.4 0 0 0 2.3-2.3V7.1a2.4 2.4 0 0 0-2.3-2.3H7.1Zm10.2 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.9a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 1.8a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Z" />
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+
+        <section class="mobile-hero-panel" aria-label="Aviso de em construção">
+          <p class="mobile-hero-kicker">KoteAuto</p>
+          <h1 class="mobile-hero-title" id="mobile-hero-title">Em construção</h1>
+          <p class="mobile-hero-subtitle">O site está quase pronto</p>
+
+          <div class="mobile-hero-loading" aria-label="Progresso do lançamento">
+            <div class="mobile-hero-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74">
+              <div class="mobile-hero-progress-bar"></div>
+            </div>
+            <div class="mobile-hero-progress-labels" aria-hidden="true">
+              <span>0%</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <div class="mobile-hero-brand">Piloto em validação</div>
+        </section>
+      </section>
+
+      <section class="mobile-survey-section" aria-labelledby="mobile-survey-title">
+        <div class="mobile-survey-intro">
+          <span id="mobile-survey-title">Piloto KoteAuto</span>
+        </div>
+
+        <div class="mobile-survey-frame">
+          <p class="mobile-survey-copy">
+            Estamos validando o piloto da KoteAuto e sua opinião ajuda a construir uma experiência melhor para quem quer comprar, trocar ou vender um carro. Leva menos de 2 minutos para responder.
+          </p>
+
+          <div class="mobile-form-grid">
+            <article class="mobile-form-card">
+              <div class="mobile-form-card-header">
+                <div class="mobile-form-card-index">01</div>
+                <div class="mobile-form-card-badge">Compradores</div>
+              </div>
+              <h3>Para quem pensa em comprar ou trocar de carro</h3>
+              <p>
+                Conte o que você procura e participe da validação do piloto da KoteAuto.
+              </p>
+              <a class="mobile-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSews8exWR3-LQ0ZjaUM0jf3i8lHbO0VXyll9eKcgi33-UKO-A/viewform?usp=header" target="_blank" rel="noopener noreferrer">Responder como comprador</a>
+            </article>
+
+            <article class="mobile-form-card">
+              <div class="mobile-form-card-header">
+                <div class="mobile-form-card-index">02</div>
+                <div class="mobile-form-card-badge">Experiências</div>
+              </div>
+              <h3>Quero compartilhar minha experiência</h3>
+              <p>
+                Já comprou, vendeu ou tentou trocar de carro? Sua experiência ajuda a melhorar o processo.
+              </p>
+              <a class="mobile-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc0S42uXHHGSunK6jE_paTgxouFxbw6sxME7ghkixXHMgGMyQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Compartilhar experiência</a>
+            </article>
+
+            <article class="mobile-form-card">
+              <div class="mobile-form-card-header">
+                <div class="mobile-form-card-index">03</div>
+                <div class="mobile-form-card-badge">Concessionárias</div>
+              </div>
+              <h3>Sou concessionária</h3>
+              <p>
+                Cadastre sua loja para análise e participação no piloto com concessionárias parceiras.
+              </p>
+              <a class="mobile-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_3XfWmqsIzJUNcTX_xe7OU38iu9YJsFEb2Pk2Le4lT3WFBw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Cadastrar concessionária</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script>
