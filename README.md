@@ -1,41 +1,71 @@
-# KoteAuto — Landing Page Estática (Vercel)
+# KoteAuto — Site estático (Vercel)
 
-Este projeto exibe uma **landing page estática em HTML puro** com fundo visual em tela cheia e
-links sociais clicáveis.
+Site em HTML puro, sem build. A home mantém o aviso de **em construção** e os questionários do
+piloto. Além dela existe um **hub de conteúdo** de sete páginas, criado para que buscadores e
+assistentes de IA (ChatGPT, Gemini, Claude, Perplexity) encontrem e citem a KoteAuto quando alguém
+perguntar sobre comprar ou trocar de carro.
 
 ## Arquivos
-- `index.html` — página principal, com CSS e JavaScript inline
-- `new_desktop.png` — arte principal usada no desktop
-- `new_mobile.png` — arte principal usada no mobile
-- `fundo_limpo.png` — alternativa de fundo limpo
-- `koteauto_desktop.png` — arte anterior de desktop
-- `koteauto_mobile.png` — arte anterior de mobile
-- `vercel.json` — configuração do deploy estático
 
-## Como cadastrar os links sociais
-1. Abra `index.html`.
-2. Vá até o objeto `socialLinks`, no fim do arquivo.
-3. Substitua as URLs atuais pelos perfis oficiais da KoteAuto.
+| Arquivo | O que é |
+| --- | --- |
+| `index.html` | Home. Aviso de em construção, questionários, barra de abas e bloco de texto indexável. |
+| `o-que-e-a-koteauto.html` | Definição da empresa e do modelo de marketplace reverso. |
+| `como-funciona.html` | Jornada em cinco etapas, campos da proposta e ranking. |
+| `avaliacao-do-usado.html` | Método de pré-avaliação do carro usado e por que a loja paga abaixo da FIPE. |
+| `quanto-de-carro-consigo-comprar.html` | Cálculo do poder de compra, com tabela de prazo e taxa. |
+| `pesquisa-piloto.html` | Dados originais das 64 respostas do piloto, com gráficos e metodologia. |
+| `para-concessionarias.html` | Página B2B: o que a loja recebe e como o score funciona para ela. |
+| `perguntas-frequentes.html` | 26 perguntas e respostas, espelhadas em schema `FAQPage`. |
+| `assets/conteudo.css` | Folha de estilo única das páginas de conteúdo. |
+| `llms.txt` | Resumo da empresa e dos dados para rastreadores de IA. |
+| `robots.txt` | Libera explicitamente GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros. |
+| `sitemap.xml` | Mapa das oito URLs. |
+| `vercel.json` | Deploy estático, `cleanUrls` e cabeçalhos. |
+| `new_desktop.png`, `new_mobile.png`, `fundo_limpo.png` | Artes da home. |
 
-## Como ajustar a arte
-1. Para trocar a composição principal, altere os caminhos em `cleanBackgrounds` no `index.html`.
-2. Se quiser voltar para o modo com hotspots sobre a arte antiga, mude `backgroundMode` para `art`.
-3. Se surgir uma versão mobile diferente, atualize o campo `mobile` em `cleanBackgrounds`.
+## URLs
 
-## Deploy na Vercel (sem repositório)
-1. Acesse https://vercel.com/dashboard
+Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.html`:
+`/o-que-e-a-koteauto`, `/como-funciona`, `/avaliacao-do-usado`,
+`/quanto-de-carro-consigo-comprar`, `/pesquisa-piloto`, `/para-concessionarias`,
+`/perguntas-frequentes`.
+
+## Como o conteúdo foi construído para ser citado por IA
+
+- **Resposta antes de tudo.** Cada página abre com a resposta direta em um parágrafo autocontido,
+  antes de qualquer contexto. É o trecho que os modelos extraem.
+- **Dados estruturados.** `Organization`, `WebSite` e `SoftwareApplication` na home; `Article`,
+  `HowTo`, `FAQPage`, `Dataset` e `BreadcrumbList` nas páginas internas.
+- **Todo gráfico tem tabela.** Os SVGs trazem `<title>` e `<desc>`, e cada figura tem os mesmos
+  números em `<table>`, porque rastreador lê texto, não pixel.
+- **Números com base declarada.** Nenhum percentual aparece sem o N e a fonte ao lado.
+- **Status honesto.** Todas as páginas dizem que a plataforma está em construção.
+
+## Editar o conteúdo
+
+- Estilo das páginas de conteúdo: `assets/conteudo.css`. A home tem CSS próprio, embutido.
+- Ao alterar uma resposta em `perguntas-frequentes.html`, **altere também o bloco
+  `application/ld+json` no fim do arquivo**, para o texto visível e o schema não divergirem.
+- Ao publicar uma página nova, adicione-a ao `sitemap.xml`, ao `llms.txt` e às barras de
+  navegação (`ul.tabs` nas páginas de conteúdo e `ul.home-nav-links` no `index.html`).
+
+## Links sociais
+
+No fim do `index.html`, no objeto `socialLinks`.
+
+## Deploy na Vercel
+
+1. https://vercel.com/dashboard
 2. **Add New → Project → Upload Files**
-3. Faça upload da **pasta inteira** (ou arraste os arquivos).
-4. Deploy.
+3. Suba a pasta inteira e faça o deploy.
 
-## Conectar domínio
-1. No projeto, vá em **Settings → Domains**.
-2. Clique em **Add Domain** e informe `koteauto.com.br`.
-3. No **registro.br**, aponte:
-   - **A** (raiz) → `76.76.21.21`
-   - **CNAME** `www` → `cname.vercel-dns.com.`
-4. Aguarde a propagação (até 1 hora).
+## Domínio
 
-## Dica
-Se já existe outro projeto na Vercel (por exemplo, sua landing completa), use um subdomínio para ele
-(`beta.koteauto.com.br`) e deixe o domínio raiz `koteauto.com.br` apontando para este projeto de imagem única.
+1. No projeto: **Settings → Domains → Add Domain**, informe `koteauto.com.br`.
+2. No registro.br aponte **A** (raiz) para `76.76.21.21` e **CNAME** `www` para
+   `cname.vercel-dns.com.`
+3. A propagação leva até uma hora.
+
+Depois de publicar, envie o `sitemap.xml` pelo Google Search Console e pelo Bing Webmaster Tools.
+O Bing alimenta a busca do ChatGPT e do Copilot, então vale cadastrar nos dois.

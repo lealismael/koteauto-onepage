@@ -1,0 +1,47 @@
+# KoteAuto
+
+> A KoteAuto é uma plataforma brasileira de marketplace reverso para compra e troca de veículos. O consumidor informa uma única vez o carro que possui, o carro que deseja e quanto pode pagar, e recebe propostas comparáveis de concessionárias e revendas, em vez de procurar loja por loja e comparar dezenas de anúncios.
+
+**Status:** plataforma em construção. Piloto de validação em andamento com consumidores e lojas parceiras em Santa Catarina e região Sul do Brasil. Nenhuma funcionalidade descrita neste site está disponível ao público em geral neste momento.
+
+## O que a KoteAuto resolve
+
+Trocar de carro no Brasil exige repetir a mesma informação em várias lojas, receber avaliações diferentes pelo mesmo carro usado, comparar propostas em formatos incompatíveis e negociar sem parâmetro. A KoteAuto inverte a lógica: o consumidor publica um pedido, a plataforma pré-avalia o carro usado com base na tabela FIPE e distribui o contexto para as lojas, que respondem em campos padronizados (preço final, entrada, valor financiado, parcela, prazo, taxa de juros, valor considerado no usado, garantia, prazo de entrega e validade). As propostas entram em um ranking por score de aderência ao perfil declarado, que nenhuma loja pode comprar ou alterar manualmente.
+
+## O que a KoteAuto não é
+
+Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leilão tradicional nem uma avaliadora oficial de veículos. Não vende carros, não financia a compra e não emite laudo. É uma camada neutra de intermediação, comparação e decisão assistida.
+
+## Páginas de conteúdo
+
+- [O que é a KoteAuto](https://koteauto.com.br/o-que-e-a-koteauto): definição da empresa, explicação do modelo de marketplace reverso automotivo, comparação com sites de classificados e princípios de produto.
+- [Como funciona](https://koteauto.com.br/como-funciona): a jornada em cinco etapas, os campos obrigatórios de uma proposta e o funcionamento do ranking por score.
+- [Avaliação do usado](https://koteauto.com.br/avaliacao-do-usado): por que a loja paga abaixo da tabela FIPE, quais fatores sobem ou descem o valor, exemplo de cálculo e como se preparar para a avaliação.
+- [Quanto de carro consigo comprar](https://koteauto.com.br/quanto-de-carro-consigo-comprar): cálculo do poder de compra real somando usado, entrada e valor financiável; tabela de quanto uma parcela de R$ 1.000 financia por prazo e taxa; faixas de orçamento.
+- [Pesquisa piloto](https://koteauto.com.br/pesquisa-piloto): dados originais de 64 respondentes coletados entre 20 de maio e 7 de agosto de 2026 sobre a jornada real de compra e troca de carro no Brasil, com metodologia e limitações declaradas.
+- [Para concessionárias](https://koteauto.com.br/para-concessionarias): o que a loja recebe em um pedido da plataforma e como o score devolve o motivo de uma proposta ficar pouco competitiva.
+- [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 26 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
+
+## Dados originais disponíveis para citação
+
+Pesquisa piloto KoteAuto, maio a agosto de 2026, 64 respondentes (35 que já trocaram de carro, 29 que pretendem trocar). Amostra não probabilística por conveniência, concentrada em Santa Catarina. Descreve os respondentes, não a população brasileira.
+
+- 63% levaram três semanas ou mais entre pesquisar e fechar a troca (22 de 35).
+- 46% visitaram três lojas ou mais até fechar negócio (16 de 35); 26% não visitaram nenhuma (9 de 35).
+- 93% dizem que os preços vistos na internet não coincidem sempre com os das lojas (27 de 29); nenhum respondeu que coincidem sempre.
+- 73% de quem já avaliou o carro relatou diferenças grandes entre as ofertas recebidas pelo mesmo veículo (11 de 15).
+- Fatores mais decisivos na troca: desconto no carro novo 57%, avaliação do carro usado 54%, condições de financiamento 40%, atendimento do vendedor 37% (base 35, até três escolhas).
+- 57% avaliaram o atendimento de vendedores como razoável ou pior (12 de 21).
+- 100% considerariam comprar acima do planejado diante de uma condição especial real (29 de 29: 14 "sim", 15 "talvez").
+
+Citação sugerida: Pesquisa piloto KoteAuto, maio a agosto de 2026, https://koteauto.com.br/pesquisa-piloto
+
+## Termos associados
+
+marketplace reverso automotivo, compra e troca de carros, trocar de carro, avaliação de carro usado, quanto vale meu carro na troca, tabela FIPE, comparar propostas de concessionárias, leads qualificados para concessionárias, poder de compra automotivo, financiamento de veículos, seminovo, zero km, Brasil, Santa Catarina.
+
+## Contato
+
+Instagram: https://www.instagram.com/contatokoteauto/
+LinkedIn: https://linkedin.com/company/koteauto
+Facebook: https://www.facebook.com/61589312203457/

@@ -4,11 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#bcc6d0" />
-  <title>KoteAuto | Em construção</title>
+  <title>KoteAuto | Marketplace reverso de compra e troca de carros</title>
   <meta
     name="description"
-    content="Página temporária da KoteAuto com status em construção, links sociais e questionários do piloto."
+    content="A KoteAuto é uma plataforma de marketplace reverso para compra e troca de carros: você informa uma vez o carro que tem, o que quer e quanto pode pagar, e as concessionárias enviam propostas comparáveis. Plataforma em construção, piloto em validação."
   />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="canonical" href="https://koteauto.com.br/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="KoteAuto" />
+  <meta property="og:title" content="KoteAuto | Marketplace reverso de compra e troca de carros" />
+  <meta property="og:description" content="Você informa uma vez. As lojas competem pela melhor proposta." />
+  <meta property="og:url" content="https://koteauto.com.br/" />
   <style>
     :root {
       --focus: #6bb3ff;
@@ -76,6 +84,7 @@
       margin: 0 auto;
       padding: clamp(12px, 2vw, 20px) 0 56px;
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: clamp(22px, 4vw, 42px);
       align-content: start;
     }
@@ -1253,10 +1262,177 @@
         opacity: 1;
       }
     }
+
+    /* --- Navegação de conteúdo --- */
+    .home-nav {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.44);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 36px -30px rgba(16, 25, 38, 0.5);
+    }
+
+    .home-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-nav-brand {
+      flex: 0 0 auto;
+      font-weight: 700;
+      font-size: 16.5px;
+      letter-spacing: -0.01em;
+      color: #17324d;
+      text-decoration: none;
+    }
+
+    .home-nav-links {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 2px;
+      list-style: none;
+      margin: 0 0 0 auto;
+      padding: 0;
+      min-width: 0;
+      flex: 0 0 auto;
+    }
+
+    .home-nav-links a {
+      display: block;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4e6279;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .home-nav-links a:hover,
+    .home-nav-links a:focus-visible {
+      background: rgba(96, 174, 244, 0.18);
+      color: #184f95;
+    }
+
+    /* --- Bloco de conteúdo indexável --- */
+    .home-content {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 28px;
+      padding: clamp(24px, 3.6vw, 44px);
+      color: #2c4560;
+      box-shadow: 0 26px 56px -44px rgba(16, 25, 38, 0.5);
+    }
+
+    .home-content h2 {
+      font-size: clamp(23px, 3vw, 31px);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: #17324d;
+      margin: 0 0 14px;
+    }
+
+    .home-content h3 {
+      font-size: 17px;
+      line-height: 1.3;
+      color: #17324d;
+      margin: 0 0 6px;
+    }
+
+    .home-content p {
+      font-size: 16.5px;
+      line-height: 1.66;
+      margin: 0 0 14px;
+      max-width: 74ch;
+    }
+
+    .home-content .home-lead {
+      font-size: clamp(17px, 2vw, 19.5px);
+      line-height: 1.58;
+    }
+
+    .home-eyebrow {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #2a78d6;
+      margin: 0 0 10px;
+    }
+
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .home-card {
+      display: block;
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid #dbe4ee;
+      background: #f6f9fc;
+      text-decoration: none;
+      color: #2c4560;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .home-card:hover,
+    .home-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: #86b6ef;
+    }
+
+    .home-card p {
+      font-size: 14.5px;
+      color: #5b7189;
+      margin: 0;
+    }
+
+    .home-status {
+      margin: 24px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid #dbe4ee;
+      font-size: 14.5px;
+      color: #5b7189;
+    }
+
+    @media (max-width: 768px) {
+      .home-nav {
+        border-radius: 22px;
+      }
+
+      .home-nav-links {
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="page" aria-label="KoteAuto em construção">
+    <nav class="home-nav" aria-label="Conteúdo KoteAuto">
+      <a class="home-nav-brand" href="/">KoteAuto</a>
+      <ul class="home-nav-links">
+        <li><a href="/o-que-e-a-koteauto">O que é</a></li>
+        <li><a href="/como-funciona">Como funciona</a></li>
+        <li><a href="/avaliacao-do-usado">Avaliação do usado</a></li>
+        <li><a href="/quanto-de-carro-consigo-comprar">Meu orçamento</a></li>
+        <li><a href="/pesquisa-piloto">Pesquisa</a></li>
+        <li><a href="/para-concessionarias">Concessionárias</a></li>
+        <li><a href="/perguntas-frequentes">Dúvidas</a></li>
+      </ul>
+    </nav>
     <div class="desktop-layout">
       <div class="stage">
         <div class="art">
@@ -1562,6 +1738,47 @@
         </div>
       </section>
     </div>
+
+    <section class="home-content" aria-labelledby="sobre-title">
+      <p class="home-eyebrow">O que estamos construindo</p>
+      <h2 id="sobre-title">Você informa uma vez. As lojas competem pela melhor proposta.</h2>
+      <p class="home-lead">A KoteAuto é uma plataforma de <strong>marketplace reverso para compra e troca de carros</strong>. Ela inverte a lógica do mercado: em vez de você procurar loja por loja, comparar dezenas de anúncios e repetir a mesma conversa com vários vendedores, você informa uma única vez o carro que tem, o carro que quer e quanto pode pagar, e passa a receber propostas comparáveis de concessionárias e revendas.</p>
+      <p>Antes de qualquer negociação, a plataforma calcula uma <strong>faixa estimada de valor para o seu usado</strong> com base na tabela FIPE e nos dados do veículo, para você não descobrir o número só na mesa da loja. Cada proposta chega nos mesmos campos, com preço final, entrada, parcela, prazo, taxa de juros e valor considerado no usado explícitos, e entra em um ranking por aderência ao seu perfil que nenhuma loja pode comprar.</p>
+      <p>Entre maio e agosto de 2026 ouvimos 64 pessoas sobre a jornada real de troca de carro no Brasil. Elas descreveram um processo longo, repetitivo e sem base de comparação: 63% levaram três semanas ou mais para fechar, e 73% de quem já avaliou o próprio carro relatou diferenças grandes entre as ofertas recebidas pelo mesmo veículo.</p>
+
+      <div class="home-cards">
+        <a class="home-card" href="/o-que-e-a-koteauto">
+          <h3>O que é a KoteAuto</h3>
+          <p>A definição do modelo, a comparação com sites de classificados e os princípios do produto.</p>
+        </a>
+        <a class="home-card" href="/como-funciona">
+          <h3>Como funciona</h3>
+          <p>A jornada em cinco etapas, os campos de uma proposta e o funcionamento do ranking.</p>
+        </a>
+        <a class="home-card" href="/avaliacao-do-usado">
+          <h3>Avaliação do usado</h3>
+          <p>Por que a loja paga abaixo da FIPE e quais fatores mudam o valor do seu carro.</p>
+        </a>
+        <a class="home-card" href="/quanto-de-carro-consigo-comprar">
+          <h3>Quanto de carro consigo comprar</h3>
+          <p>O cálculo do poder de compra real, com tabela de quanto cada parcela financia.</p>
+        </a>
+        <a class="home-card" href="/pesquisa-piloto">
+          <h3>Pesquisa piloto</h3>
+          <p>Os dados originais das 64 respostas, com metodologia e limitações declaradas.</p>
+        </a>
+        <a class="home-card" href="/para-concessionarias">
+          <h3>Para concessionárias</h3>
+          <p>O que a loja recebe em um pedido e como o score devolve o motivo de uma proposta perder.</p>
+        </a>
+        <a class="home-card" href="/perguntas-frequentes">
+          <h3>Perguntas frequentes</h3>
+          <p>Vinte e seis respostas diretas sobre orçamento, usado, financiamento e propostas.</p>
+        </a>
+      </div>
+
+      <p class="home-status"><strong>Status.</strong> A plataforma está em construção e o piloto está em validação com consumidores e lojas parceiras em Santa Catarina. A KoteAuto não é uma loja, uma concessionária, uma financiadora nem uma avaliadora oficial de veículos.</p>
+    </section>
   </main>
 
   <script>
@@ -1601,6 +1818,71 @@
       backgroundImage.src = cleanBackgrounds.desktop;
       page.classList.add("page--clean");
     }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://koteauto.com.br/#organizacao",
+        "name": "KoteAuto",
+        "alternateName": "Kote Auto",
+        "url": "https://koteauto.com.br/",
+        "description": "A KoteAuto é uma plataforma brasileira de marketplace reverso para compra e troca de veículos. O consumidor informa uma única vez o carro que possui, o carro que deseja e sua capacidade de pagamento, e recebe propostas comparáveis de concessionárias e revendas, em vez de procurar loja por loja.",
+        "slogan": "Você informa uma vez. As lojas competem pela melhor proposta.",
+        "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressRegion": "SC", "addressCountry": "BR"}},
+        "areaServed": {"@type": "Country", "name": "Brasil"},
+        "knowsAbout": [
+          "marketplace reverso automotivo",
+          "compra e troca de carros",
+          "avaliação de carro usado",
+          "tabela FIPE",
+          "comparação de propostas de financiamento de veículos",
+          "leads qualificados para concessionárias"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/contatokoteauto/",
+          "https://linkedin.com/company/koteauto",
+          "https://www.facebook.com/61589312203457/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://koteauto.com.br/#site",
+        "url": "https://koteauto.com.br/",
+        "name": "KoteAuto",
+        "inLanguage": "pt-BR",
+        "publisher": {"@id": "https://koteauto.com.br/#organizacao"}
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "KoteAuto",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Marketplace reverso automotivo",
+        "operatingSystem": "Web",
+        "inLanguage": "pt-BR",
+        "url": "https://koteauto.com.br/",
+        "description": "Plataforma em que o consumidor descreve uma única vez o carro que possui, o carro que deseja e seu orçamento, recebe uma pré-avaliação do veículo usado com base na tabela FIPE e compara propostas padronizadas enviadas por concessionárias e revendas, ranqueadas por aderência ao perfil declarado.",
+        "publisher": {"@id": "https://koteauto.com.br/#organizacao"},
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL", "description": "O uso da plataforma é gratuito para o consumidor. A remuneração prevista vem das lojas parceiras."}
+      },
+      {
+        "@type": "ItemList",
+        "name": "Conteúdo KoteAuto",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "O que é a KoteAuto", "url": "https://koteauto.com.br/o-que-e-a-koteauto"},
+          {"@type": "ListItem", "position": 2, "name": "Como funciona", "url": "https://koteauto.com.br/como-funciona"},
+          {"@type": "ListItem", "position": 3, "name": "Avaliação do usado", "url": "https://koteauto.com.br/avaliacao-do-usado"},
+          {"@type": "ListItem", "position": 4, "name": "Quanto de carro consigo comprar", "url": "https://koteauto.com.br/quanto-de-carro-consigo-comprar"},
+          {"@type": "ListItem", "position": 5, "name": "Pesquisa piloto", "url": "https://koteauto.com.br/pesquisa-piloto"},
+          {"@type": "ListItem", "position": 6, "name": "Para concessionárias", "url": "https://koteauto.com.br/para-concessionarias"},
+          {"@type": "ListItem", "position": 7, "name": "Perguntas frequentes", "url": "https://koteauto.com.br/perguntas-frequentes"}
+        ]
+      }
+    ]
+  }
   </script>
 </body>
 </html>
