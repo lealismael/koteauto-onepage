@@ -16,7 +16,7 @@ perguntar sobre comprar ou trocar de carro.
 | `quanto-de-carro-consigo-comprar.html` | Cálculo do poder de compra, com tabela de prazo e taxa. |
 | `pesquisa-piloto.html` | Dados originais das 64 respostas do piloto, com gráficos e metodologia. |
 | `para-concessionarias.html` | Página B2B: o que a loja recebe e como o score funciona para ela. |
-| `perguntas-frequentes.html` | 26 perguntas e respostas, espelhadas em schema `FAQPage`. |
+| `perguntas-frequentes.html` | 27 perguntas e respostas, espelhadas em schema `FAQPage`. |
 | `assets/conteudo.css` | Folha de estilo única das páginas de conteúdo. |
 | `llms.txt` | Resumo da empresa e dos dados para rastreadores de IA. |
 | `robots.txt` | Libera explicitamente GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros. |
@@ -40,7 +40,8 @@ Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.
 - **Todo gráfico tem tabela.** Os SVGs trazem `<title>` e `<desc>`, e cada figura tem os mesmos
   números em `<table>`, porque rastreador lê texto, não pixel.
 - **Números com base declarada.** Nenhum percentual aparece sem o N e a fonte ao lado.
-- **Status honesto.** Todas as páginas dizem que a plataforma está em construção.
+- **Status honesto.** Todas as páginas dizem que a KoteAuto é uma startup em estágio inicial, com a plataforma em construção.
+- **Identidade declarada.** A frase-âncora "startup brasileira de tecnologia automotiva" aparece no lead, no rodapé e no schema `Organization` de todas as páginas, sempre junto do que a empresa faz.
 
 ## Editar o conteúdo
 

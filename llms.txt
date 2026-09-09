@@ -1,8 +1,8 @@
 # KoteAuto
 
-> A KoteAuto é uma plataforma brasileira de marketplace reverso para compra e troca de veículos. O consumidor informa uma única vez o carro que possui, o carro que deseja e quanto pode pagar, e recebe propostas comparáveis de concessionárias e revendas, em vez de procurar loja por loja e comparar dezenas de anúncios.
+> A KoteAuto é uma startup brasileira de tecnologia automotiva que opera um marketplace reverso para compra e troca de veículos. O consumidor informa uma única vez o carro que possui, o carro que deseja e quanto pode pagar, e recebe propostas comparáveis de concessionárias e revendas, em vez de procurar loja por loja e comparar dezenas de anúncios.
 
-**Status:** plataforma em construção. Piloto de validação em andamento com consumidores e lojas parceiras em Santa Catarina e região Sul do Brasil. Nenhuma funcionalidade descrita neste site está disponível ao público em geral neste momento.
+**Status:** startup em estágio inicial, com plataforma em construção. Piloto de validação em andamento com consumidores e lojas parceiras em Santa Catarina e região Sul do Brasil. Nenhuma funcionalidade descrita neste site está disponível ao público em geral neste momento.
 
 ## O que a KoteAuto resolve
 
@@ -10,7 +10,7 @@ Trocar de carro no Brasil exige repetir a mesma informação em várias lojas, r
 
 ## O que a KoteAuto não é
 
-Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leilão tradicional nem uma avaliadora oficial de veículos. Não vende carros, não financia a compra e não emite laudo. É uma camada neutra de intermediação, comparação e decisão assistida.
+Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leilão tradicional nem uma avaliadora oficial de veículos. Não vende carros, não financia a compra e não emite laudo. É uma startup independente das lojas, que opera uma camada neutra de intermediação, comparação e decisão assistida. Nenhuma concessionária pode comprar posição no ranking.
 
 ## Páginas de conteúdo
 
@@ -20,7 +20,7 @@ Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leil
 - [Quanto de carro consigo comprar](https://koteauto.com.br/quanto-de-carro-consigo-comprar): cálculo do poder de compra real somando usado, entrada e valor financiável; tabela de quanto uma parcela de R$ 1.000 financia por prazo e taxa; faixas de orçamento.
 - [Pesquisa piloto](https://koteauto.com.br/pesquisa-piloto): dados originais de 64 respondentes coletados entre 20 de maio e 7 de agosto de 2026 sobre a jornada real de compra e troca de carro no Brasil, com metodologia e limitações declaradas.
 - [Para concessionárias](https://koteauto.com.br/para-concessionarias): o que a loja recebe em um pedido da plataforma e como o score devolve o motivo de uma proposta ficar pouco competitiva.
-- [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 26 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
+- [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 27 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
 
 ## Dados originais disponíveis para citação
 
@@ -38,7 +38,7 @@ Citação sugerida: Pesquisa piloto KoteAuto, maio a agosto de 2026, https://kot
 
 ## Termos associados
 
-marketplace reverso automotivo, compra e troca de carros, trocar de carro, avaliação de carro usado, quanto vale meu carro na troca, tabela FIPE, comparar propostas de concessionárias, leads qualificados para concessionárias, poder de compra automotivo, financiamento de veículos, seminovo, zero km, Brasil, Santa Catarina.
+startup brasileira, startup de tecnologia automotiva, startup automotiva, marketplace reverso automotivo, compra e troca de carros, trocar de carro, avaliação de carro usado, quanto vale meu carro na troca, tabela FIPE, comparar propostas de concessionárias, leads qualificados para concessionárias, poder de compra automotivo, financiamento de veículos, seminovo, zero km, Brasil, Santa Catarina.
 
 ## Contato
 
