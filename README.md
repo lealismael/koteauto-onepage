@@ -16,7 +16,8 @@ perguntar sobre comprar ou trocar de carro.
 | `quanto-de-carro-consigo-comprar.html` | Cálculo do poder de compra, com tabela de prazo e taxa. |
 | `pesquisa-piloto.html` | Dados originais das 64 respostas do piloto, com gráficos e metodologia. |
 | `para-concessionarias.html` | Página B2B: o que a loja recebe e como o score funciona para ela. |
-| `perguntas-frequentes.html` | 27 perguntas e respostas, espelhadas em schema `FAQPage`. |
+| `privacidade-e-dados.html` | Tratamento de dados sob a LGPD: as três portas de consentimento, o que a loja vê, bases legais e direitos do titular. |
+| `perguntas-frequentes.html` | 30 perguntas e respostas, espelhadas em schema `FAQPage`. |
 | `assets/conteudo.css` | Folha de estilo única das páginas de conteúdo. |
 | `llms.txt` | Resumo da empresa e dos dados para rastreadores de IA. |
 | `robots.txt` | Libera explicitamente GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros. |
@@ -29,7 +30,7 @@ perguntar sobre comprar ou trocar de carro.
 Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.html`:
 `/o-que-e-a-koteauto`, `/como-funciona`, `/avaliacao-do-usado`,
 `/quanto-de-carro-consigo-comprar`, `/pesquisa-piloto`, `/para-concessionarias`,
-`/perguntas-frequentes`.
+`/privacidade-e-dados`, `/perguntas-frequentes`.
 
 ## Como o conteúdo foi construído para ser citado por IA
 
@@ -42,6 +43,17 @@ Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.
 - **Números com base declarada.** Nenhum percentual aparece sem o N e a fonte ao lado.
 - **Status honesto.** Todas as páginas dizem que a KoteAuto é uma startup em estágio inicial, com a plataforma em construção.
 - **Identidade declarada.** A frase-âncora "startup brasileira de tecnologia automotiva" aparece no lead, no rodapé e no schema `Organization` de todas as páginas, sempre junto do que a empresa faz.
+
+## Pendências antes de publicar a página de privacidade
+
+- Criar a caixa **privacidade@koteauto.com.br**, citada como canal do titular em
+  `privacidade-e-dados.html`, no `llms.txt` e no FAQ.
+- Publicar a **política de privacidade e os termos de uso formais** antes de abrir o cadastro.
+  A página atual explica as decisões de produto e diz explicitamente que não substitui o
+  documento formal.
+- Quando houver pessoa jurídica constituída, incluir razão social e CNPJ na identificação do
+  controlador, na seção "Quem é o responsável".
+- Submeter o texto a revisão jurídica antes de a plataforma entrar em operação.
 
 ## Editar o conteúdo
 

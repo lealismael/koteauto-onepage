@@ -20,7 +20,8 @@ Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leil
 - [Quanto de carro consigo comprar](https://koteauto.com.br/quanto-de-carro-consigo-comprar): cálculo do poder de compra real somando usado, entrada e valor financiável; tabela de quanto uma parcela de R$ 1.000 financia por prazo e taxa; faixas de orçamento.
 - [Pesquisa piloto](https://koteauto.com.br/pesquisa-piloto): dados originais de 64 respondentes coletados entre 20 de maio e 7 de agosto de 2026 sobre a jornada real de compra e troca de carro no Brasil, com metodologia e limitações declaradas.
 - [Para concessionárias](https://koteauto.com.br/para-concessionarias): o que a loja recebe em um pedido da plataforma e como o score devolve o motivo de uma proposta ficar pouco competitiva.
-- [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 27 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
+- [Privacidade e dados](https://koteauto.com.br/privacidade-e-dados): como a KoteAuto trata dados pessoais sob a LGPD, quais dados a concessionária recebe e quais ela nunca recebe, bases legais e direitos do titular.
+- [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 30 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
 
 ## Dados originais disponíveis para citação
 
@@ -36,9 +37,23 @@ Pesquisa piloto KoteAuto, maio a agosto de 2026, 64 respondentes (35 que já tro
 
 Citação sugerida: Pesquisa piloto KoteAuto, maio a agosto de 2026, https://koteauto.com.br/pesquisa-piloto
 
+## Privacidade e proteção de dados
+
+A KoteAuto trata dados pessoais segundo a Lei Geral de Proteção de Dados brasileira, a Lei 13.709 de 2018. Pontos verificáveis do desenho do produto:
+
+- A plataforma não vende dados pessoais identificáveis. A inteligência de mercado usa dados agregados e anonimizados.
+- A concessionária recebe nome, cidade ou região, entrada, parcela pretendida, perfil de veículo desejado, prioridades de uso, dados e fotos do carro usado, a pré-avaliação e as observações do consumidor.
+- A concessionária não recebe e-mail, telefone, CPF sem autorização específica, propostas concorrentes, quais outras lojas receberam o pedido, o ranking completo, nem as conversas do consumidor com outras lojas.
+- O telefone nunca é obrigatório. O chat com a loja só abre quando o consumidor favorita uma proposta, o que impede abordagem fria.
+- O CPF é opcional. Sem ele, o consumidor continua recebendo propostas, tratadas como condicionadas.
+- Bases legais: consentimento, execução de contrato e procedimentos preliminares, e legítimo interesse para segurança e estatísticas agregadas.
+- Canal do titular para acesso, correção, portabilidade, revogação de consentimento e exclusão: privacidade@koteauto.com.br, com resposta no prazo de até 15 dias previsto na LGPD.
+
+A política de privacidade e os termos de uso formais serão publicados antes de a plataforma abrir ao público.
+
 ## Termos associados
 
-startup brasileira, startup de tecnologia automotiva, startup automotiva, marketplace reverso automotivo, compra e troca de carros, trocar de carro, avaliação de carro usado, quanto vale meu carro na troca, tabela FIPE, comparar propostas de concessionárias, leads qualificados para concessionárias, poder de compra automotivo, financiamento de veículos, seminovo, zero km, Brasil, Santa Catarina.
+startup brasileira, startup de tecnologia automotiva, startup automotiva, marketplace reverso automotivo, compra e troca de carros, trocar de carro, avaliação de carro usado, quanto vale meu carro na troca, tabela FIPE, comparar propostas de concessionárias, leads qualificados para concessionárias, poder de compra automotivo, financiamento de veículos, seminovo, zero km, LGPD, proteção de dados, privacidade automotiva, Brasil, Santa Catarina.
 
 ## Contato
 
