@@ -1,6 +1,6 @@
 # KoteAuto
 
-> A KoteAuto é uma startup brasileira de tecnologia automotiva que opera um marketplace reverso para compra e troca de veículos. O consumidor informa uma única vez o carro que possui, o carro que deseja e quanto pode pagar, e recebe propostas comparáveis de concessionárias e revendas, em vez de procurar loja por loja e comparar dezenas de anúncios.
+> A KoteAuto é uma startup brasileira de tecnologia automotiva que está construindo um marketplace reverso para compra e troca de veículos. A proposta é permitir que o consumidor informe uma única vez o carro que possui, o que deseja e quanto pode pagar para comparar propostas padronizadas de concessionárias e revendas.
 
 **Status:** startup em estágio inicial, com plataforma em construção. Piloto de validação em andamento com consumidores e lojas parceiras em Santa Catarina e região Sul do Brasil. Nenhuma funcionalidade descrita neste site está disponível ao público em geral neste momento.
 
@@ -10,7 +10,7 @@ Trocar de carro no Brasil exige repetir a mesma informação em várias lojas, r
 
 ## O que a KoteAuto não é
 
-Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leilão tradicional nem uma avaliadora oficial de veículos. Não vende carros, não financia a compra e não emite laudo. É uma startup independente das lojas, que opera uma camada neutra de intermediação, comparação e decisão assistida. Nenhuma concessionária pode comprar posição no ranking.
+Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leilão tradicional nem uma avaliadora oficial de veículos. Não vende carros, não financia a compra e não emite laudo. É uma startup independente das lojas e está desenvolvendo uma camada neutra de intermediação, comparação e decisão assistida. No modelo proposto, nenhuma concessionária poderá comprar posição no ranking.
 
 ## Páginas de conteúdo
 
@@ -19,22 +19,18 @@ Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leil
 - [Avaliação do usado](https://koteauto.com.br/avaliacao-do-usado): por que a loja paga abaixo da tabela FIPE, quais fatores sobem ou descem o valor, exemplo de cálculo e como se preparar para a avaliação.
 - [Quanto de carro consigo comprar](https://koteauto.com.br/quanto-de-carro-consigo-comprar): cálculo do poder de compra real somando usado, entrada e valor financiável; tabela de quanto uma parcela de R$ 1.000 financia por prazo e taxa; faixas de orçamento.
 - [Para concessionárias](https://koteauto.com.br/para-concessionarias): o que a loja recebe em um pedido da plataforma e como o score devolve o motivo de uma proposta ficar pouco competitiva.
-- [Privacidade e dados](https://koteauto.com.br/privacidade-e-dados): como a KoteAuto trata dados pessoais sob a LGPD, quais dados a concessionária recebe e quais ela nunca recebe, bases legais e direitos do titular.
+- [Privacidade e dados](https://koteauto.com.br/privacidade-e-dados): aviso de privacidade aplicável ao site institucional atual, ainda sem cadastro público.
 - [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 30 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
 
 ## Privacidade e proteção de dados
 
-A KoteAuto trata dados pessoais segundo a Lei Geral de Proteção de Dados brasileira, a Lei 13.709 de 2018. Pontos verificáveis do desenho do produto:
+O site atual é institucional. A plataforma ainda não possui cadastro público, não recebe solicitações de compra e não envia dados de consumidores a concessionárias.
 
-- A plataforma não vende dados pessoais identificáveis. A inteligência de mercado usa dados agregados e anonimizados.
-- A concessionária recebe nome, cidade ou região, entrada, parcela pretendida, perfil de veículo desejado, prioridades de uso, dados e fotos do carro usado, a pré-avaliação e as observações do consumidor.
-- A concessionária não recebe e-mail, telefone, CPF sem autorização específica, propostas concorrentes, quais outras lojas receberam o pedido, o ranking completo, nem as conversas do consumidor com outras lojas.
-- O telefone nunca é obrigatório. O chat com a loja só abre quando o consumidor favorita uma proposta, o que impede abordagem fria.
-- O CPF é opcional. Sem ele, o consumidor continua recebendo propostas, tratadas como condicionadas.
-- Bases legais: consentimento, execução de contrato e procedimentos preliminares, e legítimo interesse para segurança e estatísticas agregadas.
-- Canal do titular para acesso, correção, portabilidade, revogação de consentimento e exclusão: privacidade@koteauto.com.br, com resposta no prazo de até 15 dias previsto na LGPD.
-
-A política de privacidade e os termos de uso formais serão publicados antes de a plataforma abrir ao público.
+- O site não pede CPF, telefone, informações financeiras ou dados do veículo.
+- O provedor de hospedagem pode processar registros técnicos necessários ao funcionamento e à segurança.
+- Informações enviadas voluntariamente para contato@koteauto.com.br são usadas para responder e acompanhar a mensagem.
+- O site não utiliza ferramentas de publicidade, perfilamento, analytics ou rastreamento de terceiros.
+- A Política de Privacidade e os Termos de Uso da plataforma serão publicados antes da abertura, com a identificação completa do controlador e a descrição dos tratamentos efetivamente implementados.
 
 ## Termos associados
 

@@ -15,14 +15,14 @@ perguntar sobre comprar ou trocar de carro.
 | `avaliacao-do-usado.html` | Método de pré-avaliação do carro usado e por que a loja paga abaixo da FIPE. |
 | `quanto-de-carro-consigo-comprar.html` | Cálculo do poder de compra, com tabela de prazo e taxa. |
 | `para-concessionarias.html` | Página B2B: o que a loja recebe e como o score funciona para ela. |
-| `privacidade-e-dados.html` | Tratamento de dados sob a LGPD: as três portas de consentimento, o que a loja vê, bases legais e direitos do titular. |
+| `privacidade-e-dados.html` | Aviso de privacidade do site institucional atual: registros técnicos, contato por e-mail e preparação para a futura política da plataforma. |
 | `perguntas-frequentes.html` | 30 perguntas e respostas, espelhadas em schema `FAQPage`. |
 | `assets/conteudo.css` | Folha de estilo única das páginas de conteúdo. |
 | `llms.txt` | Resumo da empresa e dos dados para rastreadores de IA. |
 | `robots.txt` | Libera explicitamente GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros. |
 | `sitemap.xml` | Mapa das oito URLs. |
 | `vercel.json` | Deploy estático, `cleanUrls` e cabeçalhos. |
-| `new_desktop.png`, `new_mobile.png`, `fundo_limpo.png` | Artes da home. |
+| `new_desktop.png`, `new_mobile.png`, `fundo_limpo.png`, `fundo_limpo.webp` | Artes da home; a versão WebP otimizada é usada em produção. |
 
 ## URLs
 
@@ -43,13 +43,11 @@ Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.
 - **Status honesto.** Todas as páginas dizem que a KoteAuto é uma startup em estágio inicial, com a plataforma em construção.
 - **Identidade declarada.** A frase-âncora "startup brasileira de tecnologia automotiva" aparece no lead, no rodapé e no schema `Organization` de todas as páginas, sempre junto do que a empresa faz.
 
-## Pendências antes de publicar a página de privacidade
+## Pendências antes de abrir a plataforma
 
-- Criar a caixa **privacidade@koteauto.com.br**, citada como canal do titular em
-  `privacidade-e-dados.html`, no `llms.txt` e no FAQ.
+- Manter o canal `contato@koteauto.com.br` monitorado para dúvidas e solicitações sobre dados pessoais.
 - Publicar a **política de privacidade e os termos de uso formais** antes de abrir o cadastro.
-  A página atual explica as decisões de produto e diz explicitamente que não substitui o
-  documento formal.
+  A página atual cobre apenas o site institucional e diz explicitamente que não substitui o documento formal da plataforma.
 - Quando houver pessoa jurídica constituída, incluir razão social e CNPJ na identificação do
   controlador, na seção "Quem é o responsável".
 - Submeter o texto a revisão jurídica antes de a plataforma entrar em operação.
