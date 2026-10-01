@@ -1,7 +1,7 @@
 # KoteAuto — Site estático (Vercel)
 
-Site em HTML puro, sem build. A home mantém o aviso de **em construção** e os questionários do
-piloto. Além dela existe um **hub de conteúdo** de sete páginas, criado para que buscadores e
+Site em HTML puro, sem build. A home mantém o aviso de **em construção**. Além dela existe um
+**hub de conteúdo** de sete páginas, criado para que buscadores e
 assistentes de IA (ChatGPT, Gemini, Claude, Perplexity) encontrem e citem a KoteAuto quando alguém
 perguntar sobre comprar ou trocar de carro.
 
@@ -9,12 +9,11 @@ perguntar sobre comprar ou trocar de carro.
 
 | Arquivo | O que é |
 | --- | --- |
-| `index.html` | Home. Aviso de em construção, questionários, barra de abas e bloco de texto indexável. |
+| `index.html` | Home. Aviso de em construção, barra de abas e bloco de texto indexável. |
 | `o-que-e-a-koteauto.html` | Definição da empresa e do modelo de marketplace reverso. |
 | `como-funciona.html` | Jornada em cinco etapas, campos da proposta e ranking. |
 | `avaliacao-do-usado.html` | Método de pré-avaliação do carro usado e por que a loja paga abaixo da FIPE. |
 | `quanto-de-carro-consigo-comprar.html` | Cálculo do poder de compra, com tabela de prazo e taxa. |
-| `pesquisa-piloto.html` | Dados originais das 64 respostas do piloto, com gráficos e metodologia. |
 | `para-concessionarias.html` | Página B2B: o que a loja recebe e como o score funciona para ela. |
 | `privacidade-e-dados.html` | Tratamento de dados sob a LGPD: as três portas de consentimento, o que a loja vê, bases legais e direitos do titular. |
 | `perguntas-frequentes.html` | 30 perguntas e respostas, espelhadas em schema `FAQPage`. |
@@ -29,7 +28,7 @@ perguntar sobre comprar ou trocar de carro.
 
 Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.html`:
 `/o-que-e-a-koteauto`, `/como-funciona`, `/avaliacao-do-usado`,
-`/quanto-de-carro-consigo-comprar`, `/pesquisa-piloto`, `/para-concessionarias`,
+`/quanto-de-carro-consigo-comprar`, `/para-concessionarias`,
 `/privacidade-e-dados`, `/perguntas-frequentes`.
 
 ## Como o conteúdo foi construído para ser citado por IA

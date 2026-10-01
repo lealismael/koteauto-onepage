@@ -34,8 +34,6 @@
       --hero-track: rgba(255, 255, 255, 0.68);
       --hero-fill-start: #66b4fb;
       --hero-fill-end: #4d97eb;
-      --survey-shell: linear-gradient(180deg, rgba(240, 246, 251, 0.34), rgba(223, 234, 243, 0.18));
-      --survey-card-panel: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(242, 247, 251, 0.74));
     }
 
     * {
@@ -279,140 +277,6 @@
       text-transform: uppercase;
     }
 
-    .mobile-survey-section {
-      display: grid;
-      gap: 10px;
-    }
-
-    .mobile-survey-intro {
-      display: flex;
-      justify-content: center;
-    }
-
-    .mobile-survey-intro span {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 12px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 999px;
-      background: rgba(240, 246, 251, 0.24);
-      box-shadow: 0 16px 30px -24px rgba(15, 23, 42, 0.28);
-      color: var(--accent-strong);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .mobile-survey-frame {
-      display: grid;
-      gap: 14px;
-      padding: 16px 14px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.36);
-      border-radius: 24px;
-      background: var(--survey-shell);
-      box-shadow: 0 22px 40px -34px rgba(15, 23, 42, 0.3);
-      backdrop-filter: blur(12px);
-    }
-
-    .mobile-survey-copy {
-      margin: 0;
-      color: var(--text-strong);
-      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.55;
-    }
-
-    .mobile-form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .mobile-form-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      padding: 16px;
-      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 20px;
-      background: var(--survey-card-panel);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.52),
-        0 22px 40px -34px rgba(29, 53, 77, 0.36);
-      backdrop-filter: blur(12px);
-    }
-
-    .mobile-form-card:last-child {
-      grid-column: auto;
-      max-width: none;
-      width: auto;
-      justify-self: stretch;
-    }
-
-    .mobile-form-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .mobile-form-card-index {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: rgba(96, 174, 244, 0.18);
-      color: var(--accent-strong);
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-
-    .mobile-form-card-badge {
-      color: var(--accent-strong);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .mobile-form-card h3 {
-      margin: 18px 0 10px;
-      color: var(--text-strong);
-      font-size: 18px;
-      line-height: 1.18;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .mobile-form-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 13px;
-      line-height: 1.62;
-    }
-
-    .mobile-form-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      margin-top: auto;
-      padding: 0 12px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 16px 28px -20px rgba(38, 114, 190, 0.7);
-    }
-
     .stage {
       position: relative;
       z-index: 2;
@@ -560,180 +424,6 @@
       border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 18px 40px rgba(39, 52, 68, 0.18);
       backdrop-filter: blur(18px);
-    }
-
-    .survey-section {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 14px;
-      margin-top: clamp(-54px, -5vw, -32px);
-      padding: 0 clamp(12px, 1.8vw, 18px) 8px;
-    }
-
-    .survey-intro {
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 14px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      border-radius: 22px;
-      background: var(--survey-shell);
-      box-shadow: 0 20px 44px -36px rgba(15, 23, 42, 0.34);
-      backdrop-filter: blur(12px);
-      text-align: center;
-    }
-
-    .survey-frame {
-      display: grid;
-      gap: 18px;
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.36);
-      border-radius: 26px;
-      background: var(--survey-shell);
-      box-shadow: 0 22px 44px -36px rgba(15, 23, 42, 0.32);
-      backdrop-filter: blur(12px);
-    }
-
-    .survey-frame-copy {
-      max-width: 860px;
-      margin: 0 auto;
-      color: var(--text-strong);
-      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
-      font-size: clamp(15px, 1.75vw, 19px);
-      font-weight: 600;
-      line-height: 1.65;
-      text-align: center;
-    }
-
-    .survey-eyebrow {
-      margin: 0 0 6px;
-      color: var(--accent-strong);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .survey-intro h2 {
-      margin: 0 0 8px;
-      color: var(--text-strong);
-      font-size: clamp(20px, 2.8vw, 28px);
-      letter-spacing: -0.04em;
-    }
-
-    .survey-intro p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .survey-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px;
-    }
-
-    .survey-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 238px;
-      padding: 20px;
-      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 24px;
-      background: var(--survey-card-panel);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.52),
-        0 26px 46px -34px rgba(29, 53, 77, 0.42);
-      backdrop-filter: blur(12px);
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .survey-card:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.6),
-        0 30px 52px -34px rgba(29, 53, 77, 0.5);
-    }
-
-    .survey-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .survey-card-index {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: rgba(96, 174, 244, 0.18);
-      color: var(--accent-strong);
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-
-    .survey-card-badge {
-      color: var(--accent-strong);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .survey-card h3 {
-      margin: 18px 0 10px;
-      color: var(--text-strong);
-      font-size: 22px;
-      line-height: 1.2;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .survey-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 15px;
-      line-height: 1.68;
-    }
-
-    .survey-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      margin-top: auto;
-      padding: 0 16px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 16px 28px -20px rgba(38, 114, 190, 0.7);
-      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
-    }
-
-    .survey-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 20px 32px -20px rgba(38, 114, 190, 0.82);
-    }
-
-    .survey-link:focus-visible {
-      outline: 2px solid var(--focus);
-      outline-offset: 4px;
-    }
-
-    .survey-note {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.5;
-      text-align: center;
     }
 
     .social-link {
@@ -898,56 +588,6 @@
         box-shadow: 0 18px 40px -26px rgba(39, 52, 68, 0.22);
       }
 
-      .survey-section {
-        width: 100%;
-        max-width: 1320px;
-        gap: 14px;
-        margin-top: 0;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 10px;
-      }
-
-      .survey-intro {
-        display: none;
-      }
-
-      .survey-frame {
-        grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
-        align-items: start;
-        gap: 22px 26px;
-        padding: 26px 28px 28px;
-        border-radius: 30px;
-      }
-
-      .survey-frame-copy {
-        margin: 0;
-        font-size: clamp(17px, 1.45vw, 21px);
-        line-height: 1.55;
-        text-align: left;
-      }
-
-      .survey-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-      }
-
-      .survey-card:last-child {
-        grid-column: 1 / -1;
-        max-width: 380px;
-        width: 100%;
-        justify-self: center;
-      }
-
-      .survey-card {
-        min-height: 260px;
-        padding: 24px;
-        border-radius: 26px;
-      }
-
-      .survey-card h3 {
-        font-size: 23px;
-      }
     }
 
     @media (min-width: 1100px) {
@@ -965,29 +605,6 @@
         width: min(490px, 35vw);
       }
 
-      .survey-section {
-        max-width: 1400px;
-      }
-
-      .survey-frame {
-        grid-template-columns: minmax(290px, 340px) minmax(0, 1fr);
-        gap: 24px 28px;
-        padding: 28px 30px 30px;
-      }
-
-      .survey-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .survey-card:last-child {
-        grid-column: auto;
-        max-width: none;
-      }
-
-      .survey-card {
-        min-height: 272px;
-      }
     }
 
     @media (min-width: 1500px) {
@@ -1016,32 +633,6 @@
         right: 40px;
       }
 
-      .survey-section {
-        max-width: 1480px;
-      }
-
-      .survey-frame {
-        grid-template-columns: minmax(320px, 380px) minmax(0, 1fr);
-        gap: 26px 30px;
-        padding: 30px 32px 32px;
-      }
-
-      .survey-frame-copy {
-        font-size: clamp(19px, 1.2vw, 22px);
-      }
-
-      .survey-grid {
-        gap: 22px;
-      }
-
-      .survey-card {
-        min-height: 286px;
-        padding: 26px;
-      }
-
-      .survey-card h3 {
-        font-size: 24px;
-      }
     }
 
     @media (max-width: 768px) {
@@ -1161,87 +752,10 @@
         height: 24px;
       }
 
-      .survey-section {
-        gap: 10px;
-        margin-top: -18px;
-        padding: 0 10px 0;
-      }
-
-      .survey-intro {
-        max-width: none;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-        backdrop-filter: none;
-      }
-
-      .survey-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        min-height: 28px;
-        margin: 0;
-        padding: 0 12px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 999px;
-        background: rgba(240, 246, 251, 0.24);
-        box-shadow: 0 16px 30px -24px rgba(15, 23, 42, 0.28);
-      }
-
-      .survey-intro h2 {
-        display: none;
-      }
-
-      .survey-intro p {
-        display: none;
-      }
-
-      .survey-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .survey-frame {
-        gap: 14px;
-        padding: 14px 12px 12px;
-        border-radius: 22px;
-      }
-
-      .survey-frame-copy {
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.55;
-        text-align: left;
-      }
-
-      .survey-card {
-        min-height: 0;
-        padding: 16px;
-        border-radius: 20px;
-      }
-
-      .survey-card h3 {
-        font-size: 18px;
-      }
-
-      .survey-card p {
-        font-size: 13px;
-      }
-
-      .survey-link {
-        min-height: 40px;
-        padding: 0 12px;
-        font-size: 13px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .hotspot,
-      .survey-card,
-      .survey-link,
       .hero-progress-bar,
       .mobile-social-link,
       .mobile-hero-progress-bar {
@@ -1428,7 +942,6 @@
         <li><a href="/como-funciona">Como funciona</a></li>
         <li><a href="/avaliacao-do-usado">Valor do usado</a></li>
         <li><a href="/quanto-de-carro-consigo-comprar">Meu orçamento</a></li>
-        <li><a href="/pesquisa-piloto">Pesquisa</a></li>
         <li><a href="/para-concessionarias">Lojas</a></li>
         <li><a href="/privacidade-e-dados">Privacidade</a></li>
         <li><a href="/perguntas-frequentes">Dúvidas</a></li>
@@ -1571,55 +1084,6 @@
         </div>
       </div>
 
-      <section class="survey-section" aria-labelledby="survey-title">
-        <div class="survey-intro">
-          <h2 class="survey-eyebrow" id="survey-title">Piloto KoteAuto</h2>
-        </div>
-
-        <div class="survey-frame">
-          <p class="survey-frame-copy">
-            Estamos validando o piloto da KoteAuto e sua opinião ajuda a construir uma experiência melhor para quem quer comprar, trocar ou vender um carro. Leva menos de 2 minutos para responder.
-          </p>
-
-          <div class="survey-grid">
-            <article class="survey-card">
-              <div class="survey-card-header">
-                <div class="survey-card-index">01</div>
-                <div class="survey-card-badge">Compradores</div>
-              </div>
-              <h3>Para quem pensa em comprar ou trocar de carro</h3>
-              <p>
-                Conte o que você procura e participe da validação do piloto da KoteAuto.
-              </p>
-              <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSews8exWR3-LQ0ZjaUM0jf3i8lHbO0VXyll9eKcgi33-UKO-A/viewform?usp=header" target="_blank" rel="noopener noreferrer">Responder como comprador</a>
-            </article>
-
-            <article class="survey-card">
-              <div class="survey-card-header">
-                <div class="survey-card-index">02</div>
-                <div class="survey-card-badge">Experiências</div>
-              </div>
-              <h3>Quero compartilhar minha experiência</h3>
-              <p>
-                Já comprou, vendeu ou tentou trocar de carro? Sua experiência ajuda a melhorar o processo.
-              </p>
-              <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc0S42uXHHGSunK6jE_paTgxouFxbw6sxME7ghkixXHMgGMyQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Compartilhar experiência</a>
-            </article>
-
-            <article class="survey-card">
-              <div class="survey-card-header">
-                <div class="survey-card-index">03</div>
-                <div class="survey-card-badge">Concessionárias</div>
-              </div>
-              <h3>Sou concessionária</h3>
-              <p>
-                Cadastre sua loja para análise e participação no piloto com concessionárias parceiras.
-              </p>
-              <a class="survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_3XfWmqsIzJUNcTX_xe7OU38iu9YJsFEb2Pk2Le4lT3WFBw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Cadastrar concessionária</a>
-            </article>
-          </div>
-        </div>
-      </section>
     </div>
 
     <div class="mobile-layout">
@@ -1689,55 +1153,6 @@
         </section>
       </section>
 
-      <section class="mobile-survey-section" aria-labelledby="mobile-survey-title">
-        <div class="mobile-survey-intro">
-          <span id="mobile-survey-title">Piloto KoteAuto</span>
-        </div>
-
-        <div class="mobile-survey-frame">
-          <p class="mobile-survey-copy">
-            Estamos validando o piloto da KoteAuto e sua opinião ajuda a construir uma experiência melhor para quem quer comprar, trocar ou vender um carro. Leva menos de 2 minutos para responder.
-          </p>
-
-          <div class="mobile-form-grid">
-            <article class="mobile-form-card">
-              <div class="mobile-form-card-header">
-                <div class="mobile-form-card-index">01</div>
-                <div class="mobile-form-card-badge">Compradores</div>
-              </div>
-              <h3>Para quem pensa em comprar ou trocar de carro</h3>
-              <p>
-                Conte o que você procura e participe da validação do piloto da KoteAuto.
-              </p>
-              <a class="mobile-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSews8exWR3-LQ0ZjaUM0jf3i8lHbO0VXyll9eKcgi33-UKO-A/viewform?usp=header" target="_blank" rel="noopener noreferrer">Responder como comprador</a>
-            </article>
-
-            <article class="mobile-form-card">
-              <div class="mobile-form-card-header">
-                <div class="mobile-form-card-index">02</div>
-                <div class="mobile-form-card-badge">Experiências</div>
-              </div>
-              <h3>Quero compartilhar minha experiência</h3>
-              <p>
-                Já comprou, vendeu ou tentou trocar de carro? Sua experiência ajuda a melhorar o processo.
-              </p>
-              <a class="mobile-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc0S42uXHHGSunK6jE_paTgxouFxbw6sxME7ghkixXHMgGMyQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Compartilhar experiência</a>
-            </article>
-
-            <article class="mobile-form-card">
-              <div class="mobile-form-card-header">
-                <div class="mobile-form-card-index">03</div>
-                <div class="mobile-form-card-badge">Concessionárias</div>
-              </div>
-              <h3>Sou concessionária</h3>
-              <p>
-                Cadastre sua loja para análise e participação no piloto com concessionárias parceiras.
-              </p>
-              <a class="mobile-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_3XfWmqsIzJUNcTX_xe7OU38iu9YJsFEb2Pk2Le4lT3WFBw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Cadastrar concessionária</a>
-            </article>
-          </div>
-        </div>
-      </section>
     </div>
 
     <section class="home-content" aria-labelledby="sobre-title">
@@ -1745,7 +1160,6 @@
       <h2 id="sobre-title">Você informa uma vez. As lojas competem pela melhor proposta.</h2>
       <p class="home-lead">A KoteAuto é uma <strong>startup brasileira de tecnologia automotiva</strong> que está construindo um <strong>marketplace reverso para compra e troca de carros</strong>. Ela inverte a lógica do mercado: em vez de você procurar loja por loja, comparar dezenas de anúncios e repetir a mesma conversa com vários vendedores, você informa uma única vez o carro que tem, o carro que quer e quanto pode pagar, e passa a receber propostas comparáveis de concessionárias e revendas.</p>
       <p>Antes de qualquer negociação, a plataforma calcula uma <strong>faixa estimada de valor para o seu usado</strong> com base na tabela FIPE e nos dados do veículo, para você não descobrir o número só na mesa da loja. Cada proposta chega nos mesmos campos, com preço final, entrada, parcela, prazo, taxa de juros e valor considerado no usado explícitos, e entra em um ranking por aderência ao seu perfil que nenhuma loja pode comprar.</p>
-      <p>Entre maio e agosto de 2026 ouvimos 64 pessoas sobre a jornada real de troca de carro no Brasil. Elas descreveram um processo longo, repetitivo e sem base de comparação: 63% levaram três semanas ou mais para fechar, e 73% de quem já avaliou o próprio carro relatou diferenças grandes entre as ofertas recebidas pelo mesmo veículo.</p>
 
       <div class="home-cards">
         <a class="home-card" href="/o-que-e-a-koteauto">
@@ -1763,10 +1177,6 @@
         <a class="home-card" href="/quanto-de-carro-consigo-comprar">
           <h3>Quanto de carro consigo comprar</h3>
           <p>O cálculo do poder de compra real, com tabela de quanto cada parcela financia.</p>
-        </a>
-        <a class="home-card" href="/pesquisa-piloto">
-          <h3>Pesquisa piloto</h3>
-          <p>Os dados originais das 64 respostas, com metodologia e limitações declaradas.</p>
         </a>
         <a class="home-card" href="/para-concessionarias">
           <h3>Para concessionárias</h3>
@@ -1883,10 +1293,9 @@
           {"@type": "ListItem", "position": 2, "name": "Como funciona", "url": "https://koteauto.com.br/como-funciona"},
           {"@type": "ListItem", "position": 3, "name": "Avaliação do usado", "url": "https://koteauto.com.br/avaliacao-do-usado"},
           {"@type": "ListItem", "position": 4, "name": "Quanto de carro consigo comprar", "url": "https://koteauto.com.br/quanto-de-carro-consigo-comprar"},
-          {"@type": "ListItem", "position": 5, "name": "Pesquisa piloto", "url": "https://koteauto.com.br/pesquisa-piloto"},
-          {"@type": "ListItem", "position": 6, "name": "Para concessionárias", "url": "https://koteauto.com.br/para-concessionarias"},
-          {"@type": "ListItem", "position": 7, "name": "Privacidade e dados", "url": "https://koteauto.com.br/privacidade-e-dados"},
-          {"@type": "ListItem", "position": 8, "name": "Perguntas frequentes", "url": "https://koteauto.com.br/perguntas-frequentes"}
+          {"@type": "ListItem", "position": 5, "name": "Para concessionárias", "url": "https://koteauto.com.br/para-concessionarias"},
+          {"@type": "ListItem", "position": 6, "name": "Privacidade e dados", "url": "https://koteauto.com.br/privacidade-e-dados"},
+          {"@type": "ListItem", "position": 7, "name": "Perguntas frequentes", "url": "https://koteauto.com.br/perguntas-frequentes"}
         ]
       }
     ]

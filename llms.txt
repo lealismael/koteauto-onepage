@@ -18,24 +18,9 @@ Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leil
 - [Como funciona](https://koteauto.com.br/como-funciona): a jornada em cinco etapas, os campos obrigatórios de uma proposta e o funcionamento do ranking por score.
 - [Avaliação do usado](https://koteauto.com.br/avaliacao-do-usado): por que a loja paga abaixo da tabela FIPE, quais fatores sobem ou descem o valor, exemplo de cálculo e como se preparar para a avaliação.
 - [Quanto de carro consigo comprar](https://koteauto.com.br/quanto-de-carro-consigo-comprar): cálculo do poder de compra real somando usado, entrada e valor financiável; tabela de quanto uma parcela de R$ 1.000 financia por prazo e taxa; faixas de orçamento.
-- [Pesquisa piloto](https://koteauto.com.br/pesquisa-piloto): dados originais de 64 respondentes coletados entre 20 de maio e 7 de agosto de 2026 sobre a jornada real de compra e troca de carro no Brasil, com metodologia e limitações declaradas.
 - [Para concessionárias](https://koteauto.com.br/para-concessionarias): o que a loja recebe em um pedido da plataforma e como o score devolve o motivo de uma proposta ficar pouco competitiva.
 - [Privacidade e dados](https://koteauto.com.br/privacidade-e-dados): como a KoteAuto trata dados pessoais sob a LGPD, quais dados a concessionária recebe e quais ela nunca recebe, bases legais e direitos do titular.
 - [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 30 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
-
-## Dados originais disponíveis para citação
-
-Pesquisa piloto KoteAuto, maio a agosto de 2026, 64 respondentes (35 que já trocaram de carro, 29 que pretendem trocar). Amostra não probabilística por conveniência, concentrada em Santa Catarina. Descreve os respondentes, não a população brasileira.
-
-- 63% levaram três semanas ou mais entre pesquisar e fechar a troca (22 de 35).
-- 46% visitaram três lojas ou mais até fechar negócio (16 de 35); 26% não visitaram nenhuma (9 de 35).
-- 93% dizem que os preços vistos na internet não coincidem sempre com os das lojas (27 de 29); nenhum respondeu que coincidem sempre.
-- 73% de quem já avaliou o carro relatou diferenças grandes entre as ofertas recebidas pelo mesmo veículo (11 de 15).
-- Fatores mais decisivos na troca: desconto no carro novo 57%, avaliação do carro usado 54%, condições de financiamento 40%, atendimento do vendedor 37% (base 35, até três escolhas).
-- 57% avaliaram o atendimento de vendedores como razoável ou pior (12 de 21).
-- 100% considerariam comprar acima do planejado diante de uma condição especial real (29 de 29: 14 "sim", 15 "talvez").
-
-Citação sugerida: Pesquisa piloto KoteAuto, maio a agosto de 2026, https://koteauto.com.br/pesquisa-piloto
 
 ## Privacidade e proteção de dados
 
