@@ -1,43 +1,32 @@
 # KoteAuto
 
-> A KoteAuto é uma startup brasileira de tecnologia automotiva que está construindo um marketplace reverso para compra e troca de veículos. A proposta é permitir que o consumidor informe uma única vez o carro que possui, o que deseja e quanto pode pagar para comparar propostas padronizadas de concessionárias e revendas.
+> Plataforma brasileira em desenvolvimento para facilitar a compra e a troca de carros com pedidos e propostas comparáveis.
 
-**Status:** startup em estágio inicial, com plataforma em construção. Piloto de validação em andamento com consumidores e lojas parceiras em Santa Catarina e região Sul do Brasil. Nenhuma funcionalidade descrita neste site está disponível ao público em geral neste momento.
+## Situação atual
 
-## O que a KoteAuto resolve
+O site é institucional. Não há cadastro público, pedidos de compra, envio de propostas ou negociação disponíveis aqui. A aplicação está em outro projeto e não foi publicada para acesso público.
 
-Trocar de carro no Brasil exige repetir a mesma informação em várias lojas, receber avaliações diferentes pelo mesmo carro usado, comparar propostas em formatos incompatíveis e negociar sem parâmetro. A KoteAuto inverte a lógica: o consumidor publica um pedido, a plataforma pré-avalia o carro usado com base na tabela FIPE e distribui o contexto para as lojas, que respondem em campos padronizados (preço final, entrada, valor financiado, parcela, prazo, taxa de juros, valor considerado no usado, garantia, prazo de entrega e validade). As propostas entram em um ranking por score de aderência ao perfil declarado, que nenhuma loja pode comprar ou alterar manualmente.
+## Funcionamento previsto
 
-## O que a KoteAuto não é
+O consumidor descreverá o carro procurado, seu orçamento, prioridades e o usado, se houver. As lojas responderão em um formato comum para comparação e negociação. A home apresenta quatro ações; a página Como funciona detalha também a pré-avaliação prevista do usado e a distribuição do pedido.
 
-Não é uma loja, uma concessionária, uma financiadora, uma seguradora, um leilão tradicional nem uma avaliadora oficial de veículos. Não vende carros, não financia a compra e não emite laudo. É uma startup independente das lojas e está desenvolvendo uma camada neutra de intermediação, comparação e decisão assistida. No modelo proposto, nenhuma concessionária poderá comprar posição no ranking.
+O consumidor pode iniciar chat sem favoritar. A loja só pode iniciar se a proposta dela for favoritada, mas pode responder a uma conversa já iniciada pelo consumidor. Favoritar apresenta uma pergunta sobre o que poderia melhorar; não conclui a compra nem garante uma reoferta. Não há posição paga no ranking previsto.
 
-## Páginas de conteúdo
+Os exemplos usam dados fictícios. A entrada em dinheiro é adicional ao usado. A KoteAuto não vende os veículos, não concede financiamento e não emite laudos.
 
-- [O que é a KoteAuto](https://koteauto.com.br/o-que-e-a-koteauto): definição da empresa, explicação do modelo de marketplace reverso automotivo, comparação com sites de classificados e princípios de produto.
-- [Como funciona](https://koteauto.com.br/como-funciona): a jornada em cinco etapas, os campos obrigatórios de uma proposta e o funcionamento do ranking por score.
-- [Avaliação do usado](https://koteauto.com.br/avaliacao-do-usado): por que a loja paga abaixo da tabela FIPE, quais fatores sobem ou descem o valor, exemplo de cálculo e como se preparar para a avaliação.
-- [Quanto de carro consigo comprar](https://koteauto.com.br/quanto-de-carro-consigo-comprar): cálculo do poder de compra real somando usado, entrada e valor financiável; tabela de quanto uma parcela de R$ 1.000 financia por prazo e taxa; faixas de orçamento.
-- [Para concessionárias](https://koteauto.com.br/para-concessionarias): o que a loja recebe em um pedido da plataforma e como o score devolve o motivo de uma proposta ficar pouco competitiva.
-- [Privacidade e dados](https://koteauto.com.br/privacidade-e-dados): aviso de privacidade aplicável ao site institucional atual, ainda sem cadastro público.
-- [Perguntas frequentes](https://koteauto.com.br/perguntas-frequentes): 30 respostas diretas sobre avaliação do usado, orçamento, financiamento, comparação de propostas e funcionamento da plataforma.
+## Conteúdo público
 
-## Privacidade e proteção de dados
-
-O site atual é institucional. A plataforma ainda não possui cadastro público, não recebe solicitações de compra e não envia dados de consumidores a concessionárias.
-
-- O site não pede CPF, telefone, informações financeiras ou dados do veículo.
-- O provedor de hospedagem pode processar registros técnicos necessários ao funcionamento e à segurança.
-- Informações enviadas voluntariamente para contato@koteauto.com.br são usadas para responder e acompanhar a mensagem.
-- O site não utiliza ferramentas de publicidade, perfilamento, analytics ou rastreamento de terceiros.
-- A Política de Privacidade e os Termos de Uso da plataforma serão publicados antes da abertura, com a identificação completa do controlador e a descrição dos tratamentos efetivamente implementados.
-
-## Termos associados
-
-startup brasileira, startup de tecnologia automotiva, startup automotiva, marketplace reverso automotivo, compra e troca de carros, trocar de carro, avaliação de carro usado, quanto vale meu carro na troca, tabela FIPE, comparar propostas de concessionárias, leads qualificados para concessionárias, poder de compra automotivo, financiamento de veículos, seminovo, zero km, LGPD, proteção de dados, privacidade automotiva, Brasil, Santa Catarina.
+- [O que é a KoteAuto](https://www.koteauto.com.br/o-que-e-a-koteauto): identidade, proposta e limites do projeto.
+- [Como funciona](https://www.koteauto.com.br/como-funciona): jornada prevista, comparação, chat e favorito.
+- [Avaliação do usado](https://www.koteauto.com.br/avaliacao-do-usado): FIPE como referência, preparação e exemplo de comparação da troca.
+- [Orçamento](https://www.koteauto.com.br/quanto-de-carro-consigo-comprar): dinheiro, usado líquido, financiamento e simulação com premissas explícitas.
+- [Para concessionárias](https://www.koteauto.com.br/para-concessionarias): pedidos com contexto e participação futura.
+- [Privacidade e dados](https://www.koteauto.com.br/privacidade-e-dados): aviso do site institucional, sem cadastro público ou analytics de terceiros.
+- [Perguntas frequentes](https://www.koteauto.com.br/perguntas-frequentes): dúvidas sobre o projeto e a comparação de propostas.
 
 ## Contato
 
+E-mail: contato@koteauto.com.br
 Instagram: https://www.instagram.com/contatokoteauto/
 LinkedIn: https://linkedin.com/company/koteauto
 Facebook: https://www.facebook.com/61589312203457/

@@ -1,1497 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#bcc6d0" />
+  <meta name="theme-color" content="#245951" />
   <title>KoteAuto | Marketplace reverso de compra e troca de carros</title>
   <meta
     name="description"
-    content="A KoteAuto é uma startup brasileira de tecnologia automotiva que está construindo um marketplace reverso para compra e troca de carros: você informa uma vez o carro que tem, o que quer e quanto pode pagar, e as concessionárias enviam propostas comparáveis. Startup em estágio inicial, com piloto em validação."
+    content="A KoteAuto é uma startup brasileira de tecnologia automotiva que está construindo um marketplace reverso para compra e troca de carros: você informa uma vez o carro que tem, o que quer e quanto pode pagar, e as concessionárias enviam propostas comparáveis. Plataforma em desenvolvimento, ainda sem acesso público."
   />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-  <link rel="canonical" href="https://koteauto.com.br/" />
+  <link rel="canonical" href="https://www.koteauto.com.br/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="KoteAuto" />
   <meta property="og:title" content="KoteAuto | Marketplace reverso de compra e troca de carros" />
-  <meta property="og:description" content="Startup brasileira de tecnologia automotiva. Você informa uma vez, e as lojas competem pela melhor proposta." />
-  <meta property="og:url" content="https://koteauto.com.br/" />
-  <meta property="og:image" content="https://koteauto.com.br/new_desktop.png" />
-  <meta property="og:image:alt" content="KoteAuto, uma maneira mais clara de comprar ou trocar de carro" />
+  <meta property="og:description" content="Conheça a proposta da KoteAuto para comprar e trocar de carro com mais clareza. Plataforma em desenvolvimento." />
+  <meta property="og:url" content="https://www.koteauto.com.br/" />
+  <meta property="og:image" content="https://www.koteauto.com.br/assets/silhueta-1672.webp" />
+  <meta property="og:image:alt" content="Silhueta frontal de um carro com faróis suaves" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KoteAuto | Compra e troca de carros com propostas comparáveis" />
   <meta name="twitter:description" content="Conheça a proposta da KoteAuto para reduzir o desgaste de comprar ou trocar de carro." />
-  <meta name="twitter:image" content="https://koteauto.com.br/new_desktop.png" />
+  <meta name="twitter:image" content="https://www.koteauto.com.br/assets/silhueta-1672.webp" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <style>
-    :root {
-      --focus: #6bb3ff;
-      --shadow: rgba(28, 41, 58, 0.22);
-      --surface: rgba(231, 239, 247, 0.5);
-      --surface-strong: rgba(255, 255, 255, 0.78);
-      --surface-card: rgba(255, 255, 255, 0.9);
-      --border: rgba(255, 255, 255, 0.4);
-      --text-strong: #17324d;
-      --text-muted: #4e6279;
-      --text-on-art: #f5f9ff;
-      --accent: #60aef4;
-      --accent-strong: #3c92e8;
-      --hero-panel: linear-gradient(180deg, rgba(244, 248, 252, 0.22), rgba(225, 234, 242, 0.1));
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100dvh;
-      overflow-x: hidden;
-      background: #bcc6d0;
-      color: var(--text-on-art);
-      font-family: Arial, sans-serif;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    body::before {
-      background: url("./fundo_limpo.webp") center center / cover no-repeat;
-      filter: blur(34px) saturate(0.92) brightness(0.96);
-      opacity: 0.95;
-      transform: scale(1.08);
-    }
-
-    body::after {
-      background: linear-gradient(180deg, rgba(245, 248, 252, 0.1), rgba(113, 128, 145, 0.08));
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      isolation: isolate;
-      width: min(1280px, calc(100vw - 24px));
-      margin: 0 auto;
-      padding: clamp(12px, 2vw, 20px) 0 56px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: clamp(22px, 4vw, 42px);
-      align-content: start;
-    }
-
-    .desktop-layout {
-      display: grid;
-      gap: 18px;
-      width: 100%;
-    }
-
-    .mobile-layout {
-      display: none;
-      width: 100%;
-    }
-
-    .mobile-stage {
-      position: relative;
-      width: 100%;
-      min-height: 680px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      border-radius: 30px;
-      box-shadow: 0 26px 56px -38px rgba(16, 25, 38, 0.42);
-    }
-
-    .mobile-stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0)),
-        linear-gradient(90deg, rgba(12, 28, 43, 0.16), rgba(12, 28, 43, 0));
-    }
-
-    .mobile-art,
-    .mobile-art img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .mobile-art img {
-      object-fit: cover;
-      object-position: 74% center;
-      -webkit-user-drag: none;
-    }
-
-    .mobile-social-dock {
-      position: absolute;
-      top: 24px;
-      left: 50%;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 16px 28px -24px rgba(39, 52, 68, 0.24);
-      backdrop-filter: blur(12px);
-      transform: translateX(-50%);
-    }
-
-    .mobile-social-link {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
-      color: #f5f9ff;
-      transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
-    }
-
-    .mobile-social-link:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.16);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.36);
-    }
-
-    .mobile-social-link:focus-visible {
-      outline: 2px solid var(--focus);
-      outline-offset: 4px;
-    }
-
-    .mobile-social-link svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    .mobile-social-link span {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .mobile-hero-panel {
-      position: absolute;
-      top: 106px;
-      right: 18px;
-      bottom: 20px;
-      left: 18px;
-      z-index: 1;
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      border-radius: 24px;
-      background: transparent;
-      color: var(--text-strong);
-    }
-
-    .mobile-hero-kicker {
-      margin: 0 0 8px;
-      color: #1f74cf;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .mobile-hero-title {
-      margin: 0;
-      color: var(--text-strong);
-      font-size: clamp(32px, 9.5vw, 44px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
-    }
-
-    .mobile-hero-subtitle {
-      margin: 14px 0 0;
-      color: var(--text-muted);
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.55;
-    }
-
-    .mobile-hero-brand {
-      display: inline-flex;
-      align-items: center;
-      min-height: 38px;
-      margin-top: 16px;
-      padding: 0 16px;
-      border-radius: 999px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
-      color: var(--text-strong);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .stage {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      aspect-ratio: 1366 / 580;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      border-radius: clamp(24px, 4vw, 36px);
-      box-shadow: 0 28px 80px -40px rgba(16, 25, 38, 0.48);
-    }
-
-    .stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(12, 28, 43, 0.34) 0%, rgba(12, 28, 43, 0.14) 32%, rgba(12, 28, 43, 0) 62%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
-    }
-
-    .art,
-    .art picture,
-    .art img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .art img {
-      object-fit: cover;
-      object-position: center center;
-      -webkit-user-drag: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 50%;
-      left: clamp(24px, 5vw, 56px);
-      z-index: 2;
-      width: min(520px, calc(100% - 48px));
-      padding: clamp(20px, 2.6vw, 26px);
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      border-radius: 28px;
-      background: var(--hero-panel);
-      color: var(--text-strong);
-      box-shadow: 0 22px 44px -34px rgba(15, 23, 42, 0.28);
-      backdrop-filter: blur(10px) saturate(1.08);
-      transform: translateY(-50%);
-    }
-
-    .hero-kicker {
-      margin: 0 0 10px;
-      color: #1f74cf;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.24em;
-      text-shadow: 0 1px 10px rgba(31, 116, 207, 0.18);
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      margin: 0;
-      color: var(--text-strong);
-      font-size: clamp(34px, 4.2vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
-    }
-
-    .hero-subtitle {
-      margin: 14px 0 0;
-      color: var(--text-muted);
-      font-size: clamp(15px, 1.35vw, 18px);
-      font-weight: 600;
-      line-height: 1.5;
-    }
-
-    .hero-actions,
-    .mobile-hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 17px;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      box-shadow: 0 16px 28px -20px rgba(38, 114, 190, 0.72);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .hero-cta--secondary {
-      border-color: rgba(23, 50, 77, 0.18);
-      background: rgba(255, 255, 255, 0.54);
-      box-shadow: none;
-      color: var(--text-strong);
-    }
-
-    .hero-cta:hover,
-    .hero-cta:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 20px 32px -20px rgba(38, 114, 190, 0.82);
-    }
-
-    .hero-cta:focus-visible {
-      outline: 2px solid var(--focus);
-      outline-offset: 3px;
-    }
-
-    .hero-brand {
-      display: inline-flex;
-      align-items: center;
-      min-height: 42px;
-      margin-top: 18px;
-      padding: 0 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.38);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
-      color: var(--text-strong);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .proposal-preview {
-      position: absolute;
-      right: 42px;
-      bottom: 38px;
-      z-index: 2;
-      display: none;
-      width: min(410px, 36vw);
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.58);
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 28px 60px -34px rgba(16, 35, 58, 0.58);
-      color: var(--text-strong);
-      backdrop-filter: blur(16px);
-    }
-
-    .proposal-preview small {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--accent-strong);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .proposal-preview h2 {
-      margin: 0 0 12px;
-      font-size: 19px;
-      letter-spacing: -0.02em;
-    }
-
-    .proposal-row {
-      display: grid;
-      grid-template-columns: 34px minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 0;
-      border-top: 1px solid rgba(195, 210, 226, 0.72);
-    }
-
-    .proposal-rank {
-      width: 30px;
-      height: 30px;
-      display: grid;
-      place-items: center;
-      border-radius: 9px;
-      background: rgba(96, 174, 244, 0.16);
-      color: var(--accent-strong);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .proposal-name,
-    .proposal-value {
-      margin: 0;
-    }
-
-    .proposal-name {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .proposal-detail {
-      display: block;
-      margin-top: 2px;
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .proposal-value {
-      color: var(--accent-strong);
-      font-size: 13px;
-      font-weight: 800;
-      text-align: right;
-    }
-
-    .social-dock {
-      display: none;
-      position: absolute;
-      left: 50%;
-      bottom: clamp(34px, 7vh, 62px);
-      z-index: 3;
-      transform: translateX(-50%);
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 18px 40px rgba(39, 52, 68, 0.18);
-      backdrop-filter: blur(18px);
-    }
-
-    .social-link {
-      width: 56px;
-      height: 56px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.18);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-      color: #f5f9ff;
-      transition:
-        transform 180ms ease,
-        background-color 180ms ease,
-        box-shadow 180ms ease;
-    }
-
-    .social-link:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.26);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.42),
-        0 12px 24px rgba(39, 52, 68, 0.16);
-    }
-
-    .social-link:focus-visible {
-      outline: 2px solid var(--focus);
-      outline-offset: 4px;
-      background: rgba(255, 255, 255, 0.24);
-    }
-
-    .social-link svg {
-      width: 28px;
-      height: 28px;
-      fill: currentColor;
-    }
-
-    .social-link span {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .hotspots {
-      position: absolute;
-      inset: 0;
-    }
-
-    .hotspot {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0);
-      border: 1px solid rgba(255, 255, 255, 0);
-      transition:
-        transform 180ms ease,
-        background-color 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
-    }
-
-    .hotspot:hover {
-      transform: translate(-50%, -50%) scale(1.04);
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
-    }
-
-    .hotspot:focus-visible {
-      outline: 2px solid var(--focus);
-      outline-offset: 4px;
-      background: rgba(255, 255, 255, 0.18);
-      border-color: rgba(255, 255, 255, 0.95);
-    }
-
-    .hotspot span {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .hotspots--desktop .hotspot {
-      width: 8.4%;
-      max-width: 110px;
-      min-width: 54px;
-      aspect-ratio: 1;
-    }
-
-    .hotspot--facebook-desktop {
-      left: 37.6%;
-      top: 85.5%;
-    }
-
-    .hotspot--linkedin-desktop {
-      left: 50.1%;
-      top: 85.5%;
-    }
-
-    .hotspot--instagram-desktop {
-      left: 62.6%;
-      top: 85.5%;
-    }
-
-    .hotspots--mobile {
-      display: none;
-    }
-
-    .page--clean .hotspots {
-      display: none;
-    }
-
-    .page--clean .social-dock {
-      display: inline-flex;
-    }
-
-    @media (min-width: 769px) {
-      .page {
-        width: min(1380px, calc(100vw - 40px));
-        padding-top: 16px;
-        gap: 18px;
-      }
-
-      .stage {
-        max-width: 1320px;
-        aspect-ratio: 1366 / 600;
-      }
-
-      .art img {
-        object-position: center 54%;
-      }
-
-      .hero-overlay {
-        left: 42px;
-        width: min(510px, 42vw);
-        padding: 26px 28px;
-      }
-
-      .hero-title {
-        font-size: clamp(38px, 3.6vw, 52px);
-      }
-
-      .page--clean .social-dock {
-        top: 32px;
-        right: 36px;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        padding: 12px 14px;
-        background: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 18px 40px -26px rgba(39, 52, 68, 0.22);
-      }
-
-    }
-
-    @media (min-width: 1100px) {
-      .page {
-        width: min(1460px, calc(100vw - 56px));
-        gap: 20px;
-      }
-
-      .stage {
-        max-width: 1400px;
-      }
-
-      .hero-overlay {
-        left: 50px;
-        width: min(540px, 43vw);
-      }
-
-      .proposal-preview {
-        display: block;
-      }
-
-    }
-
-    @media (min-width: 1500px) {
-      .page {
-        width: min(1540px, calc(100vw - 88px));
-        gap: 22px;
-      }
-
-      .stage {
-        max-width: 1480px;
-        aspect-ratio: 1366 / 575;
-      }
-
-      .hero-overlay {
-        left: 56px;
-        width: min(580px, 42vw);
-        padding: 30px 32px;
-      }
-
-      .hero-title {
-        font-size: clamp(44px, 3.3vw, 58px);
-      }
-
-      .page--clean .social-dock {
-        top: 34px;
-        right: 40px;
-      }
-
-    }
-
-    @media (max-width: 768px) {
-      .desktop-layout {
-        display: none;
-      }
-
-      .mobile-layout {
-        display: grid;
-        gap: 12px;
-      }
-
-      body::before {
-        background: url("./fundo_limpo.webp") center center / cover no-repeat;
-        filter: blur(24px) saturate(0.94) brightness(0.98);
-      }
-
-      .page {
-        width: min(calc(100vw - 16px), 100%);
-        padding: 8px 0 40px;
-        gap: 18px;
-      }
-
-      .stage {
-        width: 100%;
-        aspect-ratio: 4 / 4.35;
-        border-radius: 28px;
-      }
-
-      .art img {
-        object-position: 74% center;
-      }
-
-      .hero-overlay {
-        top: auto;
-        right: 14px;
-        bottom: 72px;
-        left: 14px;
-        width: auto;
-        padding: 16px;
-        border-color: rgba(255, 255, 255, 0.34);
-        border-radius: 22px;
-        background: transparent;
-        box-shadow: none;
-        backdrop-filter: none;
-        transform: none;
-      }
-
-      .hero-title {
-        font-size: clamp(28px, 9vw, 42px);
-      }
-
-      .hero-subtitle {
-        font-size: 15px;
-      }
-
-      .mobile-hero-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-        margin-top: 18px;
-      }
-
-      .mobile-hero-brand {
-        min-height: 38px;
-        margin-top: 14px;
-        background: transparent;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
-        font-size: 10px;
-      }
-
-      .hotspots--desktop {
-        display: none;
-      }
-
-      .hotspots--mobile {
-        display: block;
-      }
-
-      .hotspots--mobile .hotspot {
-        width: 13.6%;
-        max-width: 112px;
-        min-width: 58px;
-        aspect-ratio: 1;
-      }
-
-      .hotspot--facebook-mobile {
-        left: 27.6%;
-        top: 87.7%;
-      }
-
-      .hotspot--linkedin-mobile {
-        left: 50.2%;
-        top: 87.7%;
-      }
-
-      .hotspot--instagram-mobile {
-        left: 72.7%;
-        top: 87.7%;
-      }
-
-      .page--clean .social-dock {
-        gap: 10px;
-        padding: 10px 12px;
-        top: 42px;
-        bottom: auto;
-        background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 16px 26px -24px rgba(39, 52, 68, 0.24);
-        backdrop-filter: blur(12px);
-      }
-
-      .social-link {
-        width: 50px;
-        height: 50px;
-      }
-
-      .social-link svg {
-        width: 24px;
-        height: 24px;
-      }
-
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hotspot,
-      .mobile-social-link,
-      .hero-cta {
-        transition: none;
-        animation: none;
-      }
-    }
-
-    /* --- Navegação de conteúdo --- */
-    .home-nav {
-      width: 100%;
-      min-width: 0;
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      gap: 16px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding: 10px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.44);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 18px 36px -30px rgba(16, 25, 38, 0.5);
-    }
-
-    .home-nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .home-nav-brand {
-      flex: 0 0 auto;
-      font-weight: 700;
-      font-size: 16.5px;
-      letter-spacing: -0.01em;
-      color: #17324d;
-      text-decoration: none;
-    }
-
-    .home-nav-links {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 2px;
-      list-style: none;
-      margin: 0 0 0 auto;
-      padding: 0;
-      min-width: 0;
-      flex: 0 0 auto;
-    }
-
-    .home-nav-links a {
-      display: block;
-      padding: 7px 13px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #4e6279;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .home-nav-links a:hover,
-    .home-nav-links a:focus-visible {
-      background: rgba(96, 174, 244, 0.18);
-      color: #184f95;
-    }
-
-    /* --- Bloco de conteúdo indexável --- */
-    .home-content {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 28px;
-      padding: clamp(24px, 3.6vw, 44px);
-      color: #2c4560;
-      box-shadow: 0 26px 56px -44px rgba(16, 25, 38, 0.5);
-    }
-
-    .home-content h2 {
-      font-size: clamp(23px, 3vw, 31px);
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-      color: #17324d;
-      margin: 0 0 14px;
-    }
-
-    .home-content h3 {
-      font-size: 17px;
-      line-height: 1.3;
-      color: #17324d;
-      margin: 0 0 6px;
-    }
-
-    .home-content p {
-      font-size: 16.5px;
-      line-height: 1.66;
-      margin: 0 0 14px;
-      max-width: 74ch;
-    }
-
-    .home-content .home-lead {
-      font-size: clamp(17px, 2vw, 19.5px);
-      line-height: 1.58;
-    }
-
-    .home-eyebrow {
-      display: inline-block;
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: #2a78d6;
-      margin: 0 0 10px;
-    }
-
-    .home-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .home-card {
-      display: block;
-      padding: 18px 20px;
-      border-radius: 16px;
-      border: 1px solid #dbe4ee;
-      background: #f6f9fc;
-      text-decoration: none;
-      color: #2c4560;
-      transition: transform 0.15s, border-color 0.15s;
-    }
-
-    .home-card:hover,
-    .home-card:focus-visible {
-      transform: translateY(-2px);
-      border-color: #86b6ef;
-    }
-
-    .home-card p {
-      font-size: 14.5px;
-      color: #5b7189;
-      margin: 0;
-    }
-
-    .home-section {
-      margin-top: 38px;
-      padding-top: 34px;
-      border-top: 1px solid #dbe4ee;
-    }
-
-    .pain-grid,
-    .home-steps {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .pain-card,
-    .home-step {
-      padding: 20px;
-      border: 1px solid #dbe4ee;
-      border-radius: 18px;
-      background: #f6f9fc;
-    }
-
-    .pain-card p,
-    .home-step p {
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .home-step {
-      position: relative;
-      padding-top: 56px;
-    }
-
-    .home-step-number {
-      position: absolute;
-      top: 18px;
-      left: 20px;
-      width: 28px;
-      height: 28px;
-      display: grid;
-      place-items: center;
-      border-radius: 9px;
-      background: #2a78d6;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .home-step:last-child {
-      grid-column: 1 / -1;
-    }
-
-    .home-status {
-      margin: 24px 0 0;
-      padding-top: 16px;
-      border-top: 1px solid #dbe4ee;
-      font-size: 14.5px;
-      color: #5b7189;
-    }
-
-    @media (max-width: 768px) {
-      .home-nav {
-        border-radius: 22px;
-      }
-
-      .home-nav-links {
-        margin-left: 0;
-      }
-
-      .pain-grid,
-      .home-steps {
-        grid-template-columns: 1fr;
-      }
-
-      .home-step:last-child {
-        grid-column: auto;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/home.css">
 </head>
-<body>
-  <main class="page" aria-label="KoteAuto em construção">
-    <nav class="home-nav" aria-label="Conteúdo KoteAuto">
-      <a class="home-nav-brand" href="/">KoteAuto</a>
-      <ul class="home-nav-links">
-        <li><a href="/como-funciona">Como funciona</a></li>
-        <li><a href="/avaliacao-do-usado">Valor do usado</a></li>
-        <li><a href="/para-concessionarias">Para concessionárias</a></li>
-        <li><a href="/privacidade-e-dados">Segurança e dados</a></li>
-        <li><a href="/perguntas-frequentes">Dúvidas</a></li>
-      </ul>
-    </nav>
-    <div class="desktop-layout">
-      <div class="stage">
-        <div class="art">
-          <picture>
-            <source data-background-source="mobile" srcset="./fundo_limpo.webp" media="(max-width: 768px)" type="image/webp" />
-            <source data-background-source="desktop" srcset="./fundo_limpo.webp" media="(min-width: 769px)" type="image/webp" />
-            <img data-background-image src="./fundo_limpo.webp" alt="Farol de veículo na neblina" width="2798" height="1690" />
-          </picture>
+<body id="topo">
+<a class="skip" href="#como-funciona">Ir para Como funciona</a>
+<main>
+<section class="track" id="travessia" aria-label="Abertura e como funciona">
+  <div class="stage">
+    <div class="hero">
+      <div class="scene" aria-hidden="true">
+        <div class="rig">
+          <div class="cw">
+            <div class="pic"><img class="car" src="/assets/silhueta-1672.webp" srcset="/assets/silhueta-960.webp 960w, /assets/silhueta-1672.webp 1672w" sizes="(max-width:700px) 135vw, (min-aspect-ratio:1672/941) 100vw, 178svh" fetchpriority="high" decoding="async" alt="" width="1672" height="941"><div class="shade"></div></div>
+            <div class="bm ln" data-base="-4"><i></i></div><div class="bm rn" data-base="4"><i></i></div>
+            <div class="gl ln"></div><div class="gl rn"></div>
+          </div>
+          <div class="pool pl"></div><div class="pool pr"></div><div class="pool pc"></div>
         </div>
-
-        <section class="hero-overlay" aria-labelledby="hero-title">
-          <p class="hero-kicker">Plataforma em desenvolvimento</p>
-          <h1 class="hero-title" id="hero-title">Uma forma mais clara de comprar ou trocar de carro</h1>
-          <p class="hero-subtitle">Você descreve o carro que tem, o que procura e quanto pode pagar. A proposta da KoteAuto é fazer as lojas responderem com ofertas completas e comparáveis.</p>
-
-          <div class="hero-actions">
-            <a class="hero-cta" href="/como-funciona">Veja como vai funcionar</a>
-            <a class="hero-cta hero-cta--secondary" href="/para-concessionarias">Sou concessionária</a>
-          </div>
-
-          <div class="hero-brand">Ainda não disponível ao público</div>
-        </section>
-
-        <aside class="proposal-preview" aria-label="Ilustração de propostas comparáveis">
-          <small>Ilustração do produto</small>
-          <h2>Propostas no mesmo formato</h2>
-          <div class="proposal-row">
-            <span class="proposal-rank">1</span>
-            <p class="proposal-name">Proposta A<span class="proposal-detail">Usado + financiamento + garantia</span></p>
-            <p class="proposal-value">92% aderente</p>
-          </div>
-          <div class="proposal-row">
-            <span class="proposal-rank">2</span>
-            <p class="proposal-name">Proposta B<span class="proposal-detail">Menor parcela mensal</span></p>
-            <p class="proposal-value">87% aderente</p>
-          </div>
-          <div class="proposal-row">
-            <span class="proposal-rank">3</span>
-            <p class="proposal-name">Proposta C<span class="proposal-detail">Maior valor no usado</span></p>
-            <p class="proposal-value">81% aderente</p>
-          </div>
-        </aside>
-
-        <div class="hotspots hotspots--desktop" aria-label="Redes sociais da KoteAuto no desktop">
-          <a
-            class="hotspot hotspot--facebook-desktop"
-            data-social="facebook"
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Facebook da KoteAuto"
-          >
-            <span>Facebook</span>
-          </a>
-          <a
-            class="hotspot hotspot--linkedin-desktop"
-            data-social="linkedin"
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn da KoteAuto"
-          >
-            <span>LinkedIn</span>
-          </a>
-          <a
-            class="hotspot hotspot--instagram-desktop"
-            data-social="instagram"
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram da KoteAuto"
-          >
-            <span>Instagram</span>
-          </a>
-        </div>
-
-        <div class="hotspots hotspots--mobile" aria-label="Redes sociais da KoteAuto no mobile">
-          <a
-            class="hotspot hotspot--facebook-mobile"
-            data-social="facebook"
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Facebook da KoteAuto"
-          >
-            <span>Facebook</span>
-          </a>
-          <a
-            class="hotspot hotspot--linkedin-mobile"
-            data-social="linkedin"
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn da KoteAuto"
-          >
-            <span>LinkedIn</span>
-          </a>
-          <a
-            class="hotspot hotspot--instagram-mobile"
-            data-social="instagram"
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram da KoteAuto"
-          >
-            <span>Instagram</span>
-          </a>
-        </div>
-
-        <div class="social-dock" aria-label="Redes sociais da KoteAuto">
-          <a
-            class="social-link"
-            data-social="facebook"
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Facebook da KoteAuto"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M13.5 22v-8h2.7l.5-3.4h-3.2V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.6H7v3.4h3V22h3.5Z" />
-            </svg>
-            <span>Facebook</span>
-          </a>
-          <a
-            class="social-link"
-            data-social="linkedin"
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn da KoteAuto"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6.5 8.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM4.8 22V10.1h3.4V22H4.8Zm5.4 0V10.1h3.2v1.6h.1c.4-.8 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.2V22h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V22h-3.4Z" />
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-          <a
-            class="social-link"
-            data-social="instagram"
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram da KoteAuto"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7.2 3h9.6A4.2 4.2 0 0 1 21 7.2v9.6a4.2 4.2 0 0 1-4.2 4.2H7.2A4.2 4.2 0 0 1 3 16.8V7.2A4.2 4.2 0 0 1 7.2 3Zm-.1 1.8A2.4 2.4 0 0 0 4.8 7.1v9.8a2.4 2.4 0 0 0 2.3 2.3h9.8a2.4 2.4 0 0 0 2.3-2.3V7.1a2.4 2.4 0 0 0-2.3-2.3H7.1Zm10.2 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.9a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 1.8a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Z" />
-            </svg>
-            <span>Instagram</span>
-          </a>
+        <div class="flood"></div>
+      </div>
+      <div class="hero-copy">
+        <nav class="nav" aria-label="Navegação principal"><a class="brand" href="#topo">kote<span>auto</span></a><a class="nl" href="#como-funciona">Como funciona</a></nav>
+        <div class="hc">
+          <p class="eyebrow">KoteAuto · em desenvolvimento</p>
+          <h1>Uma forma mais clara de comprar ou trocar de carro.</h1>
+          <p class="sup">Diga qual carro você busca e quanto pode pagar. Receba propostas de lojas e compare antes de decidir.</p>
+          <a class="cta" href="#como-funciona">Veja como funciona <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-
     </div>
-
-    <div class="mobile-layout">
-      <section class="mobile-stage" aria-labelledby="mobile-hero-title">
-        <div class="mobile-art">
-          <img src="./fundo_limpo.webp" alt="Farol de veículo na neblina" width="2798" height="1690" />
-        </div>
-
-        <div class="mobile-social-dock" aria-label="Redes sociais da KoteAuto no mobile">
-          <a
-            class="mobile-social-link"
-            data-social="facebook"
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Facebook da KoteAuto"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M13.5 22v-8h2.7l.5-3.4h-3.2V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.6H7v3.4h3V22h3.5Z" />
-            </svg>
-            <span>Facebook</span>
-          </a>
-          <a
-            class="mobile-social-link"
-            data-social="linkedin"
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn da KoteAuto"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6.5 8.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM4.8 22V10.1h3.4V22H4.8Zm5.4 0V10.1h3.2v1.6h.1c.4-.8 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.2V22h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V22h-3.4Z" />
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-          <a
-            class="mobile-social-link"
-            data-social="instagram"
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram da KoteAuto"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7.2 3h9.6A4.2 4.2 0 0 1 21 7.2v9.6a4.2 4.2 0 0 1-4.2 4.2H7.2A4.2 4.2 0 0 1 3 16.8V7.2A4.2 4.2 0 0 1 7.2 3Zm-.1 1.8A2.4 2.4 0 0 0 4.8 7.1v9.8a2.4 2.4 0 0 0 2.3 2.3h9.8a2.4 2.4 0 0 0 2.3-2.3V7.1a2.4 2.4 0 0 0-2.3-2.3H7.1Zm10.2 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.9a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 1.8a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Z" />
-            </svg>
-            <span>Instagram</span>
-          </a>
-        </div>
-
-        <section class="mobile-hero-panel" aria-label="Apresentação da KoteAuto">
-          <p class="mobile-hero-kicker">Plataforma em desenvolvimento</p>
-          <h1 class="mobile-hero-title" id="mobile-hero-title">Uma forma mais clara de comprar ou trocar de carro</h1>
-          <p class="mobile-hero-subtitle">Você descreve sua necessidade uma vez. A proposta é receber ofertas completas e comparáveis de concessionárias.</p>
-
-          <div class="mobile-hero-actions">
-            <a class="hero-cta" href="/como-funciona">Veja como vai funcionar</a>
-            <a class="hero-cta hero-cta--secondary" href="/para-concessionarias">Sou concessionária</a>
-          </div>
-
-          <div class="mobile-hero-brand">Ainda não disponível ao público</div>
-        </section>
-      </section>
-
+    <div class="intro" id="como-funciona">
+      <div class="wrap">
+        <p class="eyebrow-d rv">Como funciona</p>
+        <h2 class="rv" style="--d:.03s">Do que você procura à decisão.</h2>
+        <p class="lead-b rv" style="--d:.06s">Um pedido para reunir propostas e negociar.</p>
+        <ul class="infos">
+          <li class="rv" style="--d:.09s"><strong>O pedido</strong><span>Você descreve o carro que tem, se houver, o que procura e quanto pode pagar.</span></li>
+          <li class="rv" style="--d:.12s"><strong>As propostas</strong><span>As lojas enviam propostas no mesmo formato.</span></li>
+          <li class="rv" style="--d:.15s"><strong>A decisão</strong><span>Você compara, conversa com a loja e decide no seu tempo.</span></li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <span class="anchor" id="como-funciona-live"></span>
+</section>
 
-    <section class="home-content" aria-labelledby="sobre-title">
-      <p class="home-eyebrow">O que estamos construindo</p>
-      <h2 id="sobre-title">Você informa uma vez. As lojas competem pela melhor proposta.</h2>
-      <p class="home-lead">A KoteAuto é uma <strong>startup brasileira de tecnologia automotiva</strong> que está construindo um <strong>marketplace reverso para compra e troca de carros</strong>. A ideia é inverter a lógica do mercado: em vez de procurar loja por loja, comparar dezenas de anúncios e repetir a mesma conversa com vários vendedores, o consumidor descreve uma única vez o carro que tem, o que procura e quanto pode pagar.</p>
-      <p>Quando estiver disponível, a plataforma deverá apresentar uma <strong>faixa estimada de valor para o usado</strong> com base na tabela FIPE e nos dados do veículo. As lojas responderão nos mesmos campos, com preço final, entrada, parcela, prazo, taxa de juros e valor considerado no usado explícitos, permitindo uma comparação por aderência ao perfil declarado.</p>
+<section class="how" aria-label="O percurso">
+  <div class="wrap">
+    <div class="how-head">
+      <h2>Veja como funciona na prática.</h2>
+      <p class="demo-note">A plataforma está em desenvolvimento e ainda não está disponível ao público. Os exemplos abaixo usam dados fictícios para explicar o funcionamento previsto.</p>
+    </div>
+    <div class="path" id="path">
+      <ol class="steps" role="list">
+        <li class="step">
+          <span class="dot" aria-hidden="true">1</span>
+          <div class="txt"><h3>Você descreve</h3><p>Conte uma vez para as lojas entenderem o que você precisa. Se tiver um carro para trocar, inclua os dados dele.</p></div>
+          <figure class="fig">
+            <span class="demo">Demonstração · dados fictícios</span>
+            <dl class="vals">
+              <div><dt>Seu carro atual, se houver</dt><dd>Hatch 1.0, 2018 <small>· 62 mil km</small></dd></div>
+              <div><dt>O carro que procura</dt><dd>SUV compacto <small>· Novo ou até 3 anos de uso</small></dd></div>
+              <div><dt>Seu orçamento</dt><dd>R$&nbsp;20.000 de entrada em dinheiro <small>· parcelas até R$&nbsp;2.000</small></dd></div>
+              <div><dt>Suas prioridades</dt><dd><ol class="prio" role="list"><li>Conforto / altura</li><li>Porta-malas / versatilidade</li><li>Economia / manutenção</li></ol></dd></div>
+            </dl>
+            <figcaption>Exemplo para explicar o passo; não é uma oferta nem um formulário.</figcaption>
+          </figure>
+        </li>
+        <li class="step">
+          <span class="dot" aria-hidden="true">2</span>
+          <div class="txt"><h3>Você recebe propostas completas</h3><p>Cada proposta apresenta o carro, o preço, as condições de pagamento e, se houver troca, a avaliação do seu usado.</p></div>
+          <figure class="fig">
+            <span class="demo">Demonstração · dados fictícios</span>
+            <div class="prop"><h4>Loja A</h4><p class="car-d">SUV compacto, 2025 · 18 mil km</p><dl><dt>Preço do próximo carro</dt><dd>R$&nbsp;112.000</dd><dt>Avaliação do usado</dt><dd>R$&nbsp;38.000</dd><dt>Condições de pagamento</dt><dd>R$&nbsp;20.000 em dinheiro + 48&nbsp;×&nbsp;R$&nbsp;1.790</dd></dl></div>
+            <div class="prop"><h4>Loja B</h4><p class="car-d">SUV compacto, 2024 · 27 mil km</p><dl><dt>Preço do próximo carro</dt><dd>R$&nbsp;108.500</dd><dt>Avaliação do usado</dt><dd>R$&nbsp;34.000</dd><dt>Condições de pagamento</dt><dd>R$&nbsp;20.000 em dinheiro + 48&nbsp;×&nbsp;R$&nbsp;1.980</dd></dl></div>
+            <div class="prop"><h4>Loja C</h4><p class="car-d">SUV compacto, 2025 · 12 mil km</p><dl><dt>Preço do próximo carro</dt><dd>R$&nbsp;115.000</dd><dt>Avaliação do usado</dt><dd>R$&nbsp;41.000</dd><dt>Condições de pagamento</dt><dd>R$&nbsp;20.000 em dinheiro + 36&nbsp;×&nbsp;R$&nbsp;1.750</dd></dl></div>
+            <figcaption>Dados fictícios. Entrada em dinheiro além do usado na troca; condições resumidas para demonstração.</figcaption>
+          </figure>
+        </li>
+        <li class="step">
+          <span class="dot" aria-hidden="true">3</span>
+          <div class="txt"><h3>Você compara as condições</h3><p>Veja o que muda de uma proposta para outra, lado a lado.</p></div>
+          <figure class="fig">
+            <span class="demo">Demonstração · dados fictícios</span>
+            <div class="tblw" tabindex="0" role="region" aria-label="Comparação de exemplo; role para o lado se necessário">
+              <table class="tbl">
+                <thead><tr><th scope="col"><span class="vh">Item</span></th><th scope="col">Loja A</th><th scope="col">Loja B</th><th scope="col">Loja C</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Preço do próximo carro</th><td>R$&nbsp;112.000</td><td>R$&nbsp;108.500</td><td>R$&nbsp;115.000</td></tr>
+                  <tr><th scope="row">Avaliação do usado</th><td>R$&nbsp;38.000</td><td>R$&nbsp;34.000</td><td>R$&nbsp;41.000</td></tr>
+                  <tr><th scope="row">Condições de pagamento</th><td>R$&nbsp;20.000 em dinheiro + 48&nbsp;×&nbsp;R$&nbsp;1.790</td><td>R$&nbsp;20.000 em dinheiro + 48&nbsp;×&nbsp;R$&nbsp;1.980</td><td>R$&nbsp;20.000 em dinheiro + 36&nbsp;×&nbsp;R$&nbsp;1.750</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="scroll-hint">Deslize para o lado para ver as três propostas.</p>
+            <figcaption>Comparação ilustrativa. A entrada em dinheiro é adicional ao usado na troca.</figcaption>
+          </figure>
+        </li>
+        <li class="step">
+          <span class="dot" aria-hidden="true">4</span>
+          <div class="txt"><h3>Você negocia e decide</h3><p>Converse com a loja para tirar dúvidas e negociar. Ao favoritar uma proposta, você também pode indicar o que gostaria de melhorar.</p><p class="sec">Você também pode recusar propostas que não fazem sentido para você.</p></div>
+          <figure class="fig talkfig">
+            <span class="demo">Demonstração · dados fictícios</span>
+            <div class="blk">
+              <h4>Conversa iniciada por você</h4>
+              <p class="msg me"><span class="vh">Você: </span>Conseguimos melhorar a avaliação do meu usado?</p>
+              <p class="msg store"><span class="vh">Loja: </span>Vou verificar essa possibilidade.</p>
+            </div>
+            <div class="blk">
+              <h4>Ao favoritar</h4>
+              <p class="ask">O que poderia melhorar?</p>
+              <p class="pick"><span aria-hidden="true">✓</span> Avaliação do meu usado</p>
+              <p class="note-s">A loja pode enviar uma nova oferta.</p>
+            </div>
+            <figcaption>Você inicia a conversa. A loja só pode iniciar se você favoritar a proposta dela.</figcaption>
+          </figure>
+        </li>
+      </ol>
+    </div>
+    <p class="more more-out"><a href="/como-funciona">Entenda a jornada completa <span aria-hidden="true">→</span></a></p>
+    <div class="closing">
+      <h2>Seu próximo carro começa com uma decisão mais clara.</h2>
+      <p>A KoteAuto está em desenvolvimento.</p>
+    </div>
+    <p class="end"><a href="#topo">Voltar ao início</a></p>
+  </div>
+</section>
+</main>
 
-      <section class="home-section" aria-labelledby="atrito-title">
-        <p class="home-eyebrow">Problemas que queremos reduzir</p>
-        <h2 id="atrito-title">Por que comprar ou trocar de carro costuma ser tão desgastante?</h2>
-        <div class="pain-grid">
-          <article class="pain-card">
-            <h3>Por que é preciso repetir a mesma conversa em várias lojas?</h3>
-            <p>Porque cada concessionária conduz o atendimento em seu próprio formato. A KoteAuto pretende concentrar orçamento, necessidade de uso e dados do carro atual em um único pedido.</p>
-          </article>
-          <article class="pain-card">
-            <h3>Por que o valor do carro usado muda de uma loja para outra?</h3>
-            <p>Estoque, demanda local, prazo de revenda, conservação e campanhas comerciais mudam o interesse de cada loja. Comparar apenas o valor do usado pode esconder diferenças no preço do carro novo.</p>
-          </article>
-          <article class="pain-card">
-            <h3>Por que o preço do anúncio não é a proposta final?</h3>
-            <p>O anúncio normalmente não reúne campanha vigente, perfil de crédito, prazo, taxa e avaliação do veículo usado. A proposta completa é que mostra o custo real da troca.</p>
-          </article>
-          <article class="pain-card">
-            <h3>Como comparar propostas de financiamento de carro?</h3>
-            <p>Preço, entrada, valor financiado, parcela, prazo e taxa precisam aparecer juntos. Uma parcela menor pode custar mais no total quando o prazo é maior.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="home-section" aria-labelledby="passos-title">
-        <p class="home-eyebrow">A jornada proposta</p>
-        <h2 id="passos-title">Como a KoteAuto pretende reduzir esse atrito</h2>
-        <div class="home-steps">
-          <article class="home-step">
-            <span class="home-step-number">1</span>
-            <h3>Um único contexto</h3>
-            <p>O consumidor informa orçamento, necessidades, carro desejado e dados do veículo que poderá entrar na troca.</p>
-          </article>
-          <article class="home-step">
-            <span class="home-step-number">2</span>
-            <h3>Propostas padronizadas</h3>
-            <p>Concessionárias e revendas respondem com os mesmos campos, reduzindo respostas vagas e comparações incompletas.</p>
-          </article>
-          <article class="home-step">
-            <span class="home-step-number">3</span>
-            <h3>Comparação antes da negociação</h3>
-            <p>As ofertas são organizadas pela aderência ao perfil declarado, sem venda de posição no ranking.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="home-section" aria-labelledby="guias-title">
-        <p class="home-eyebrow">Guias e respostas</p>
-        <h2 id="guias-title">Entenda cada parte da compra e da troca</h2>
-        <div class="home-cards">
-        <a class="home-card" href="/o-que-e-a-koteauto">
-          <h3>O que é a KoteAuto</h3>
-          <p>A definição do modelo, a comparação com sites de classificados e os princípios do produto.</p>
-        </a>
-        <a class="home-card" href="/como-funciona">
-          <h3>Como funciona</h3>
-          <p>A jornada em cinco etapas, os campos de uma proposta e o funcionamento do ranking.</p>
-        </a>
-        <a class="home-card" href="/avaliacao-do-usado">
-          <h3>Avaliação do usado</h3>
-          <p>Por que a loja paga abaixo da FIPE e quais fatores mudam o valor do seu carro.</p>
-        </a>
-        <a class="home-card" href="/quanto-de-carro-consigo-comprar">
-          <h3>Quanto de carro consigo comprar</h3>
-          <p>O cálculo do poder de compra real, com tabela de quanto cada parcela financia.</p>
-        </a>
-        <a class="home-card" href="/para-concessionarias">
-          <h3>Para concessionárias</h3>
-          <p>O que a loja recebe em um pedido e como o score devolve o motivo de uma proposta perder.</p>
-        </a>
-        <a class="home-card" href="/privacidade-e-dados">
-          <h3>Privacidade e dados</h3>
-          <p>Como o site institucional trata dados hoje e o que será publicado antes da abertura da plataforma.</p>
-        </a>
-        <a class="home-card" href="/perguntas-frequentes">
-          <h3>Perguntas frequentes</h3>
-          <p>Trinta respostas diretas sobre orçamento, usado, financiamento e propostas.</p>
-        </a>
-        </div>
-      </section>
-
-      <p class="home-status"><strong>Status.</strong> A KoteAuto é uma startup em estágio inicial e a plataforma ainda não está disponível ao público. O produto está em desenvolvimento para consumidores e lojas parceiras, com foco inicial em Santa Catarina. A KoteAuto não é uma loja, uma concessionária, uma financiadora nem uma avaliadora oficial de veículos.</p>
-    </section>
-  </main>
-
-  <script>
-    const socialLinks = {
-      facebook: "https://www.facebook.com/61589312203457/",
-      linkedin: "https://linkedin.com/company/koteauto",
-      instagram: "https://www.instagram.com/contatokoteauto/"
-    };
-    const backgroundMode = "clean";
-    const cleanBackgrounds = {
-      desktop: "./fundo_limpo.webp",
-      mobile: "./fundo_limpo.webp"
-    };
-    const page = document.querySelector(".page");
-    const desktopBackgroundSource = document.querySelector('[data-background-source="desktop"]');
-    const mobileBackgroundSource = document.querySelector('[data-background-source="mobile"]');
-    const backgroundImage = document.querySelector("[data-background-image]");
-
-    document.querySelectorAll("[data-social]").forEach((link) => {
-      const network = link.dataset.social;
-      const url = socialLinks[network];
-
-      if (url) {
-        link.href = url;
-        return;
+<footer class="site-footer"><div class="wrap footer-grid">
+<div><h2>KoteAuto</h2><p>Uma plataforma em desenvolvimento para facilitar a compra e a troca de carros. Santa Catarina, Brasil.</p><p>Ainda sem cadastro público ou envio de pedidos por este site.</p><a href="mailto:contato@koteauto.com.br">contato@koteauto.com.br</a></div>
+<nav aria-label="Sobre a KoteAuto"><h2>Conheça o projeto</h2><ul><li><a href="/o-que-e-a-koteauto">O que é a KoteAuto</a></li><li><a href="/como-funciona">A jornada completa</a></li><li><a href="/para-concessionarias">Para concessionárias</a></li><li><a href="/privacidade-e-dados">Privacidade e dados</a></li></ul></nav>
+<nav aria-label="Guias e contato"><h2>Para comprar com mais clareza</h2><ul><li><a href="/avaliacao-do-usado">Entenda a avaliação do usado</a></li><li><a href="/quanto-de-carro-consigo-comprar">Organize seu orçamento</a></li><li><a href="/perguntas-frequentes">Perguntas frequentes</a></li><li><a href="https://www.instagram.com/contatokoteauto/">Instagram</a> · <a href="https://linkedin.com/company/koteauto">LinkedIn</a> · <a href="https://www.facebook.com/61589312203457/">Facebook</a></li></ul></nav>
+</div></footer>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.koteauto.com.br/#organizacao",
+      "name": "KoteAuto",
+      "alternateName": "Kote Auto",
+      "url": "https://www.koteauto.com.br/",
+      "description": "A KoteAuto é uma startup brasileira de tecnologia automotiva que está construindo um marketplace reverso para compra e troca de veículos. A proposta é permitir que o consumidor informe uma única vez o carro que possui, o carro que deseja e sua capacidade de pagamento para comparar propostas padronizadas de concessionárias e revendas.",
+      "disambiguatingDescription": "Startup brasileira em estágio inicial, sediada em Santa Catarina, com produto em desenvolvimento e ainda não disponível ao público.",
+      "slogan": "Você informa uma vez. As lojas competem pela melhor proposta.",
+      "foundingLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "SC",
+          "addressCountry": "BR"
+        }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "knowsAbout": [
+        "startup de tecnologia automotiva",
+        "marketplace reverso automotivo",
+        "compra e troca de carros",
+        "avaliação de carro usado",
+        "tabela FIPE",
+        "comparação de propostas de financiamento de veículos",
+        "leads qualificados para concessionárias"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/contatokoteauto/",
+        "https://linkedin.com/company/koteauto",
+        "https://www.facebook.com/61589312203457/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "dateModified": "2026-10-05",
+      "@id": "https://www.koteauto.com.br/#site",
+      "url": "https://www.koteauto.com.br/",
+      "name": "KoteAuto",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://www.koteauto.com.br/#organizacao"
       }
-
-      link.removeAttribute("href");
-      link.removeAttribute("target");
-      link.setAttribute("aria-disabled", "true");
-      link.style.pointerEvents = "none";
-    });
-
-    if (backgroundMode === "clean") {
-      desktopBackgroundSource.srcset = cleanBackgrounds.desktop;
-      mobileBackgroundSource.srcset = cleanBackgrounds.mobile || cleanBackgrounds.desktop;
-      backgroundImage.src = cleanBackgrounds.desktop;
-      page.classList.add("page--clean");
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "KoteAuto",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Marketplace reverso automotivo",
+      "operatingSystem": "Web",
+      "inLanguage": "pt-BR",
+      "url": "https://www.koteauto.com.br/",
+      "description": "Produto em desenvolvimento da KoteAuto para o consumidor descrever uma única vez o carro que possui, o carro que deseja e seu orçamento, receber uma estimativa do veículo usado e comparar propostas padronizadas de concessionárias e revendas.",
+      "softwareVersion": "Em desenvolvimento",
+      "publisher": {
+        "@id": "https://www.koteauto.com.br/#organizacao"
+      }
     }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://koteauto.com.br/#organizacao",
-        "name": "KoteAuto",
-        "alternateName": "Kote Auto",
-        "url": "https://koteauto.com.br/",
-        "description": "A KoteAuto é uma startup brasileira de tecnologia automotiva que está construindo um marketplace reverso para compra e troca de veículos. A proposta é permitir que o consumidor informe uma única vez o carro que possui, o carro que deseja e sua capacidade de pagamento para comparar propostas padronizadas de concessionárias e revendas.",
-        "disambiguatingDescription": "Startup brasileira em estágio inicial, sediada em Santa Catarina, com produto em desenvolvimento e ainda não disponível ao público.",
-        "slogan": "Você informa uma vez. As lojas competem pela melhor proposta.",
-        "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressRegion": "SC", "addressCountry": "BR"}},
-        "areaServed": {"@type": "Country", "name": "Brasil"},
-        "knowsAbout": [
-          "startup de tecnologia automotiva",
-          "marketplace reverso automotivo",
-          "compra e troca de carros",
-          "avaliação de carro usado",
-          "tabela FIPE",
-          "comparação de propostas de financiamento de veículos",
-          "leads qualificados para concessionárias"
-        ],
-        "sameAs": [
-          "https://www.instagram.com/contatokoteauto/",
-          "https://linkedin.com/company/koteauto",
-          "https://www.facebook.com/61589312203457/"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://koteauto.com.br/#site",
-        "url": "https://koteauto.com.br/",
-        "name": "KoteAuto",
-        "inLanguage": "pt-BR",
-        "publisher": {"@id": "https://koteauto.com.br/#organizacao"}
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "KoteAuto",
-        "applicationCategory": "BusinessApplication",
-        "applicationSubCategory": "Marketplace reverso automotivo",
-        "operatingSystem": "Web",
-        "inLanguage": "pt-BR",
-        "url": "https://koteauto.com.br/",
-        "description": "Produto em desenvolvimento da KoteAuto para o consumidor descrever uma única vez o carro que possui, o carro que deseja e seu orçamento, receber uma estimativa do veículo usado e comparar propostas padronizadas de concessionárias e revendas.",
-        "softwareVersion": "Em desenvolvimento",
-        "publisher": {"@id": "https://koteauto.com.br/#organizacao"}
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Por que é preciso repetir a mesma conversa em várias lojas para trocar de carro?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Porque cada concessionária conduz o atendimento em seu próprio formato. A KoteAuto pretende concentrar orçamento, necessidade de uso e dados do carro atual em um único pedido."}
-          },
-          {
-            "@type": "Question",
-            "name": "Por que o valor do carro usado muda de uma loja para outra?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Estoque, demanda local, prazo de revenda, conservação e campanhas comerciais mudam o interesse de cada loja. Comparar apenas o valor do usado pode esconder diferenças no preço do carro novo."}
-          },
-          {
-            "@type": "Question",
-            "name": "Por que o preço do anúncio não é a proposta final do carro?",
-            "acceptedAnswer": {"@type": "Answer", "text": "O anúncio normalmente não reúne campanha vigente, perfil de crédito, prazo, taxa e avaliação do veículo usado. A proposta completa é que mostra o custo real da troca."}
-          },
-          {
-            "@type": "Question",
-            "name": "Como comparar propostas de financiamento de carro?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Preço, entrada, valor financiado, parcela, prazo e taxa precisam aparecer juntos. Uma parcela menor pode custar mais no total quando o prazo é maior."}
-          }
-        ]
-      },
-      {
-        "@type": "ItemList",
-        "name": "Conteúdo KoteAuto",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "O que é a KoteAuto", "url": "https://koteauto.com.br/o-que-e-a-koteauto"},
-          {"@type": "ListItem", "position": 2, "name": "Como funciona", "url": "https://koteauto.com.br/como-funciona"},
-          {"@type": "ListItem", "position": 3, "name": "Avaliação do usado", "url": "https://koteauto.com.br/avaliacao-do-usado"},
-          {"@type": "ListItem", "position": 4, "name": "Quanto de carro consigo comprar", "url": "https://koteauto.com.br/quanto-de-carro-consigo-comprar"},
-          {"@type": "ListItem", "position": 5, "name": "Para concessionárias", "url": "https://koteauto.com.br/para-concessionarias"},
-          {"@type": "ListItem", "position": 6, "name": "Privacidade e dados", "url": "https://koteauto.com.br/privacidade-e-dados"},
-          {"@type": "ListItem", "position": 7, "name": "Perguntas frequentes", "url": "https://koteauto.com.br/perguntas-frequentes"}
-        ]
-      }
-    ]
-  }
-  </script>
+  ]
+}</script>
+<script src="/assets/home.js" defer></script>
 </body>
 </html>

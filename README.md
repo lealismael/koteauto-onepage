@@ -1,81 +1,97 @@
-# KoteAuto — Site estático (Vercel)
+# KoteAuto — site público em desenvolvimento
 
-Site em HTML puro, sem build. A home mantém o aviso de **em construção**. Além dela existe um
-**hub de conteúdo** de sete páginas, criado para que buscadores e
-assistentes de IA (ChatGPT, Gemini, Claude, Perplexity) encontrem e citem a KoteAuto quando alguém
-perguntar sobre comprar ou trocar de carro.
+Site institucional estático. A plataforma de compra e troca ainda não está disponível ao público.
+A home integra a referência visual 024, preservada em `claude-lab/`. As páginas internas foram
+revisadas para o estágio de desenvolvimento e a identidade verde/porcelana.
 
-## Arquivos
+## Preparar a publicação
 
-| Arquivo | O que é |
+Requer Node.js 22 ou posterior, sem instalar dependências:
+
+```sh
+node --test scripts/build-site.test.mjs
+node scripts/build-site.mjs
+```
+
+O `vercel.json` executa esse build e publica **somente `dist/`**. Essa pasta contém as páginas
+HTML da raiz, imagens, favicon, `assets/`, `robots.txt`, `llms.txt` e o sitemap gerado.
+Documentação, scripts, testes e `claude-lab/` não entram no pacote. Novos arquivos públicos
+fora dessas categorias precisam ser incluídos explicitamente em `scripts/build-site.mjs`.
+Não suba a pasta de trabalho inteira como saída estática. O diretório raiz do projeto Vercel
+deve ser este repositório (`koteauto-onepage`), com o build e a saída definidos no arquivo.
+
+Para atualizar também a cópia versionada do sitemap:
+
+```sh
+node scripts/build-site.mjs --sitemap-only
+```
+
+## Conferir localmente
+
+Após o build, execute `node scripts/serve.mjs` e abra `http://127.0.0.1:4173`.
+O servidor local resolve as URLs sem extensão, como a Vercel. Não use `file://`, porque os assets
+e links partem da raiz do site. Execute o build novamente após editar.
+
+## Páginas e funções
+
+| Página | Papel |
 | --- | --- |
-| `index.html` | Home. Aviso de em construção, barra de abas e bloco de texto indexável. |
-| `o-que-e-a-koteauto.html` | Definição da empresa e do modelo de marketplace reverso. |
-| `como-funciona.html` | Jornada em cinco etapas, campos da proposta e ranking. |
-| `avaliacao-do-usado.html` | Método de pré-avaliação do carro usado e por que a loja paga abaixo da FIPE. |
-| `quanto-de-carro-consigo-comprar.html` | Cálculo do poder de compra, com tabela de prazo e taxa. |
-| `para-concessionarias.html` | Página B2B: o que a loja recebe e como o score funciona para ela. |
-| `privacidade-e-dados.html` | Aviso de privacidade do site institucional atual: registros técnicos, contato por e-mail e preparação para a futura política da plataforma. |
-| `perguntas-frequentes.html` | 30 perguntas e respostas, espelhadas em schema `FAQPage`. |
-| `assets/conteudo.css` | Folha de estilo única das páginas de conteúdo. |
-| `llms.txt` | Resumo da empresa e dos dados para rastreadores de IA. |
-| `robots.txt` | Libera explicitamente GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros. |
-| `sitemap.xml` | Mapa das oito URLs. |
-| `vercel.json` | Deploy estático, `cleanUrls` e cabeçalhos. |
-| `new_desktop.png`, `new_mobile.png`, `fundo_limpo.png`, `fundo_limpo.webp` | Artes da home; a versão WebP otimizada é usada em produção. |
+| `index.html` | Apresentação, situação do produto e acesso ao conteúdo. |
+| `o-que-e-a-koteauto.html` | Identidade e proposta da empresa. |
+| `como-funciona.html` | Jornada prevista e funcionamento do produto em desenvolvimento. |
+| `avaliacao-do-usado.html` | Entender a avaliação do carro na troca. |
+| `quanto-de-carro-consigo-comprar.html` | Entender orçamento e comparar cenários ilustrativos. |
+| `para-concessionarias.html` | Proposta para lojas. |
+| `privacidade-e-dados.html` | Aviso do site institucional atual. |
+| `perguntas-frequentes.html` | Respostas breves e acesso às explicações detalhadas. |
 
-## URLs
+As URLs usam `https://www.koteauto.com.br` e caminhos sem `.html` (configuração `cleanUrls`).
+Em 05/10/2026, o domínio sem www redirecionou com 308 para www em requisições públicas.
+Canonical, Open Graph, dados estruturados, llms.txt e sitemap foram alinhados a esse destino.
+Os links internos relativos à raiz continuam funcionando nos dois ambientes.
 
-Com `cleanUrls: true` no `vercel.json`, as páginas respondem sem a extensão `.html`:
-`/o-que-e-a-koteauto`, `/como-funciona`, `/avaliacao-do-usado`,
-`/quanto-de-carro-consigo-comprar`, `/para-concessionarias`,
-`/privacidade-e-dados`, `/perguntas-frequentes`.
+## Ao editar ou criar uma página
 
-## Como o conteúdo foi construído para ser citado por IA
+1. Escreva conteúdo útil, com propósito próprio. Não replique páginas para repetir palavras-chave.
+2. Preserve o aviso de desenvolvimento e diferencie funcionalidade prevista de serviço disponível.
+3. Mantenha `title`, descrição e um canonical absoluto coerente com o domínio acima.
+4. Atualize `dateModified` no JSON-LD quando houver mudança editorial relevante; preserve
+   `datePublished`. A home usa `dateModified` no objeto `WebSite`. Não use a data do build,
+   checkout ou upload como se todo o conteúdo tivesse sido revisado.
+5. Se editar uma resposta com dados estruturados, mantenha texto visível e JSON-LD coerentes.
+6. Nova página pública deve ser HTML na raiz (nome em minúsculas e hífens), ter link em outra
+   página e entrar na navegação adequada. O gerador a inclui automaticamente no sitemap.
+7. Execute os comandos acima e confira as alterações. Páginas com `noindex` não entram no mapa.
+   Isso não as torna privadas; estudos e material interno devem ficar fora da raiz pública.
 
-- **Resposta antes de tudo.** Cada página abre com a resposta direta em um parágrafo autocontido,
-  antes de qualquer contexto. É o trecho que os modelos extraem.
-- **Dados estruturados.** `Organization`, `WebSite` e `SoftwareApplication` na home; `Article`,
-  `HowTo`, `FAQPage`, `Dataset` e `BreadcrumbList` nas páginas internas.
-- **Todo gráfico tem tabela.** Os SVGs trazem `<title>` e `<desc>`, e cada figura tem os mesmos
-  números em `<table>`, porque rastreador lê texto, não pixel.
-- **Números com base declarada.** Nenhum percentual aparece sem o N e a fonte ao lado.
-- **Status honesto.** Todas as páginas dizem que a KoteAuto é uma startup em estágio inicial, com a plataforma em construção.
-- **Identidade declarada.** A frase-âncora "startup brasileira de tecnologia automotiva" aparece no lead, no rodapé e no schema `Organization` de todas as páginas, sempre junto do que a empresa faz.
+O build valida canonical, descrição, JSON-LD e data editorial. Não garante correção do conteúdo,
+acessibilidade, indexação ou posicionamento. `lastmod` é lido do conteúdo; sua atualização editorial
+não é automática. Repetir um build sem editar as páginas mantém as mesmas datas.
 
-## Pendências antes de abrir a plataforma
+## Indexação e conteúdo
 
-- Manter o canal `contato@koteauto.com.br` monitorado para dúvidas e solicitações sobre dados pessoais.
-- Publicar a **política de privacidade e os termos de uso formais** antes de abrir o cadastro.
-  A página atual cobre apenas o site institucional e diz explicitamente que não substitui o documento formal da plataforma.
-- Quando houver pessoa jurídica constituída, incluir razão social e CNPJ na identificação do
-  controlador, na seção "Quem é o responsável".
-- Submeter o texto a revisão jurídica antes de a plataforma entrar em operação.
+Veja [ESTRATEGIA-DESCOBERTA.md](ESTRATEGIA-DESCOBERTA.md) para o plano editorial,
+fontes oficiais, cadastro no Search Console e verificações após a publicação.
 
-## Editar o conteúdo
+O sitemap facilita descoberta; não garante indexação. `llms.txt` é um resumo auxiliar e não
+uma condição para aparecer em buscas ou respostas de IA. As permissões de rastreamento existentes
+foram preservadas; busca e treinamento de modelos são finalidades diferentes.
 
-- Estilo das páginas de conteúdo: `assets/conteudo.css`. A home tem CSS próprio, embutido.
-- Ao alterar uma resposta em `perguntas-frequentes.html`, **altere também o bloco
-  `application/ld+json` no fim do arquivo**, para o texto visível e o schema não divergirem.
-- Ao publicar uma página nova, adicione-a ao `sitemap.xml`, ao `llms.txt` e às barras de
-  navegação (`ul.tabs` nas páginas de conteúdo e `ul.home-nav-links` no `index.html`).
+## Antes de abrir a plataforma
 
-## Links sociais
+Manter `contato@koteauto.com.br` monitorado. Preparar a política e os termos aplicáveis ao produto
+real, com identificação do responsável e revisão adequada, antes do cadastro público.
+O aviso atual trata apenas do site institucional. A aplicação privada permanece em outro projeto.
 
-No fim do `index.html`, no objeto `socialLinks`.
+## Verificação da integração
 
-## Deploy na Vercel
+Veja [INTEGRACAO-HOME.md](INTEGRACAO-HOME.md) para mudanças, limites e testes.
+O teste de navegador reutilizável é `scripts/check-home.cjs`. Ele requer Playwright já disponível
+no ambiente de desenvolvimento (não é dependência da publicação):
 
-1. https://vercel.com/dashboard
-2. **Add New → Project → Upload Files**
-3. Suba a pasta inteira e faça o deploy.
+```sh
+PLAYWRIGHT_MODULE=/caminho/para/node_modules/playwright node scripts/check-home.cjs
+```
 
-## Domínio
-
-1. No projeto: **Settings → Domains → Add Domain**, informe `koteauto.com.br`.
-2. No registro.br aponte **A** (raiz) para `76.76.21.21` e **CNAME** `www` para
-   `cname.vercel-dns.com.`
-3. A propagação leva até uma hora.
-
-Depois de publicar, envie o `sitemap.xml` pelo Google Search Console e pelo Bing Webmaster Tools.
-O Bing alimenta a busca do ChatGPT e do Copilot, então vale cadastrar nos dois.
+Capturas e relatório vão para a pasta temporária `koteauto-qa`; use `KOTEAUTO_EVIDENCE_DIR`
+para escolher outro destino. O teste cria um servidor local temporário e o fecha ao terminar.

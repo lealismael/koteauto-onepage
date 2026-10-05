@@ -1,30 +1,30 @@
 /* KoteAuto — folha de estilo das páginas de conteúdo
-   Paleta de dados validada para modo claro (contraste >= 3:1 sobre a superfície). */
+   Identidade verde, sálvia e porcelana alinhada à home. */
 
 :root {
-  --bg: #eef3f8;
+  --bg: #F6F3EC;
   --surface: #ffffff;
-  --surface-soft: #f6f9fc;
-  --surface-tint: #e8f1fc;
-  --border: #dbe4ee;
-  --border-strong: #c3d2e2;
+  --surface-soft: #F6F3EC;
+  --surface-tint: #E7ECE3;
+  --border: #DDD6CC;
+  --border-strong: #BAC9BB;
 
-  --text-strong: #17324d;
-  --text: #2c4560;
-  --text-muted: #5b7189;
+  --text-strong: #292A2C;
+  --text: #292A2C;
+  --text-muted: #625A54;
 
-  --accent: #2a78d6;
-  --accent-deep: #184f95;
-  --accent-soft: #86b6ef;
-  --accent-wash: #f0f6fd;
+  --accent: #245951;
+  --accent-deep: #1B443E;
+  --accent-soft: #94B4AA;
+  --accent-wash: #F6F3EC;
 
-  --series-1: #2a78d6;
+  --series-1: #245951;
   --series-2: #eb6834;
   --series-3: #1baf7a;
-  --ordinal-1: #86b6ef;
+  --ordinal-1: #94B4AA;
   --ordinal-2: #5598e7;
-  --ordinal-3: #2a78d6;
-  --ordinal-4: #184f95;
+  --ordinal-3: #245951;
+  --ordinal-4: #1B443E;
   --neutral-mark: #c3ccd7;
 
   --radius: 16px;
@@ -40,7 +40,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   line-height: 1.68;
   -webkit-font-smoothing: antialiased;
@@ -216,7 +216,7 @@ section > *:first-child { margin-top: 0; }
 
 .answer-box {
   background: var(--accent-wash);
-  border: 1px solid #cfe1f7;
+  border: 1px solid #DDD6CC;
   border-left: 4px solid var(--accent);
   border-radius: 12px;
   padding: 20px 24px;
@@ -479,15 +479,15 @@ blockquote cite {
 /* ---------- CTA e rodapé ---------- */
 
 .cta {
-  background: linear-gradient(140deg, #1d5da8, #17324d);
-  color: #eaf2fb;
+  background: linear-gradient(140deg, #245951, #292A2C);
+  color: #F6F3EC;
   border-radius: var(--radius);
   padding: clamp(24px, 3.4vw, 38px);
   margin: 46px 0 10px;
 }
 
 .cta h2 { color: #fff; margin: 0 0 12px; }
-.cta p { color: #d3e2f2; }
+.cta p { color: #E7ECE3; }
 
 .cta-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 
@@ -529,3 +529,12 @@ blockquote cite {
   .site-header-inner { gap: 12px; }
   .steps li { padding-left: 42px; }
 }
+
+/* Identidade da home e leitura em telas estreitas. */
+.brand{gap:0;font-size:25px;letter-spacing:-1px}.brand-auto{font-weight:400;color:#A5482D}
+a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.skip{position:absolute;left:-9999px;top:8px;padding:12px;background:#fff;z-index:100}.skip:focus{left:8px}
+.journey li{padding:12px 0}.journey h3{margin:0 0 8px}
+.table-wrap{overflow-x:auto}th{text-align:left}.table-wrap table{min-width:540px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(max-width:600px){.site-header{position:relative}.site-header-inner{flex-wrap:wrap}.site-header-inner>nav{width:100%;margin:0}.page-head h1{overflow-wrap:anywhere}}

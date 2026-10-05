@@ -1,4 +1,4 @@
-# KoteAuto — https://koteauto.com.br
+# KoteAuto — https://www.koteauto.com.br
 # Conteúdo liberado para indexação por buscadores e por rastreadores de IA.
 
 User-agent: *
@@ -68,4 +68,4 @@ Allow: /
 User-agent: omgili
 Allow: /
 
-Sitemap: https://koteauto.com.br/sitemap.xml
+Sitemap: https://www.koteauto.com.br/sitemap.xml

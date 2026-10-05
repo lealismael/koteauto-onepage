@@ -1,2 +1,8 @@
 docs/
 .DS_Store
+
+# Troca local de briefs e estudos com Claude
+/claude-lab/
+
+# Saída pública gerada localmente e na Vercel
+/dist/
