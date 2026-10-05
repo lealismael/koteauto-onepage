@@ -173,11 +173,3 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .site-footer h2{font-size:18px;margin:0 0 12px}.site-footer p{font-size:14px;max-width:32em;color:var(--muted)}
 .site-footer ul{list-style:none;margin:0;padding:0}.site-footer li{margin:8px 0}.site-footer a{color:var(--green);text-underline-offset:3px}
 @media(max-width:700px){.footer-grid{grid-template-columns:1fr}.site-footer{padding:32px 0}}
-
-/* Mobile: luz decorativa estática e conteúdo contíguo, sem tela fixada. */
-@media(max-width:700px),(pointer:coarse){
-  .pool,.flood{display:none}
-  .bm{filter:none}
-  .bm i{clip-path:none;background:radial-gradient(ellipse at 50% 0,rgba(255,241,210,.35),rgba(255,247,225,.1) 50%,transparent 72%)}
-  .intro{padding-top:36px}
-}

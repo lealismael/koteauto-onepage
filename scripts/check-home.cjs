@@ -9,21 +9,9 @@ for(const size of [{width:1440,height:810},{width:390,height:844},{width:320,hei
  const ctx=await browser.newContext({viewport:size}); const page=await ctx.newPage(); const errors=[];page.on('pageerror',e=>errors.push(e.message)); page.on('response',r=>{if(r.status()>=400) errors.push(r.url()+':'+r.status())});
  await page.goto(url); await page.waitForTimeout(150); assert.equal(await page.locator('.lab').count(),0);
  await page.screenshot({path:`${output}/home-${size.width}.png`});
- let timing = null;
- const live = await page.locator('html').evaluate(el => el.classList.contains('live'));
- if(size.width<=700){
-  assert(!live);
-  assert(await page.evaluate(()=>Math.abs(document.querySelector('.intro').getBoundingClientRect().top-document.querySelector('.hero').getBoundingClientRect().bottom)<2),'conteúdo deve seguir a abertura sem lacuna');
-  for(const offset of [100,300,500]){await page.evaluate(y=>scrollTo({top:y,behavior:'instant'}),offset);assert.equal(await page.locator('.intro').evaluate(el=>getComputedStyle(el).visibility),'visible');}
-  await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
- }
- await page.locator('.cta').click();
- if(live){
-  await page.waitForFunction(()=>document.documentElement.dataset.travel==='done');
-  assert.equal(await page.locator('.intro').getAttribute('aria-hidden'),'false');
-  timing=await page.evaluate(()=>document.documentElement.dataset.travelMs);assert(Number(timing)>=1700&&Number(timing)<2400,timing);
- }else{await page.waitForTimeout(900);assert(await page.evaluate(()=>Math.abs(document.querySelector('.intro').getBoundingClientRect().top)<3));}
- assert.equal(await page.evaluate(()=>document.activeElement.tagName),'H2');
+ await page.locator('.cta').click(); await page.waitForFunction(()=>document.documentElement.dataset.travel==='done');
+ assert.equal(await page.locator('.intro').getAttribute('aria-hidden'),'false'); assert.equal(await page.evaluate(()=>document.activeElement.tagName),'H2');
+ const timing=await page.evaluate(()=>document.documentElement.dataset.travelMs); assert(Number(timing)>=1700&&Number(timing)<2400,timing);
  await page.waitForTimeout(350); await page.screenshot({path:`${output}/resumo-${size.width}.png`});
  await page.evaluate(()=>scrollTo({top:document.body.scrollHeight,behavior:'instant'}));await page.waitForTimeout(200);
  assert.equal(await page.locator('.step.reached').count(),4);

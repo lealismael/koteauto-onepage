@@ -94,3 +94,11 @@ Verificado no Chrome headless em 390 e 320 px: resumo visível em diferentes pos
 sem lacuna entre blocos, botão e foco no título funcionando. Bateria desktop também passou.
 É necessário repetir a avaliação no Safari do aparelho que apresentou travamento; a emulação
 não comprova fluidez em iPhone.
+
+## Restauração solicitada pelo usuário
+
+O usuário preferiu manter a abertura animada também no celular, relatando funcionamento
+satisfatório no Chrome do iOS. A simplificação estática foi retirada: restaurados CSS, JavaScript
+e teste da versão 2e9d684. Movimento reduzido e janela sem altura suficiente continuam em fluxo
+normal, como antes. A fluidez no Safari e o intervalo claro permanecem pontos para investigação;
+a restauração não é apresentada como correção desses problemas.
