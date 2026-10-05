@@ -81,3 +81,16 @@ regras de produto foram mantidos. A abertura animada continua exclusiva da home.
 O CSS antigo podia permanecer em cache por sete dias. O build agora inclui uma versão baseada
 no conteúdo nas URLs de CSS/JS, sem alterar as URLs das páginas. Um teste confirma estabilidade
 quando nada muda e troca de versão quando o CSS muda.
+
+## Ajuste após feedback de Safari mobile
+
+Visitantes relataram travamento e um trecho claro sem informação quando paravam de rolar.
+A causa de desempenho não foi medida em aparelho real. Em telas até 700 px ou com ponteiro
+principal de toque, a abertura agora rola em fluxo normal, com carro e luz estáticos, sem
+pinning, zoom ou crescimento das poças. O resumo segue imediatamente a abertura. Retirado
+blur dos feixes nesses dispositivos. Desktop com mouse mantém a cena e a viagem de 1,8 s.
+
+Verificado no Chrome headless em 390 e 320 px: resumo visível em diferentes posições de scroll,
+sem lacuna entre blocos, botão e foco no título funcionando. Bateria desktop também passou.
+É necessário repetir a avaliação no Safari do aparelho que apresentou travamento; a emulação
+não comprova fluidez em iPhone.

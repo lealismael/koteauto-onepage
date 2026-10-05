@@ -12,6 +12,8 @@
   const beams = $$('.bm'), glows = $$('.gl'), heroLinks = $$('.hero-copy a');
   const anchorLive = $('#como-funciona-live');
   const mqRM = matchMedia('(prefers-reduced-motion: reduce)');
+  // Telas pequenas e dispositivos de toque usam rolagem nativa, sem cena fixada.
+  const mqSimple = matchMedia('(max-width: 700px), (pointer: coarse)');
   const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
   const ss = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
 
@@ -93,8 +95,9 @@
     kick();
   }
   const introNeed = () => ($('.intro .wrap').offsetHeight + Math.max(36, Math.min(.09 * innerHeight, 100)) + 16);
-  const want = () => !mqRM.matches && innerHeight >= MIN_H && innerHeight >= introNeed();
+  const want = () => !mqSimple.matches && !mqRM.matches && innerHeight >= MIN_H && innerHeight >= introNeed();
   mqRM.addEventListener('change', () => setLive(want()));
+  mqSimple.addEventListener('change', () => setLive(want()));
   addEventListener('resize', () => { cancelTravel(); setLive(want()); measure(); kick(); });
   addEventListener('scroll', kick, { passive: true });
   // foco por teclado no CTA com a abertura já apagada: volta ao começo
@@ -162,7 +165,13 @@
   }
   function onAnchorClick(e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (!S.live || mqRM.matches) return;                  // movimento reduzido / fluxo normal / sem JS: navegação nativa, direta
+    if (!S.live || mqRM.matches) {
+      e.preventDefault();
+      intro.scrollIntoView({behavior: mqRM.matches ? 'instant' : 'smooth'});
+      const h = intro.querySelector('h2'); h.tabIndex = -1; h.focus({preventScroll:true});
+      if (location.hash !== '#como-funciona') history.pushState(null, '', '#como-funciona');
+      return;
+    }
     e.preventDefault(); startTravel();
   }
   $('.skip').addEventListener('click', e => {
