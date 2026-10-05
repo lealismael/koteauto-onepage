@@ -95,3 +95,7 @@ PLAYWRIGHT_MODULE=/caminho/para/node_modules/playwright node scripts/check-home.
 
 Capturas e relatório vão para a pasta temporária `koteauto-qa`; use `KOTEAUTO_EVIDENCE_DIR`
 para escolher outro destino. O teste cria um servidor local temporário e o fecha ao terminar.
+
+O build acrescenta uma versão baseada no conteúdo às URLs de CSS e JavaScript. Assim, uma
+atualização de estilo usa outra URL e não depende de o visitante limpar o cache. O cache de
+assets permanece ativo para arquivos que não mudaram.

@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.koteauto.com.br';
@@ -69,12 +70,27 @@ export async function build(directory, sitemapOnly = false) {
   const output = resolve(directory, 'dist');
   await rm(output, { recursive: true, force: true });
   await mkdir(output, { recursive: true });
+  // Mudar a URL quando o CSS/JS mudar evita reutilizar estilos de um deploy anterior.
+  async function versionAssets(html) {
+    const pattern = /((?:href|src)=["'])(\/assets\/[a-zA-Z0-9_./-]+\.(?:css|js))(?:\?[^"']*)?(["'])/g;
+    const hashes = new Map();
+    for (const [, , url] of html.matchAll(pattern)) {
+      if (url.includes('..')) throw new Error(`Caminho de asset inválido: ${url}`);
+      const bytes = await readFile(resolve(directory, '.' + url));
+      hashes.set(url, createHash('sha256').update(bytes).digest('hex').slice(0, 12));
+    }
+    return html.replace(pattern, (_, prefix, url, quote) => `${prefix}${url}?v=${hashes.get(url)}${quote}`);
+  }
   // Só arquivos públicos: não publicar docs, estudos locais, scripts ou testes.
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if ((entry.isDirectory() && entry.name === 'assets') ||
       (entry.isFile() && (/\.(html|png|webp|avif|jpg|jpeg|svg|ico)$/i.test(entry.name) ||
         ['robots.txt', 'llms.txt'].includes(entry.name)))) {
-      await cp(resolve(directory, entry.name), resolve(output, entry.name), { recursive: true });
+      if (entry.isFile() && entry.name.endsWith('.html')) {
+        await writeFile(resolve(output, entry.name), await versionAssets(await readFile(resolve(directory, entry.name), 'utf8')));
+      } else {
+        await cp(resolve(directory, entry.name), resolve(output, entry.name), { recursive: true });
+      }
     }
   }
   await writeFile(resolve(output, 'sitemap.xml'), xml);

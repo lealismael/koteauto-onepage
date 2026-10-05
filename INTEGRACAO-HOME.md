@@ -70,3 +70,14 @@ node scripts/serve.mjs
 
 Abrir `http://127.0.0.1:4173`. As rotas sem extensão são resolvidas pelo servidor local.
 A Vercel continua configurada para gerar e servir `dist/`; nenhum deploy foi disparado.
+
+## Ajuste de continuidade visual após avaliação
+
+As páginas internas receberam cabeçalho grafite com marca porcelana/cobre claro, títulos e
+espaçamentos alinhados à home, cartões brancos, avisos sálvia, ações verdes e o mesmo rodapé.
+A página de jornada usa marcadores verdes estáticos para as etapas. O texto editorial e as
+regras de produto foram mantidos. A abertura animada continua exclusiva da home.
+
+O CSS antigo podia permanecer em cache por sete dias. O build agora inclui uma versão baseada
+no conteúdo nas URLs de CSS/JS, sem alterar as URLs das páginas. Um teste confirma estabilidade
+quando nada muda e troca de versão quando o CSS muda.

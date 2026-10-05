@@ -49,3 +49,18 @@ test('rejeita canonical errado e data inválida', async t => {
   await writeFile(join(dir, 'guia.html'), page('https://www.koteauto.com.br/guia', '2026-02-30'));
   await assert.rejects(collectPages(dir), /inválida/);
 });
+
+test('versão do CSS muda apenas quando seu conteúdo muda', async t => {
+  const dir = await fixture(t);
+  await mkdir(join(dir, 'assets'));
+  await writeFile(join(dir, 'assets', 'style.css'), 'body{color:red}');
+  await writeFile(join(dir, 'index.html'), page('https://www.koteauto.com.br/') + '<link href="/assets/style.css?v=antiga" rel="stylesheet">');
+  await build(dir);
+  const first = await readFile(join(dir, 'dist', 'index.html'), 'utf8');
+  assert.match(first, /style\.css\?v=[a-f0-9]{12}/);
+  await build(dir);
+  assert.equal(await readFile(join(dir, 'dist', 'index.html'), 'utf8'), first);
+  await writeFile(join(dir, 'assets', 'style.css'), 'body{color:green}');
+  await build(dir);
+  assert.notEqual(await readFile(join(dir, 'dist', 'index.html'), 'utf8'), first);
+});
