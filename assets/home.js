@@ -9,6 +9,8 @@
   const root = document.documentElement;
   const track = $('#travessia'), stage = $('.stage'), rig = $('.rig'), flood = $('.flood'), pools = $$('.pool');
   const heroCopy = $('.hero-copy'), cta = $('.cta'), intro = $('.intro');
+  const cue = $('.transition-cue'), introHeading = intro.querySelector('h2');
+  introHeading.tabIndex = -1;
   const beams = $$('.bm'), glows = $$('.gl'), heroLinks = $$('.hero-copy a');
   const anchorLive = $('#como-funciona-live');
   const mqRM = matchMedia('(prefers-reduced-motion: reduce)');
@@ -17,7 +19,7 @@
 
   const S = { live: null, zoom: true, mouse: false, li: 1 };
   // linha do tempo (hipótese): fração do progresso
-  const T = { heroOut: .2, poolA: .06, poolB: .62, floodA: .5, floodB: .62, on: .66, off: .62 };
+  const T = { heroOut: .2, poolA: .06, poolB: .46, floodA: .30, floodB: .46, on: .46, off: .44 };
   let raf = 0, introOn = false, heroH = 0;
   let travel = null;                                // viagem programática ativa (ver abaixo)
   const measure = () => { heroH = heroCopy.offsetHeight; };
@@ -43,10 +45,7 @@
     const out = ss(0, T.heroOut, p);
     heroCopy.style.transform = `translate3d(0,${(-out * (heroH + 24)).toFixed(1)}px,0)`;
     const heroOn = p < T.heroOut;
-    heroLinks.forEach(a => { a.tabIndex = heroOn ? 0 : -1; });
-    heroCopy.style.pointerEvents = heroOn ? '' : 'none';
-    heroCopy.inert = !heroOn;
-    heroCopy.setAttribute('aria-hidden', String(!heroOn));
+
 
     // câmera aparente: zoom opcional sobre o conjunto carro + luz (lentes acompanham)
     const s = 1 + (S.zoom ? ZOOM : 0) * e;
@@ -65,9 +64,25 @@
 
     // informação: troca de estado com histerese (não depende de opacidade contínua do scroll)
     if (!introOn && p >= T.on) introOn = true; else if (introOn && p < T.off) introOn = false;
+    // A superfície permanece opaca enquanto o resumo está exposto, inclusive no recuo.
+    if (introOn) flood.style.opacity = '1';
+    const cueOn = !heroOn && !introOn;
+    // Expor o destino antes de transferir foco de uma camada que vai desaparecer.
+    if (heroOn) { heroCopy.inert = false; heroCopy.removeAttribute('aria-hidden'); }
+    if (introOn) { intro.classList.add('on'); intro.inert = false; intro.removeAttribute('aria-hidden'); }
+    if (cueOn) cue.hidden = false;
+    const active = document.activeElement;
+    if ((!heroOn && heroCopy.contains(active)) || (!introOn && intro.contains(active)) || (!cueOn && active === cue)) {
+      (introOn ? introHeading : heroOn ? cta : cue).focus({preventScroll:true});
+    }
+    heroLinks.forEach(a => { a.tabIndex = heroOn ? 0 : -1; });
+    heroCopy.style.pointerEvents = heroOn ? '' : 'none';
+    heroCopy.inert = !heroOn;
+    heroCopy.setAttribute('aria-hidden', String(!heroOn));
     intro.classList.toggle('on', introOn);
     intro.inert = !introOn;
     intro.setAttribute('aria-hidden', String(!introOn));
+    cue.hidden = !cueOn;
 
     root.dataset.p = p.toFixed(3);
   }
@@ -88,7 +103,9 @@
       anchorLive.removeAttribute('id'); intro.id = 'como-funciona';
       [heroCopy, rig, flood, ...pools, ...beams, ...glows].forEach(el => el.removeAttribute('style')); heroLinks.forEach(a => a.removeAttribute('tabindex')); intro.classList.remove('on'); introOn = false;
       heroCopy.inert = false; intro.inert = false;
-      heroCopy.removeAttribute('aria-hidden'); intro.removeAttribute('aria-hidden'); cancelTravel();
+      heroCopy.removeAttribute('aria-hidden'); intro.removeAttribute('aria-hidden');
+      if (document.activeElement === cue) introHeading.focus({preventScroll:true});
+      cue.hidden = true; cancelTravel();
     }
     kick();
   }
@@ -172,7 +189,7 @@
     const h = intro.querySelector('h2'); h.tabIndex = -1; h.focus({preventScroll:true});
     history.replaceState(null, '', '#como-funciona');
   });
-  [cta, $('.nl')].forEach(a => a.addEventListener('click', onAnchorClick));
+  [cta, $('.nl'), cue].forEach(a => a.addEventListener('click', onAnchorClick));
   // qualquer gesto do usuário interrompe a viagem (sem preventDefault)
   ['wheel', 'touchstart'].forEach(ev => addEventListener(ev, () => cancelTravel(), { passive: true }));
   addEventListener('keydown', e => { if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) cancelTravel(); });
