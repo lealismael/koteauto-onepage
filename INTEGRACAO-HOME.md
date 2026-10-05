@@ -102,3 +102,20 @@ satisfatório no Chrome do iOS. A simplificação estática foi retirada: restau
 e teste da versão 2e9d684. Movimento reduzido e janela sem altura suficiente continuam em fluxo
 normal, como antes. A fluidez no Safari e o intervalo claro permanecem pontos para investigação;
 a restauração não é apresentada como correção desses problemas.
+
+## 05/10/2026 — faróis acompanhando o mouse
+
+Integrado o estudo local aprovado: giro adicional de até 15°, alcance vertical
+variando até 22%, suavização de 110 ms e deslocamento das poças até 38 px.
+Lentes e silhueta permanecem ancoradas. O efeito perde influência entre 12%
+e 40% do percurso, volta ao neutro ao sair da cena e só responde a mouse
+com ponteiro fino e hover. Movimento reduzido e toque não ativam o efeito.
+A opção `?mouse=0` permite comparar sem resposta ao ponteiro. Sem dependências novas.
+
+Validação: build e quatro testes de build; bateria Chromium em 1440, 390 e
+320 px, CTA, teclado, interrupção, âncora, recuo, sem JS e movimento reduzido.
+Verificação específica de direção, toque e retorno ao neutro passou.
+Contraste amostrado em 15 estados (três posições do mouse, cinco progressos):
+57 amostras, mínimo 7,225:1, sem falhas. Evidências locais em
+`/tmp/kote-mouse-contrast/`. Isso não é medição de todos os frames.
+Safari e Search Console fora desta rodada, conforme solicitação do usuário.

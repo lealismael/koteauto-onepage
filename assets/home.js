@@ -17,7 +17,21 @@
   const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
   const ss = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
 
-  const S = { live: null, zoom: true, mouse: false, li: 1 };
+  const S = { live: null, zoom: true, mouse: true, li: 1 };
+  const mqPointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const mouseEnabled = new URLSearchParams(location.search).get('mouse') !== '0';
+  const pointer = { x: 0, y: 0, tx: 0, ty: 0, time: 0 };
+  const resetPointer = () => { pointer.tx = pointer.ty = 0; kick(); };
+  stage.addEventListener('pointermove', ev => {
+    if (!S.live || !mouseEnabled || !mqPointer.matches || ev.pointerType !== 'mouse') return;
+    const r = stage.getBoundingClientRect();
+    pointer.tx = clamp((ev.clientX - r.left) / r.width * 2 - 1, -1, 1);
+    pointer.ty = clamp((ev.clientY - r.top) / r.height * 2 - 1, -1, 1);
+    kick();
+  }, { passive: true });
+  stage.addEventListener('pointerleave', resetPointer);
+  addEventListener('blur', resetPointer);
+  mqPointer.addEventListener('change', resetPointer);
   // linha do tempo (hipótese): fração do progresso
   const T = { heroOut: .2, poolA: .06, poolB: .46, floodA: .30, floodB: .46, on: .46, off: .44 };
   let raf = 0, introOn = false, heroH = 0;
@@ -38,7 +52,9 @@
     const p = scrollP();
     const h = stage.offsetHeight;
     const li = S.li;
-    const th = 0;
+    const influence = mouseEnabled && mqPointer.matches ? 1 - ss(.12, .40, p) : 0;
+    const mx = pointer.x * influence, my = pointer.y * influence;
+    const th = -mx * 15;
     const e = ss(0, .66, p);
 
     // abertura: sai por translação, opaca, como conteúdo que rola (sem fade)
@@ -53,13 +69,13 @@
 
     // feixes: nascem das lentes e caem à frente (para baixo na tela); o mouse só gira a direção
     const bo = (.38 + .3 * ss(0, .2, p)) * li;
-    beams.forEach(b => { b.style.opacity = clamp(bo).toFixed(3); b.style.transform = `rotate(${(+b.dataset.base + th).toFixed(2)}deg)`; });
-    const bias = [1, 1];
+    beams.forEach(b => { b.style.opacity = clamp(bo).toFixed(3); b.style.transform = `rotate(${(+b.dataset.base + th).toFixed(2)}deg) scaleY(${(1 + my * .22).toFixed(3)})`; });
+    const bias = [1 - mx * .10, 1 + mx * .10];
     glows.forEach((g, i) => { g.style.opacity = clamp((.3 + .5 * ss(0, .4, p)) * li * bias[i]).toFixed(3); });
     // a luz no chão cresce e sobe como superfície porcelana, com a frente luminosa
     const k = ss(T.poolA + .02, T.poolB, p);
     const po = ss(T.poolA - .02, T.poolA + .06, p).toFixed(3), pt = `scale(${(1 + .3 * k).toFixed(3)},${(.06 + 1.0 * k).toFixed(3)})`;
-    pools.forEach(el => { el.style.opacity = el.classList.contains('pc') ? (+po * ss(.26, .5, p)).toFixed(3) : po; el.style.transform = pt; });
+    pools.forEach(el => { el.style.opacity = el.classList.contains('pc') ? (+po * ss(.26, .5, p)).toFixed(3) : po; el.style.transform = `translateX(${(mx * 38).toFixed(2)}px) ${pt}`; });
     flood.style.opacity = ss(T.floodA, T.floodB, p).toFixed(3);
 
     // informação: troca de estado com histerese (não depende de opacidade contínua do scroll)
@@ -88,7 +104,19 @@
   }
 
   function kick() { if (!raf) raf = requestAnimationFrame(frame); }
-  function frame() { render(); }
+  function frame(now) {
+    const dt = pointer.time ? Math.min(50, now - pointer.time) : 16.67;
+    pointer.time = now;
+    const canMove = S.live && mouseEnabled && mqPointer.matches && scrollP() < .40;
+    if (!canMove) pointer.tx = pointer.ty = 0;
+    const alpha = 1 - Math.exp(-dt / 110);
+    pointer.x += (pointer.tx - pointer.x) * alpha;
+    pointer.y += (pointer.ty - pointer.y) * alpha;
+    const moving = Math.abs(pointer.tx - pointer.x) + Math.abs(pointer.ty - pointer.y) > .001;
+    if (!moving) { pointer.x = pointer.tx; pointer.y = pointer.ty; pointer.time = 0; }
+    render();
+    if (moving && S.live) kick();
+  }
 
   // ---- modo vivo x fluxo normal ----
   function setLive(on) {
