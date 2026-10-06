@@ -10,7 +10,7 @@ O site é institucional. Não há cadastro público, pedidos de compra, envio de
 
 O consumidor descreverá o carro procurado, seu orçamento, prioridades e o usado, se houver. As lojas responderão em um formato comum para comparação e negociação. A home apresenta quatro ações; a página Como funciona detalha também a pré-avaliação prevista do usado e a distribuição do pedido.
 
-O consumidor pode iniciar chat sem favoritar. A loja só pode iniciar se a proposta dela for favoritada, mas pode responder a uma conversa já iniciada pelo consumidor. Favoritar apresenta uma pergunta sobre o que poderia melhorar; não conclui a compra nem garante uma reoferta. Não há posição paga no ranking previsto.
+O consumidor pode iniciar chat sem favoritar. A loja só pode iniciar se a proposta dela for favoritada, mas pode responder a uma conversa já iniciada pelo consumidor. Favoritar apresenta uma pergunta sobre o que poderia melhorar; não conclui a compra nem garante uma reoferta. As propostas são ordenadas pelo conjunto da oferta (encaixe no orçamento, condições do veículo, condições comerciais e aderência ao pedido), não pela ordem de chegada; a loja não paga nem escolhe a posição. Detalhes em Como funciona.
 
 Os exemplos usam dados fictícios. A entrada em dinheiro é adicional ao usado. A KoteAuto não vende os veículos, não concede financiamento e não emite laudos.
 
