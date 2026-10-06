@@ -6,6 +6,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Arial,Helve
 h1,h2,h3,p{margin-top:0}h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
 a{color:var(--green);text-underline-offset:4px}
 a:hover{color:var(--hover)}a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-9999px;top:8px;background:white;color:var(--ink);padding:10px 14px;border-radius:6px;z-index:100}.skip:focus{left:8px}
 .wrap{width:min(1080px,calc(100% - 40px));margin:auto}
 .site-header{position:sticky;top:0;z-index:20;background:#272927;color:var(--paper);border-bottom:1px solid #41443E}
@@ -53,3 +54,50 @@ th,td{padding:14px 12px;border-top:1px solid var(--line);text-align:left;vertica
 @media(max-width:900px){.site-header{position:relative}.site-header-inner{align-items:flex-start;flex-direction:column;gap:16px}.tabs{gap:4px}.tabs a{padding:8px 10px}html{scroll-padding-top:20px}}
 @media(max-width:700px){.grid-2,.footer-grid{grid-template-columns:1fr}.site-footer{padding:32px 0}main.wrap{padding-top:24px}.breadcrumb{margin-bottom:28px}.status-note{padding:18px}.journey li{padding-left:62px}.table-wrap{padding:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Alvo das propostas: estilos escopados em .alvo */
+.alvo{--surface:#fff;--ring:#e9e4da;--loja-a:#2a78d6;--loja-b:#eda100;--loja-c:#e87ba4;--loja-d:#008300;--loja-e:#4a3aa7}
+.alvo .card{background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(16px, 3vw, 28px); box-shadow: 0 18px 44px rgba(96, 81, 64, .07);}
+.alvo .viz{display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 28px; align-items: start;}
+.alvo .viz svg{width: 100%; height: auto; max-width: 760px; display: block; margin-inline: auto;}
+.alvo .how{margin: 0 0 16px; color: var(--muted); font-size: 14px;}
+.alvo .legend{list-style: none; margin: 0; padding: 0; display: grid; gap: 8px;}
+.alvo .legend button{width: 100%; display: grid; grid-template-columns: 2.2rem 1.8rem minmax(0, 1fr); align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; text-align: left; cursor: pointer;}
+.alvo .legend button:hover{background: var(--paper);}
+.alvo .legend button[aria-pressed="true"]{border-color: var(--green); background: var(--sage);}
+.alvo .legend button:focus-visible{outline: 3px solid var(--green); outline-offset: 2px;}
+.alvo .pos{font-weight: 700; font-variant-numeric: tabular-nums; color: var(--green);}
+.alvo .chip{width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; box-shadow: 0 0 0 2px var(--surface);}
+.alvo .name{min-width: 0;}
+.alvo .name strong{display: block;}
+.alvo .name span{display: block; color: var(--muted); font-size: 13px;}
+.alvo .why{margin: 16px 0 0; padding: 14px 16px; border-radius: 10px; background: var(--paper); font-size: 14px; color: var(--ink); min-height: 4.5em;}
+.alvo th small, .alvo td small{display: block; font-weight: 400; color: var(--muted); font-size: 12px;}
+.alvo .ref-row th, .alvo .ref-row td{color: var(--muted);}
+.alvo .tip{position: fixed; pointer-events: none; z-index: 5; max-width: 240px; padding: 8px 10px; border-radius: 8px; background: var(--ink); color: #fff; font-size: 13px; line-height: 1.4; opacity: 0; transition: opacity .12s;}
+.alvo .tip.on{opacity: 1;}
+.alvo svg .marker{cursor: pointer; transition: opacity .2s;}
+.alvo svg .marker:focus-visible circle.dot{stroke: var(--ink); stroke-width: 3;}
+.alvo svg .marker:focus{outline: none;}
+.alvo svg .dim{opacity: .14;}
+.alvo svg .profile{fill: none; stroke-width: 2; stroke-linejoin: round; transition: opacity .2s;}
+.alvo .guide{margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper);}
+.alvo .guide summary{cursor: pointer; padding: 12px 16px; font-weight: 700; color: var(--green); list-style-position: inside;}
+.alvo .guide summary:focus-visible{outline: 3px solid var(--green); outline-offset: 2px; border-radius: 12px;}
+.alvo .guide ol, .alvo .guide ul{margin: 0; padding: 0 20px 4px 36px; display: grid; gap: 8px; font-size: 15px;}
+.alvo .guide .tip-box{margin: 12px 16px 16px; padding: 12px 14px; border-left: 4px solid var(--green); border-radius: 8px; background: var(--surface); font-size: 15px;}
+.alvo .guide .tip-box strong{color: var(--green);}
+.alvo .table-guide{margin: 0 0 16px;}
+@media (max-width: 760px){.alvo .viz{grid-template-columns: 1fr;}}
+@media (max-width: 520px){.alvo #alvo .lbl-crit{font-size: 30px;}.alvo #alvo .lbl-sub{font-size: 22px; transform: translateY(12px); transform-box: fill-box;}.alvo #alvo .lbl-ring{font-size: 22px;}}
+.alvo th small,.alvo td small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+main>section.alvo{max-width:1080px}
+.alvo li{margin-bottom:0}
+.alvo h3{font-size:20px;margin:0 0 10px}
+.alvo .card{margin:24px 0}
+.alvo .note-demo{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;color:var(--muted)}
+.alvo .note-demo strong{color:var(--ink)}
+.alvo .table-wrap{margin:0;padding:0;border:0;box-shadow:none}
+.alvo table{min-width:620px;font-variant-numeric:tabular-nums}
+.alvo .table-note{margin:16px 0 0;font-size:13px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.alvo *{transition:none!important}}
